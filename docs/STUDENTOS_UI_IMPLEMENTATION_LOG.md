@@ -16,6 +16,66 @@ or quiz scores.
 
 ---
 
+## Phase 3 — Premium signature experiences (ten screens)
+
+| | |
+|---|---|
+| **Commit** | `a9cf8e6` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-14 |
+| **Scope** | Ten signature screen renderers + supporting hero/token CSS |
+| **Verified** | `node --check` syntactic pass; jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors, all signature elements asserted |
+
+### Renderers rewritten to premium spec
+- `renderDash01` — dark gradient hero: greeting split morning/afternoon/evening,
+  semester chip, GPA ring, Quick Add + Upload CTAs, KPI row, Upcoming
+  Deadlines (span-8), AI Study / Attendance Risk / Upcoming Exams / Recent
+  Documents (span-4 `ai-card`).
+- `renderCourse04` — hero grid (course name, instructor, code/credits,
+  attendance ring + label), Edit → COURSE-03, 6-tab `tabrail`, add-actions
+  row; all six panel bodies preserved verbatim. (Programmatic splice via
+  `build_course04.py` to avoid logic drift.)
+- `renderAtt01` — shield hero chip, overall‑attendance ring, Add Attendance
+  CTA, semester toolbar, 4-KPI row (Overall / Safe / Warning / At Risk),
+  table + mobile cards.
+- `renderGpa01` — calc chip "Numeric grade points", GPA ring, GPA History +
+  Add Grade CTAs, 4-stat KPI (added Target GPA).
+- `renderPlanner` (`renderPlan01`) — `pack-header` with icon block, Previous /
+  Today / Next month navigation; Month/Week/List segmented toolbar; all
+  planner logic preserved.
+- `renderFocus01` — immersive `.focus-dark` hero: timer, preset pills
+  (25/45/60/Custom), Study Summary, Start CTA; setup card grid below.
+- `renderFocus02` — active-session dark hero: 64px `#focusClock`,
+  `#focusStatus`, meta-list (course/goal/type/code), Pause / Finish / Cancel
+  with `#focusPause` wired to `togglePause`; `syncFocusClock` intact.
+- `renderAi01` — soft-violet AI hero (`ai-chip`, upload CTA, credit
+  indicator), four span-3 tool cards, Document Library with
+  `documentCard`/`emptyState`.
+- `renderPrep01` — AI hero (exam count side stat), `prepSteps(0)`, six
+  span-6 exam cards with select/selected state.
+- `renderPrep06` — `pack-header` with `.readiness-ring` (conic-gradient +
+  `data-pct`), 18/32/30/p% KPI row, 8-tab revision pack body, Regenerate.
+
+### Supporting CSS added
+- `.hero-grid` (1fr/auto + gap), `.hero-side`, `.hero-side-label/-sub`,
+  `.hero-cta button.ghost`, `.ai-chip` (white pill on violet),
+  `.focus-dark .pill(.selected)`, `.ic-md` (22px), `.focus-dark` padding,
+  reduced `.hero/.ai-hero/.pack-header/.focus-dark` margins, mobile
+  single-column hero stack.
+
+### Product-contract preservation
+- All 82 routes redirect via unchanged `go()`/`renderers`; interactions
+  (pills, tabs, segmented, toggle, select, uploads, focused timer) intact.
+- Deterministic logic untouched — attendance %, GPA/CGPA, overdue, quiz
+  scores are computed by product helpers (`attendanceSummary`,
+  `semesterGpa`, `assignmentStatus`); AI content never displays them.
+
+### QA infrastructure
+- `.gitignore` extended so `StudentOS_replacements/`, `_tmp_*`, and dev-QA
+  npm manifests are never committed.
+
+---
+
 ## Checkpoint — interrupted redesign work (Phases 0–2 + shell + search)
 
 | | |

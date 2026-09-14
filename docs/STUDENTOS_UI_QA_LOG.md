@@ -6,6 +6,48 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 2 — Phase 3 signature screens
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-14 |
+| **Status** | ✅ Pass — all 82 routes render; visual browser QA still scheduled for Phase 4 |
+| **Commit** | `a9cf8e6` |
+
+### Method
+- Loaded `StudentOS_Clickable_Wireframe.html` into jsdom (`runScripts: dangerously`,
+  real base URL so `history.pushState` works, layout APIs stubbed).
+- Enumerated all 82 routes from the live `screenMeta` registry, then navigated
+  `go(route)` for every route (plus a starting/final Dashboard pass), catching
+  any thrown error per route and tallying console/jsdom errors.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console errors / zero jsdom runtime errors across the run | ✅ |
+| 3 | `DASH-01` renders `.hero` + `.hero-grid` (premium dashboard band) | ✅ |
+| 4 | `COURSE-04` renders `.tabrail` + hero (tabbed course header) | ✅ |
+| 5 | `ATT-01` renders `.hero` + `.ring` (overall attendance ring) | ✅ |
+| 6 | `GPA-01` renders `.hero` + `.ring` (GPA ring) | ✅ |
+| 7 | `PLAN-01` renders `.pack-header` + icon block (planner header) | ✅ |
+| 8 | `FOCUS-01` renders `.focus-dark` + `#focusCourse` setup select | ✅ |
+| 9 | `FOCUS-02` renders `#focusClock` + `#focusPause` (active timer wiring) | ✅ |
+| 10 | `AI-01` renders `.ai-hero` + `.ic-box` tool cards | ✅ |
+| 11 | `PREP-01` renders `.ai-hero` + `prepSteps` stepper | ✅ |
+| 12 | `PREP-06` renders `.readiness-ring` + `.pack-header` (exam pack result) | ✅ |
+
+### Open items (scheduled)
+- **Phase 3**: complete — all ten signature screens implemented and structurally verified.
+- **Phase 4**: full QA — visual hierarchy, token consistency, interaction
+  preservation, responsive (1440/1280/768/390), accessibility, plus checked
+  product-logic integrity across the ten redesigned routes.
+- **Phase 5**: stop for visual approval.
+
+---
+
 ## Checkpoint 1 — Phases 0–2 + shell + search (pre-Phase-3)
 
 | | |
