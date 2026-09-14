@@ -1,0 +1,43 @@
+# ------------------------------------------------------------------
+# StudentOS — Git ignore rules
+# ------------------------------------------------------------------
+
+# Operating system cruft
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor / IDE artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code local settings (machine-specific, never commit)
+.claude/settings.local.json
+.claude/worktrees/
+.claude/tmp/
+.claude/*.jsonl
+
+# Local working snapshots (never committed — created during redesign)
+_sos_redesign_css.css
+_sos_redesign_working.html
+*_backup_pre-redesign.html
+_tmp-*
+*.bak
+
+# Node / build noise (future-proofing)
+node_modules/
+dist/
+build/
+.npm/
+.yarn/
+
+# Secrets (defensive — none should exist here anyway)
+.env
+.env.local
+*.pem
+*.key
+
+# Logs
+*.log

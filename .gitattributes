@@ -1,0 +1,27 @@
+# ------------------------------------------------------------------
+# StudentOS — line-ending normalization
+# Text files are stored as LF in the repo; git converts to native
+# (CRLF on Windows) on checkout. This prevents end-of-line churn
+# across contributors and platforms.
+# ------------------------------------------------------------------
+
+* text=auto
+
+# Explicit text types
+*.md  text
+*.html text
+*.css text
+*.js  text
+*.json text
+*.csv text
+
+# Lock any future binary assets as binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
+*.woff2 binary

@@ -1,0 +1,163 @@
+﻿Category,Element / Action,Rounded Duotone Semantic Icon,Default Size px,Primary Context
+Navigation,Dashboard,dashboard-square-01,20,Sidebar
+Navigation,Planner,calendar-03,20,Sidebar
+Navigation,Courses,book-open / books-01,20,Sidebar
+Navigation,Attendance,calendar-check / user-check,20,Sidebar
+Navigation,GPA / CGPA,graduation-cap / chart-up,20,Sidebar
+Navigation,Focus,timer-01 / target-01,20,Sidebar
+Navigation,AI Study,sparkle / artificial-intelligence,20,Sidebar
+Navigation,Analytics,chart-up / analytics-01,20,Sidebar
+Navigation,Notifications,notification-02 / bell,20,Sidebar
+Navigation,Settings,settings-02,20,Sidebar
+Navigation,Help,help-circle,20,Sidebar
+Navigation,Profile,user-circle,20,Sidebar
+Navigation,Collapse sidebar,panel-left-close,18,Sidebar control
+Navigation,Expand sidebar,panel-left-open,18,Sidebar control
+Navigation,Sign out,logout-01,18,Profile/More
+Global,Search,search-01,18,Command search
+Global,Quick Add,plus-sign,18,Button
+Global,Upload,cloud-upload / upload-04,18,Button/dropzone
+Global,Download,download-04,18,Action
+Global,Edit,pencil-edit-02,18,Action
+Global,Delete,delete-02,18,Danger action
+Global,More,more-vertical-circle-01,18,Overflow menu
+Global,Back,arrow-left-02,18,Navigation
+Global,Forward,arrow-right-02,18,Navigation
+Global,Chevron down,arrow-down-01,16,Dropdown
+Global,Breadcrumb separator,arrow-right-01,14,Breadcrumb
+Global,Close,cancel-01,18,Modal/sheet
+Global,Filter,filter,18,Filters
+Global,Sort,sorting-04,18,Tables/lists
+Global,Refresh / Retry,reload,18,Retry
+Global,Copy,copy-01,18,Summary
+Global,External/Open,arrow-up-right-01,18,Open
+Global,Show,view,18,Password/answers
+Global,Hide,view-off,18,Password/answers
+Global,Success,checkmark-circle-02,16,Status
+Global,Error,cancel-circle,16,Status
+Global,Warning,alert-02,16,Status
+Global,Info,information-circle,16,Status
+Auth,Email,mail-01,18,Input
+Auth,Password,lock,18,Input
+Auth,Forgot password,key-01,18,Link/feature
+Auth,Create account,user-add-01,18,CTA
+Auth,Verify email,mail-check,24,State
+Dashboard,GPA,graduation-cap,24,KPI
+Dashboard,Attendance,calendar-check,24,KPI
+Dashboard,Study time,timer-01,24,KPI
+Dashboard,Assignment,task-01 / clipboard,18,Today timeline
+Dashboard,Exam,file-question / notebook-01,18,Today timeline
+Dashboard,Deadline,alarm-clock,18,Today timeline
+Dashboard,Study session,timer-01,18,Today timeline
+Dashboard,Academic health,heart-check / activity-01,22,Panel
+Dashboard,Trend up,chart-up,16,KPI trend
+Dashboard,Trend down,chart-down,16,KPI trend
+Course,Course,book-open,20,General
+Course,Code,hashtag,16,Metadata
+Course,Credits,clock-01 / award-01,16,Metadata
+Course,Instructor,user,16,Metadata
+Course,Documents,files-01,18,Tab/action
+Course,Archive,archive-02,18,Menu
+Attendance,Safe,shield-check,16,Status
+Attendance,Warning,alert-02,16,Status
+Attendance,At Risk,shield-alert,16,Status
+Attendance,Target,target-01,16,Metric
+Attendance,Present,checkmark-circle-02,16,Record
+Attendance,Absent,cancel-circle,16,Record
+Attendance,Cancelled,minus-sign-circle,16,Record
+Attendance,History,clock-04 / history,18,Section
+GPA,Weighted points,calculator-01,18,Metric
+GPA,History,chart-line-data-01,18,Action
+Planner,Month,calendar-03,18,View switch
+Planner,Week,calendar-04,18,View switch
+Planner,List,menu-01 / list-view,18,View switch
+Planner,Today,calendar-check,18,Control
+Planner,Reminder,notification-03,16,Metadata
+Planner,Priority,flag-02,16,Metadata
+Assignment,Description,text-align-left,16,Metadata
+Assignment,Due date,calendar-02,16,Metadata
+Assignment,Due time,clock-01,16,Metadata
+Assignment,Complete,checkmark-circle-02,18,Action
+Assignment,Reopen,undo-02 / reload,18,Action
+Exam,Exam,file-question / notebook-01,20,General
+Exam,Location,location-01,16,Metadata
+Exam,Days remaining,hourglass,16,Metadata
+Exam,Preparation,brain-01 / target-01,18,Metric
+Exam,Notes,sticky-note-01,16,Metadata
+Focus,Start,play,20,Action
+Focus,Pause,pause,20,Action
+Focus,Resume,play,20,Action
+Focus,Finish,checkmark-circle-02,20,Action
+Focus,Streak,fire,20,Metric
+Focus,Goal,target-01,18,Metadata
+AI,AI Study,sparkle / artificial-intelligence,24,Hero
+AI,Credits,coins-01 / sparkle,18,Usage
+AI,PDF,pdf-01 / file-02,20,Document
+AI,Summary,document-text,20,Tool
+AI,MCQ,help-circle,20,Tool
+AI,Quiz,check-list,20,Tool
+AI,Flashcards,layers-01 / cards-01,20,Tool
+AI,Exam Prep,brain-01 / sparkle,20,Tool
+Document,Uploading,cloud-upload,20,Status
+Document,Processing,loading-03 / scan,20,Status
+Document,Ready,checkmark-circle-02,20,Status
+Document,Failed,cancel-circle,20,Status
+Document,Unsupported,file-warning,20,Status
+Summary,Key Concepts,idea-01 / bulb,18,Section
+Summary,Important Points,star,18,Section
+Summary,Definitions,book-bookmark-01,18,Section
+Summary,Revision Notes,sticky-note-01,18,Section
+Quiz,Question,help-circle,20,Question
+Quiz,Correct,checkmark-circle-02,18,State
+Quiz,Incorrect,cancel-circle,18,State
+Quiz,Unanswered,circle-dashed,18,State
+Quiz,Score,award-01 / trophy,22,Results
+Quiz,Review,check-list,18,Action
+Flashcards,Flip,rotate-clockwise,18,Action
+Flashcards,Again,reload,18,Rating
+Flashcards,Know It,checkmark-circle-02,18,Rating
+Flashcards,Shuffle,shuffle,18,Action
+Exam Prep,Select Exam,calendar-check,20,Step
+Exam Prep,Materials,files-01,20,Step
+Exam Prep,Preferences,sliders-horizontal,20,Step
+Exam Prep,Generate,sparkle,20,Step
+Exam Prep,Quick Revision,flash / zap,20,Depth
+Exam Prep,Standard,dashboard-speed-01 / gauge,20,Depth
+Exam Prep,Deep,brain-01,20,Depth
+Exam Pack,Important Topics,target-01,18,Tab
+Exam Pack,Short Questions,message-text-01,18,Tab
+Exam Pack,Long Questions,document-text,18,Tab
+Exam Pack,Viva,mic-01,18,Tab
+Exam Pack,Study Plan,calendar-04,18,Tab
+Exam Pack,Readiness,dashboard-speed-01 / gauge,22,Hero
+Exam Pack,Mark Revised,checkmark-circle-02,18,Action
+Analytics,Study Hours,clock-01,20,KPI
+Analytics,Completion,checkmark-circle-02,20,KPI
+Analytics,Date Range,calendar-04,18,Filter
+Notifications,Assignment,task-01,18,Type
+Notifications,Attendance,shield-alert,18,Type
+Notifications,Exam,calendar-clock,18,Type
+Notifications,Study reminder,timer-01,18,Type
+Notifications,AI complete,sparkle,18,Type
+Notifications,Mark read,tick-double-02,18,Action
+Settings,Profile,user-circle,20,Nav
+Settings,Academic,graduation-cap,20,Nav
+Settings,Notifications,notification-02,20,Nav
+Settings,AI Usage,sparkle,20,Nav
+Settings,Privacy,shield-check,20,Nav
+Settings,Security,lock-key,20,Nav
+Settings,Account,user-settings-01,20,Nav
+Settings,Camera,camera-01,18,Profile
+Settings,University,building-03,18,Field
+Settings,Country,globe-02,18,Field
+Settings,Timezone,clock-01,18,Field
+System,Offline,wifi-off,24,Error
+System,Network error,cloud-off,24,Error
+System,Server error,server-stack-01,24,Error
+System,Permission denied,lock,24,Error
+System,No search results,search-remove / search-minus,48,Empty
+System,No notifications,notification-off-01,48,Empty
+System,No courses,books-01,48,Empty
+System,No assignments,task-done-01,48,Empty
+System,No exams,calendar-remove-01,48,Empty
+System,No documents,file-add,48,Empty

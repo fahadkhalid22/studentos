@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "name": "StudentOS Visual Tokens",
+    "version": "1.0",
+    "codename_only": true,
+    "design_direction": "Premium academic productivity + AI workspace"
+  },
+  "color": {
+    "canvas": "#F7F8FC",
+    "canvasTinted": "#F4F5FB",
+    "surface": "#FFFFFF",
+    "surfaceSoft": "#F9FAFC",
+    "sidebar": "#101322",
+    "sidebarRaised": "#171B2E",
+    "textPrimary": "#131722",
+    "textSecondary": "#667085",
+    "textTertiary": "#98A2B3",
+    "border": "#E4E7EC",
+    "borderStrong": "#D0D5DD",
+    "primary": "#6366F1",
+    "primaryHover": "#5658DD",
+    "primaryPressed": "#4749BF",
+    "primarySoft": "#EEF0FF",
+    "cyan": "#22C7E8",
+    "cyanSoft": "#E8FAFE",
+    "violet": "#8B5CF6",
+    "violetSoft": "#F2ECFF",
+    "coral": "#F05D6B",
+    "coralSoft": "#FFF0F2",
+    "emerald": "#16B57A",
+    "emeraldSoft": "#ECFBF4",
+    "amber": "#F4A62A",
+    "amberSoft": "#FFF7E6",
+    "infoBlue": "#3B82F6",
+    "infoBlueSoft": "#EFF6FF"
+  },
+  "gradient": {
+    "aiPrimary": "linear-gradient(135deg,#6366F1 0%,#8B5CF6 52%,#22C7E8 100%)",
+    "aiSoft": "linear-gradient(135deg,rgba(99,102,241,.10),rgba(139,92,246,.08) 48%,rgba(34,199,232,.10))",
+    "focusDark": "linear-gradient(145deg,#101322 0%,#171B2E 55%,#1D2440 100%)"
+  },
+  "typography": {
+    "headingFamily": "Sora",
+    "uiFamily": "Inter",
+    "h1": {
+      "size": 30,
+      "lineHeight": 38,
+      "weight": 700
+    },
+    "h2": {
+      "size": 24,
+      "lineHeight": 32,
+      "weight": 600
+    },
+    "h3": {
+      "size": 20,
+      "lineHeight": 28,
+      "weight": 600
+    },
+    "body": {
+      "size": 15,
+      "lineHeight": 23,
+      "weight": 400
+    },
+    "label": {
+      "size": 14,
+      "lineHeight": 20,
+      "weight": 500
+    },
+    "button": {
+      "size": 14,
+      "lineHeight": 20,
+      "weight": 600
+    },
+    "caption": {
+      "size": 12,
+      "lineHeight": 18,
+      "weight": 400
+    }
+  },
+  "spacing": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    32,
+    40,
+    48,
+    64
+  ],
+  "radius": {
+    "sm": 10,
+    "md": 12,
+    "lg": 16,
+    "xl": 20,
+    "2xl": 24,
+    "pill": 999
+  },
+  "size": {
+    "sidebarExpanded": 252,
+    "sidebarCollapsed": 76,
+    "topbar": 72,
+    "input": 50,
+    "button": 44,
+    "buttonHero": 48,
+    "touchTargetMin": 44,
+    "iconSidebar": 20,
+    "iconTopbar": 20,
+    "iconButton": 18,
+    "iconKpi": 24,
+    "notificationDot": 7,
+    "legendDot": 8
+  },
+  "motionMs": {
+    "fast": 140,
+    "ui": 180,
+    "panel": 220,
+    "page": 260,
+    "flip": 400,
+    "progressMin": 500,
+    "progressMax": 700
+  },
+  "breakpoints": {
+    "mobileTarget": 390,
+    "tablet": 768,
+    "laptop": 1280,
+    "desktop": 1440
+  }
+}

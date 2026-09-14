@@ -1,0 +1,83 @@
+﻿Screen ID,Screen / State,Shell,Visual Direction,Primary Composition,Icon / Visual Group,Motion,Mobile Treatment
+AUTH-01,Login,Auth,Editorial auth,Premium form + abstract side panel,"Mail, Lock, Eye, Login",Subtle panel entrance,Single-column form
+AUTH-02,Sign Up,Auth,Editorial auth,Premium form + password guidance,"User Add, Mail, Lock",Subtle panel entrance,Single-column form
+AUTH-03,Email Verification,Auth,Focused state,Large mail-check state card,"Mail Check, Reload",Success transition,Centered mobile card
+AUTH-04,Forgot Password,Auth,Focused form,Compact recovery card,"Key, Mail",Panel fade,Single-column
+AUTH-05,Reset Password,Auth,Focused form,Password reset + success state,"Lock, Eye, Check",Success reveal,Single-column
+AUTH-06,Authentication Error,Auth,State page,Coral soft error card,"Error, Retry",No dramatic motion,Centered
+ONB-01,Welcome,Onboarding,Spacious premium,Selective abstract academic illustration,"Sparkle, Arrow",Gentle reveal,Single-column
+ONB-02,Profile,Onboarding,Form-focused,Stepper + profile fields,"User, Camera",Stepper progress,Single-column
+ONB-03,Academic Setup,Onboarding,Form-focused,GPA/attendance setup cards,"Graduation Cap, Target",Stepper progress,Single-column
+ONB-04,Semester,Onboarding,Form-focused,Semester timeline form,Calendar,Stepper progress,Single-column
+ONB-05,Courses,Onboarding,Repeatable cards,Course rows/cards + colors,"Book, Plus, Trash",Add/remove transition,Stacked cards
+ONB-06,Preferences,Onboarding,Preference cards,Grouped toggles,"Bell, Settings",Toggle motion,Stacked
+ONB-07,Finish,Onboarding,Success summary,Setup summary + restrained success visual,Check Circle,Success reveal,Centered
+DASH-01,Dashboard,Application,Hybrid editorial+bento,Readiness hero + KPIs + timeline + AI card,"Dashboard, GPA, Attendance, Focus, Sparkle",Card/chart entrance,Single-column priority stack
+SEM-01,Semester List,Application,Balanced,Semester timeline/cards,"Calendar, More",Hover lift,Stacked cards
+SEM-02,Create Semester,Application,Form,Adaptive field card,"Calendar, Plus",Form state,Single-column
+SEM-03,Edit Semester,Application,Form,Adaptive field card,"Calendar, Edit",Unsaved state,Single-column
+SEM-04,Delete Semester,Application,Danger modal/state,Coral confirmation,"Trash, Alert",Modal transition,Bottom sheet/modal
+COURSE-01,Courses,Application,Balanced grid,Course identity cards + filters,"Book, Search, Filter",Card hover,1-column cards
+COURSE-02,Add Course,Application,Form,Course identity preview + fields,"Book, Plus",Form focus,Single-column
+COURSE-03,Edit Course,Application,Form,Course identity preview + fields,"Edit, Trash",Unsaved state,Single-column
+COURSE-04,Course Detail,Application,Premium detail,Header identity + icon tabs + summaries,"Book, Tabs icons",Tab transition,Scrollable tabs
+ATT-01,Attendance Overview,Application,Data-rich balanced,Ring KPIs + comparison table/cards,"Calendar Check, Shield",Ring entrance,Course cards
+ATT-02,Course Attendance,Application,Detail analytics,Large ring + history,"Shield, History",Progress update,History cards
+ATT-03,Add Attendance,Application,Compact form,Status selection cards,"Check, X, Minus",Selection motion,Single-column
+ATT-04,Edit Attendance,Application,Compact form,Status selection cards,"Edit, Status icons",Selection motion,Single-column
+ATT-05,Delete Record,Application,Danger confirm,Coral confirmation,"Trash, Alert",Modal,Bottom sheet
+GPA-01,GPA Dashboard,Application,Analytics,Large GPA + trend + grades,"Graduation, Chart",Line draw,Grade cards
+GPA-02,Add / Edit Grade,Application,Form,Numeric grade control,"Calculator, Edit",Validation feedback,Single-column
+GPA-03,GPA History,Application,Analytics,Semester trend cards/chart,Chart Line,Chart entrance,Stacked
+PLAN-01,Planner,Application,Calendar/productivity,Course-colored calendar + agenda,"Calendar, Filter",View transition,Agenda-first
+ASSIGN-01,Assignments List,Application,Task list,Priority dots + due states,"Task, Filter",Completion motion,Cards
+ASSIGN-02,Add Assignment,Application,Form,Due/priority controls,"Task, Calendar, Flag",Form state,Single-column
+ASSIGN-03,Assignment Detail,Application,Detail,Task summary + actions,"Task, Check, Edit",Completion state,Single-column
+ASSIGN-04,Edit Assignment,Application,Form,Adaptive form,"Edit, Calendar",Unsaved state,Single-column
+ASSIGN-05,Delete Assignment,Application,Danger confirm,Coral confirmation,"Trash, Alert",Modal,Bottom sheet
+EXAM-01,Exam List,Application,Card list,Countdown-forward exam cards,"Exam, Hourglass",Countdown subtle,Cards
+EXAM-02,Add Exam,Application,Form,Date/time/location fields,"Exam, Calendar, Map",Form state,Single-column
+EXAM-03,Exam Detail,Application,Premium detail,Countdown + Prep CTA + materials,"Exam, Brain, Files",Prep CTA emphasis,Single-column
+EXAM-04,Edit Exam,Application,Form,Adaptive form,"Edit, Exam",Unsaved state,Single-column
+EXAM-05,Delete Exam,Application,Danger confirm,Coral confirmation,"Trash, Alert",Modal,Bottom sheet
+FOCUS-01,Focus Home,Application,Calm setup,Timer card + presets + history summary,"Timer, Play, Flame",Ring preview,Single-column
+FOCUS-02,Active Focus,Application,Immersive dark,"Large radial timer, reduced chrome","Pause, Check, Target",Continuous ring,Full-height focus
+FOCUS-03,Focus Complete,Application,Success,Session summary + notes,"Check, Trophy",Restrained success,Centered
+FOCUS-04,Focus History,Application,Analytics list,Heatmap + sessions,"History, Chart",Chart entrance,Cards
+AI-01,AI Study Home,Application,Premium AI,Gradient hero + tools + document library,"Sparkle, Upload, File",AI hero glow,Stacked cards
+DOC-01,Upload,Application,Focused utility,Premium dropzone + metadata,"Upload, PDF",Drag-over response,Full-width dropzone
+DOC-02,Uploading,Application,Progress state,File card + upload progress,"Upload, Loader",Progress motion,Centered
+DOC-03,Processing,Application,AI process,Stage list,"Scan, Sparkle",Stage progression,Centered
+DOC-04,Failed,Application,Error state,Recoverable coral-soft card,"Error, Retry",Retry feedback,Centered
+DOC-05,Scanned PDF Unsupported,Application,Illustrated state,Premium file-warning illustration,File Warning,Static,Centered
+DOC-06,Document Detail,Application,Detail,Metadata + tabs + AI actions,"File, Sparkle",Tab transition,Scrollable tabs
+SUM-01,Summary Generator,Application,AI configuration,Length selector + credit cost,"Document, Sparkle",Selection motion,Single-column
+SUM-02,Summary Result,Application,Editorial reading,Readable article blocks,"Bulb, Bookmark, Copy",Section reveal,Reading layout
+MCQ-01,MCQ Generator,Application,AI configuration,Count/difficulty controls,"Help, Gauge, Sparkle",Selection motion,Single-column
+MCQ-02,Generated Set,Application,Result summary,Question-set card + CTA,"Help, Play",Result reveal,Centered
+QUIZ-01,Quiz,Application,Distraction-free,Large question/answers + progress,"Help, Arrows",Answer transitions,One question
+QUIZ-02,Submit Confirmation,Application,Modal/state,Unanswered count confirmation,"Alert, Check",Modal,Bottom sheet
+QUIZ-03,Results,Application,Results,Score ring + breakdown,"Trophy, Check, X",Score entrance,Centered
+QUIZ-04,Review,Application,Review,Answer comparison cards,"Check List, Bulb",Question transition,Cards
+FLASH-01,Flashcard Generator,Application,AI configuration,Count + generation CTA,"Layers, Sparkle",Selection,Single-column
+FLASH-02,Deck,Application,Deck overview,Deck card + progress,"Layers, Play",Card hover,Centered
+FLASH-03,Study,Application,Tactile,Large 3D flashcard + ratings,"Rotate, Check, Reload",3D flip,Thumb-friendly
+FLASH-04,Complete,Application,Success,Reviewed/known summary,"Check, Layers",Success reveal,Centered
+PREP-01,Exam Prep Start,Application,Signature,Exam selection cards + stepper,"Calendar Check, Brain",Stepper,Cards
+PREP-02,Materials,Application,Signature,Document selection + upload,"Files, Upload",Selection,Cards
+PREP-03,Preferences,Application,Signature,Depth cards + output checklist,"Sliders, Brain, Zap",Selection,Single-column
+PREP-04,AI Credit Confirmation,Application,Transparent confirm,Cost/balance comparison,"Coins, Sparkle",Modal/reveal,Bottom sheet
+PREP-05,Generating,Application,Signature AI,Premium staged generation,"Scan, Target, Help, Layers, Calendar",Stage animation,Centered
+PREP-06,Exam Pack,Application,Flagship screen,Readiness hero + 8 tabs + study journey,"Gauge, Target, MCQ, Layers, Mic",Rich purposeful,Scrollable tabs
+ANA-01,Analytics,Application,Premium analytics,KPI row + intelligent charts,"Chart, Calendar",Chart entrance,Stacked charts
+ANA-02,Study Detail,Application,Analytics detail,Course filter + session trends,"Clock, Chart",Chart entrance,Stacked
+NOTIF-01,Notifications,Application,Feed,Icon-coded feed + unread states,"Bell, Context icons",Unread fade,Cards/list
+NOTIF-02,Notifications Empty,Application,Empty state,Premium bell-off illustration,Bell Off,Subtle,Centered
+SET-01,Profile,Application,Calm settings,Profile fields + avatar,"User, Camera",Form feedback,Single-column
+SET-02,Academic,Application,Calm settings,Academic preference groups,"Graduation, Target",Form feedback,Single-column
+SET-03,Notifications Settings,Application,Calm settings,Grouped toggles,"Bell, Toggle",Toggle motion,Single-column
+SET-04,AI Usage,Application,Usage analytics,Credits + usage table,"Sparkle, Coins",Progress entrance,Cards
+SET-05,Privacy & Data,Application,Trust-focused,Data groups + danger action,"Shield, Files, Trash",Confirmations,Single-column
+SET-06,Security,Application,Trust-focused,Password/session groups,"Lock, Key, Device",Modal,Single-column
+SET-07,Account,Application,Calm/danger,Account info + separated danger zone,"User Settings, Logout",Confirmations,Single-column
+SET-08,Delete Account,Application,High-friction danger,Strong confirmation card,"User X, Alert, Trash",Button enabling,Single-column
