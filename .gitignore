@@ -24,7 +24,15 @@ _sos_redesign_css.css
 _sos_redesign_working.html
 *_backup_pre-redesign.html
 _tmp-*
+_tmp_*
 *.bak
+
+# Redesign build pipeline — per-renderer source + splice scripts (intermediate)
+StudentOS_replacements/
+
+# Dev QA tooling (headless smoke tests; keep the repo a single-file prototype)
+package.json
+package-lock.json
 
 # Node / build noise (future-proofing)
 node_modules/
