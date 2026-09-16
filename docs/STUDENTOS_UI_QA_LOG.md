@@ -88,6 +88,35 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 10 — Phase 4 Pass 8 surface radius normalization
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean; 12px control-radius family applied |
+| **Commit** | `e3fb82f` |
+
+### Method
+- Re-ran the jsdom smoke harness after the radius-alignment commit.
+- Grep audit of every `rgba()` channel in the file against the six spec RGB
+  sources — zero foreign channels; full-radius scan for stray values.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | `button.icon` radius = `var(--radius-sm)` (12px) | ✅ |
+| 4 | `.auth-feature .dot` radius = `var(--radius-sm)` | ✅ |
+| 5 | Collapsed-rail `.logo-mark` radius = `var(--radius-sm)` | ✅ |
+| 6 | Primary `.logo-mark` keeps proportionate 11px | ✅ |
+| 7 | Zero non-spec `rgba()` channels in the file | ✅ |
+| 8 | Zero colored glow / violet-cyan surface residue | ✅ |
+
+---
+
 ## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
 
 | | |

@@ -97,6 +97,34 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 8 — Card & surface radius normalization
+
+| | |
+|---|---|
+| **Commit** | `e3fb82f` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Cards / surfaces / small controls |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- Audited the full card / surface / small-control layer and confirmed it is
+  already token-clean: `.card`, `.table-wrap`, `.chart`, `.mobile-card` share
+  `--radius`; the `rgba()` channel tally is 100% spec sources (indigo 91,91,214,
+  emerald 23,135,93, coral 201,74,87, amber 185,111,19, ink 19,23,34) with zero
+  violet/cyan residue and zero colored-glows.
+- Closed the one radius drift: `button.icon` (44px) moved from a bare 13px to
+  `var(--radius-sm)`; `auth-feature .dot` (40px) and collapsed-rail `.logo-mark`
+  (38px) aligned to the same 12px family as every sibling control.
+- The 34px primary `.logo-mark` stays at 11px, preserving a consistent ~⅓
+  side-to-radius ratio across both rails.
+
+### Product-contract preservation
+- Pure CSS radius tweaks; no selector, markup, or behavior change. Every
+  element still renders in the same position with the same size.
+
+---
+
 ## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
 
 | | |
