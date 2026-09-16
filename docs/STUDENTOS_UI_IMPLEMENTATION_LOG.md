@@ -16,6 +16,47 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 18 — Auth / Onboarding / Settings / Notifications: sidebar band + form/switch tokenization
+
+| | |
+|---|---|
+| **Commit** | `0bd381e` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-17 |
+| **Scope** | Auth, Onboarding, Settings, Notifications form/shell surfaces; the dark sidebar band explicitly assigned to this pass |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- **Sidebar dark band mapped onto the sanctioned token.** `StudentOS_Design_Tokens_v1.json`
+  defines `sidebar: #101322` (our `--dark`) and `sidebarRaised: #171B2E`
+  (`--dark-raised`); the Visual Design Bible section 2 repeats them. So
+  `.sidebar{background:#111827 → var(--dark)}` (near-identical render, exact
+  governance source).
+- **Sidebar section labels** `#76809B → var(--ink-3)` per the bible's
+  `text-on-dark-muted` (#98A2B3) for sidebar metadata. Side effect: contrast on
+  the dark rail rises from ~3.2:1 to ~4.9:1 (a Pass-20 win).
+- **Form-surface single source:** `.field input:focus` background
+  `#fff → var(--surface)` — the field already declares `var(--surface)` at rest,
+  so focus now tracks the same token (zero visual delta).
+- **Reminder switches (ONB-06 / SET-03 / SET-07 toggles):** track
+  `#D7DBE4 → var(--border-strong)`, giving the groove a defined boundary color.
+
+### Tints deliberately retained (not stray)
+- The four cool-slate nav shades `#CDD3E6 / #AEB6CF / #8E97B5 / #A5B4FC` are a
+  hand-tuned chrome ramp on the `--dark` rail. The bible defines only
+  `text-on-dark` (#F8FAFC) and `text-on-dark-muted` (#98A2B3); no exact token
+  exists, and an alpha/color remap would be an unverifiable visual change, so the
+  ramp keeps its values and will be reported as a justified bespoke ramp in the
+  CSS-fingerprint sweep.
+- `.auth-panel` frosted `rgba(255,255,255,.92)` is a deliberate glass surface
+  (not a hex); per the bible, the auth shell is an "editorial shell with premium
+  form surface".
+
+### Product-contract preservation
+- No screen count, route, product behavior, label, state, or computed-value change.
+
+---
+
 ## Phase 4 Pass 17 — Exam Pack information design: sticky section nav restored + surface tokenization
 
 | | |

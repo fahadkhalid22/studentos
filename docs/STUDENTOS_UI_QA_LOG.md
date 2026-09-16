@@ -6,6 +6,39 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 20 — Phase 4 Pass 18 auth/settings surfaces + sidebar dark band
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes; source-level CSS/DOM audit; token governance cross-check |
+| **Date** | 2026-09-17 |
+| **Status** | ✅ Pass — sidebar `--dark` band, form/switch tokenization; auth settings markup clean |
+| **Commit** | `0bd381e` |
+
+### Method
+- Re-ran the jsdom smoke harness after the Pass 18 commit
+  (`Routes to test: 82` / `Route failures: 0` / `Console errors: 0` → SMOKE PASS).
+- Audited every Auth (`renderAuth01–06`), Onboarding (`renderOnb01–07`),
+  Settings (`renderSet01–08`), and Notifications (`renderNotif01–02`) renderer
+  body for inline hexes / unstyled artifacts: all markup uses `.card`, `.field`,
+  `.toggle-row`, `.settings-nav`, `.badge`, `alertBox`, `statusBadge` — token-clean.
+- Cross-checked every changed value against `StudentOS_Design_Tokens_v1.json`
+  and `StudentOS_Visual_Design_Bible_v1.md` section 2 (`sidebar`/`sidebarRaised`
+  present as named tokens; `text-on-dark-muted` maps to `--ink-3`).
+- Confirmed the four cool-slate nav tints and the auth glass panel have no exact
+  token and were intentionally retained (noted for the CSS-fingerprint sweep).
+
+### Checklist
+| Check | Result |
+|---|---|
+| Navigate all 82 routes (jsdom) after commit | ✅ 0 failures |
+| Sidebar bg, section label, field-focus, toggle track now token-based | ✅ |
+| Auth/Onboarding/Settings/Notifications markup contains no stray hexes | ✅ |
+| Governance source confirms each mapping | ✅ |
+| No product-logic, copy, or computed-value change | ✅ |
+
+---
+
 ## Checkpoint 19 — Phase 4 Pass 17 Exam Pack sticky nav + surface tokens
 
 | | |
