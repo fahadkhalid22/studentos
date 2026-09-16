@@ -156,6 +156,34 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 10 — Dashboard hero headline scale + amber-box token
+
+| | |
+|---|---|
+| **Commit** | `ec5df49` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Dashboard / hero bands / status box |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- **Hero headline scale**: the premium hero band used the default 22px/600 h2
+  for its greeting — too light for an editorial band title. All hero surfaces
+  (`.hero` is shared by DASH-01, ATT-01, GPA-01) now render a
+  `clamp(26px, 2.4vw, 34px)` / 700 track for the headline with tighter
+  letter-spacing. Greeting, KPI, deadline and AI-card structure otherwise
+  untouched and confirmed spec-clean.
+- **Amber icon-box token**: `.ic-box.amber` carried a bare `#B96F13` hex;
+  routed through `var(--amber)` — closing the last hardcoded status-tone
+  holdout that Pass 7's badge sweep left behind.
+
+### Product-contract preservation
+- Pure CSS token/scale change. Dashboard layout, KPI row, deadlines list,
+  attendance-risk and focus cards, and the flat `#141833` hero surface are
+  unchanged; only the greeting type scale grew.
+
+---
+
 ## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
 
 | | |

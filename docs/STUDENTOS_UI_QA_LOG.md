@@ -148,6 +148,34 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 12 — Phase 4 Pass 10 dashboard hero refinement
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean |
+| **Commit** | `ec5df49` |
+
+### Method
+- Re-ran the jsdom smoke harness after the dashboard-hero commit.
+- Source scan for the last hardcoded status-tone hex outside the sidebar ink
+  ramp (`#B96F13` as a bare color) — expected one fix.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | Hero headline renders at clamp(26px – 34px)/700 | ✅ |
+| 4 | `.ic-box.amber` consumes `var(--amber)` — no bare hex | ✅ |
+| 5 | Hero band stays flat `#141833` (no gradient) | ✅ |
+| 6 | DASH-01 grid structure (deadlines / AI / risk / focus) untouched | ✅ |
+| 7 | GPA medallion ring + KPI row unchanged | ✅ |
+
+---
+
 ## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
 
 | | |
