@@ -6,6 +6,45 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 23 — Phase 4 Pass 21 full audit + CSS-fingerprint sweep
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes; machine regex inventory of every hex/radius/`rgba()`; diff review of all 42 changed lines |
+| **Date** | 2026-09-17 |
+| **Status** | ✅ Pass — 0 stray hexes remain; every canonical radius tokenized; bespoke ramps documented; 82/82 routes green |
+| **Commit** | `240b9c3` |
+
+### Method
+- Ran a regex inventory over the file before the sweep: 83 hex occurrences.
+  Classified each against `StudentOS_Design_Tokens_v1.json`, the bible, and
+  prior-pass decisions; identified `&#8230;` (ellipsis entity) as a false
+  positive.
+- Applied the transform, then **re-ran the identical inventory**: the residual
+  set is provably token definitions + documented bespoke only, and the `:root`
+  declarations `--surface:#FFFFFF`, `--surface-soft:#F9FAFC`,
+  `--indigo:#5B5BD6`, `--surface-focus:#141833` all verified intact.
+- Radius sweep: `999px ×11 → var(--radius-pill)`, `14px → var(--radius-sm)`,
+  `10px → var(--radius-xs)`; residual physical radii (`3/6/7/8/11/12/15px`,
+  `50%`) have no token mapping and are logged as retained bespoke.
+- Reviewed `git diff` hunk-by-hunk: every replacement resolves to the same
+  declared value (zero visual delta). SVG chart strokes verified converted to
+  inline `var(--indigo)` styles (presentation attrs can't take `var()`).
+  Open item: exact pixel rendering of the swept surfaces / chart ink could not
+  be captured (no headless renderer); deferred to the screenshot stage.
+
+### Checklist
+| Check | Result |
+|---|---|
+| Navigate all 82 routes (jsdom) after commit | ✅ 0 failures |
+| Stray hexes remaining | ✅ 0 (token defs + documented bespoke only) |
+| `:root` token definitions intact after transform | ✅ verified byte-exact |
+| Canonical radii (`999px/14px/10px`) tokenized | ✅ 13 replaced |
+| Chart ink via `var(--indigo)` inline style | ✅ verified in diff |
+| No product-logic, copy, or computed-value change | ✅ |
+
+---
+
 ## Checkpoint 22 — Phase 4 Pass 20 accessibility (§23): segmented active-state semantics
 
 | | |

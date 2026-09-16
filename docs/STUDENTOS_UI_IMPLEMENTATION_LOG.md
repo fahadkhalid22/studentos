@@ -16,6 +16,59 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 21 — Full 82-screen audit + CSS-fingerprint sweep (stray-hex and radius normalization)
+
+| | |
+|---|---|
+| **Commit** | `240b9c3` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-17 |
+| **Scope** | Whole-file inventory of every hex, radius, and `rgba()` against the token system; per-screen consistency verified through the route smoke harness |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors; post-sweep hex inventory re-run proves only token defs + documented bespoke ramps remain |
+
+### Fingerprint method
+- Machine inventory of all color literals via regex over the live bytes, then
+  classified each occurrence: token definition in `:root` (mandatory hex),
+  tokenizable usage, or bespoke ramp. Cross-checked against
+  `StudentOS_Design_Tokens_v1.json` (no separate white-text token exists —
+  `surface #FFFFFF` is the lightest value), the bible, and prior-pass log.
+- `#8230` surfaced in the count but is the Unicode ellipsis entity `&#8230;`
+  in the search modal — **not a color**; excluded from the sweep.
+
+### What changed (all zero visual delta — replacements resolve to the same declared value)
+- **28 standalone `#fff` → `var(--surface)`.** White-on-accent text (indigo/
+  dark/emerald/coral buttons, sidebar wording, badge dots, halo borders) and
+  white surface fills (topbar, drawer, side panel, toggle knob, hero CTA)
+  now read as the single lightest token instead of a literal.
+- **13 canonical radii → exact tokens.** `border-radius:999px` ×11 →
+  `var(--radius-pill)`; `14px` ×1 → `var(--radius-sm)`; `10px` ×1 →
+  `var(--radius-xs)` (all values equal the `:root` radius scale).
+- **`background:#141833` → `var(--surface-focus)`** — the token owned that
+  value; the usage carried the literal.
+- **Chart SVG strokes `#5B5BD6` → inline `style="stroke:var(--indigo)"`**
+  (GPA History + Analytics line charts, plus the GPA point fills). SVG
+  presentation attributes (e.g. `stroke="#5B5BD6"`) cannot take `var()`;
+  converted to equivalent inline styles, same resolved color.
+
+### Retained bespoke (documented, deliberately unchanged per the no-unverifiable-visual-delta rule)
+- Sidebar chrome rail `#CDD3E6 / #AEB6CF / #8E97B5 / #A5B4FC`.
+- Focus-dark hero ramp `#E6E9F5 / #E7EBFB / #8A93B4 / #9AA3C2 / #C7D2FE /
+  #B9C2E4` and hero tint `#FFFDFD`.
+- Danger hover `#F9E3E5`; chart axis `#d9dde3`; pre-token micro/mid radii
+  `3 / 6 / 7 / 8 / 11 / 12 / 15px` and `50%` (proportional circles, not a
+  radius literal); the alpha-tint `rgba()` family (indigo/ink/accent glass
+  at previewed alphas — no alpha tokens exist).
+
+### Audit outcome
+- 82-screen route integrity re-confirmed by the smoke harness (84 navigations,
+  all unique routes covered, 0 failures).
+- Post-sweep inventory: every remaining hex in the file is either a `:root`
+  token definition or one of the documented bespoke ramps above. Zero strays.
+- Product contract preserved: no screen count, route, label, state, logic, or
+  computed-value change anywhere in the file.
+
+---
+
 ## Phase 4 Pass 20 — Accessibility (§23): non-color active-state semantics for segmented controls
 
 | | |
