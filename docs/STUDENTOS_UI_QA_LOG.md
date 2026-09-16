@@ -45,6 +45,43 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 4 — Phase 4 Pass 2 token alignment
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean on the spec palette |
+| **Commit** | `7e16b43` |
+
+### Method
+- Re-ran the jsdom smoke harness after the token-alignment commit.
+- Source-scan for legacy hex/RGB values (`#6366F1`, `#5658DD`, `#4749BF`,
+  `#EEF0FF`, `#16B57A`, `#F05D6B`, `#F4A62A`, `#3B82F6`, `#B45309`, `#FFE4E8`,
+  `rgba(99,102,241`, `rgba(22,181,122`, `rgba(240,93,107`, `rgba(244,166,42`,
+  `--violet`, `--cyan` and their rgb channels).
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | No legacy token hex values remain anywhere in the file | ✅ |
+| 4 | No legacy token RGB channels remain (`rgba(99,102,241…` etc.) | ✅ |
+| 5 | `--violet` / `--cyan` families fully retired (defs + `.ic-box` rules) | ✅ |
+| 6 | Primary button pressed tone correct (`#4545B2`) | ✅ |
+| 7 | Primary button consumes `var(--indigo*)` tokens (no hardcoded hex) | ✅ |
+| 8 | Spec values live on `:root` (`#5B5BD6`, `#17875D`, `#C94A57`, `#B96F13`, `#3567B7`, `#F7F8FA`) | ✅ |
+| 9 | PREP-01 is the only screen with a reserved Pass 3 token (`ic-box violet glow`) | ⏳ scheduled |
+
+### Open items (scheduled)
+- **Pass 3**: `spark` glyph → `brain` in command palette, QUICK_ACTIONS,
+  search suggestions, mobile bar, `renderNav` and PREP-01; drop the PREP-01
+  violet glow box.
+
+---
+
 ## Checkpoint 2 — Phase 3 signature screens
 
 | | |

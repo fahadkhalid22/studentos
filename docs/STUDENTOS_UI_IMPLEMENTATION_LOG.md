@@ -53,6 +53,37 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 2 — Color-system token alignment to spec palette
+
+| | |
+|---|---|
+| **Commit** | `7e16b43` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Global color tokens + every derived alpha channel |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- **Brand indigo aligned to spec**: `--indigo #5B5BD6`, `--indigo-hover #4F4FC4`,
+  `--indigo-press #4545B2`, `--indigo-soft #F0F0FF`. Primary button now uses the
+  tokens (pressed state corrected from `#4343B2` to `#4545B2`).
+- **Semantic/status tokens aligned**: `--emerald #17875D`, `--coral #C94A57`,
+  `--amber #B96F13`, `--blue #3567B7`, canvas `#F7F8FA`, and every `*-soft`
+  tint (`#ECF8F2`, `#FFF0F1`, `#FFF6E8`, `#EEF4FC`).
+- **All derived alpha channels updated** to the new RGB source: badges, alerts,
+  stepper complete, stage done, spinner, cal-event overdue, danger button,
+  auth-feature dot, ic-box borders, ai-card/ai-hero borders, mobile-dock
+  active capsule, focus-visible outline, shadow-focus. Zero legacy RGB remains.
+- **Retired `--violet` and `--cyan` families**: token defs removed and the
+  `.ic-box.violet` (duplicate of indigo) and `.ic-box.cyan` rules deleted;
+  they had no renderer consumer after Pass 1.
+
+### Product-contract preservation
+- Pure CSS token layer — no renderer or logic change; every color routes
+  through `var()` except the dark-sidebar-specific surface accents.
+
+---
+
 ## Phase 3 — Premium signature experiences (ten screens)
 
 | | |
