@@ -6,6 +6,45 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean after AI-fingerprint removal |
+| **Commit** | `cc5fabd` |
+
+### Method
+- Re-ran the jsdom smoke harness after the fingerprint-removal commit.
+- Confirmed the design system contains **zero gradient decorative tokens**
+  (`--grad-*`), **zero glow shadow** (`--shadow-indigo`), and **zero radial
+  decorative overlays** (`radial-gradient` in `.sidebar`, `.hero::before`,
+  `.ai-hero::after`, `.ai-card::after`, `.dropzone`, `.flashcard`, auth/onboarding
+  shells) — remaining `conic-gradient` instances are data-viz only (rings/donut).
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console errors / zero jsdom runtime errors across the run | ✅ |
+| 3 | Gradient tokens removed from `:root` (`--grad-*` gone) | ✅ |
+| 4 | Glow shadow `--shadow-indigo` removed | ✅ |
+| 5 | No `radial-gradient` decorative overlay remains (sidebar, hero, ai-card, dropzone, flashcard, auth) | ✅ |
+| 6 | `brain` glyph present in icon sprite | ✅ |
+| 7 | DASH-01 AI Study card uses flat indigo box + brain | ✅ |
+| 8 | AI-01 hero + tool cards use flat indigo boxes + brain | ✅ |
+| 9 | All `conic-gradient` uses are data-viz rings (GPA / attendance / readiness / donut) | ✅ |
+
+### Open items (scheduled)
+- **Pass 2**: align status/semantic tokens (`--emerald`, `--coral`, `--amber`,
+  `--blue`, `--canvas`) to spec hex values; retire `--violet` / `--cyan`.
+- **Pass 3**: remaining `spark` swaps (command palette, QUICK_ACTIONS, search
+  suggestions, mobile bar, `renderNav`, PREP-01); verify icon families unified.
+
+---
+
 ## Checkpoint 2 — Phase 3 signature screens
 
 | | |

@@ -16,6 +16,43 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
+
+| | |
+|---|---|
+| **Commit** | `cc5fabd` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Global design-token cleanup + DASH-01 / AI-01 signature refinement |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- **Gradient tokens removed** (`--grad-ai`, `--grad-ai-soft`, `--grad-focus`,
+  `--grad-emerald`); replaced with flat surface tints (`--surface-ai`, `--surface-focus`).
+- **Glow shadow removed** (`--shadow-indigo`).
+- **Neon / decorative layers stripped**: sidebar radial indigo/cyan overlays,
+  topbar frosted blur, gradient brand text, gradient avatar, gradient AI
+  buttons, `.ai-card` cyan radial overlay, gradient `.card.selected`,
+  gradient hero/`.pack-header`/`.dropzone`/`.flashcard` backgrounds,
+  gradient progress bars, gradient tab underline, gradient stepper active,
+  gradient tab-rail active, gradient bar-chart, `.nav-active-dot` gradient,
+  timer text-glow, mobile-dock gradient active capsule, auth/onboarding
+  radial overlays.
+- **Status tokens kept** — flat `--indigo`/`--emerald`/`--coral` progress
+  variants replace gradient equivalents at the same sizes.
+- **Iconography**: `brain` glyph added to the sprite; DASH-01 AI Study card
+  and AI-01 hero/tool cards swap `spark`→`brain`; AI icon boxes unified to a
+  single flat indigo treatment (violet/cyan/emerald/amber box variants
+  consolidated to `.ic-box.indigo`).
+
+### Product-contract preservation
+- No renderer logic changed; `button.ai` class removed from AI-01 usage in
+  favor of `.primary` (CSS class retained for now, retired in Pass 6).
+- `spark` glyph still used by command palette, QUICK_ACTIONS, search
+  suggestions, mobile bar and PREP-01 — fully rationalized in Pass 3.
+
+---
+
 ## Phase 3 — Premium signature experiences (ten screens)
 
 | | |
