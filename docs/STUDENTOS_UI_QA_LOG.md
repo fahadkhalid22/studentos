@@ -6,6 +6,33 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 16 — Phase 4 Pass 14 AI-01 tool-card icons
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-17 |
+| **Status** | ✅ Pass — all 82 routes render clean; four distinct tool-card glyphs |
+| **Commit** | `3b62578` |
+
+### Method
+- Re-ran the jsdom smoke harness after the AI-01 icon commit.
+- Grep over `renderAi01` to confirm each of the four tool cards carries a
+  distinct glyph and that the swap did not touch card targets.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | Four AI-01 tool cards use four distinct glyphs | ✅ |
+| 4 | "Prepare Me for Exam" uses `brain` (chip/quick-action/sidebar parity) | ✅ |
+| 5 | "Create Flashcards" uses `layers`, not a duplicate | ✅ |
+| 6 | Card targets unchanged (`PREP-01`, `SUM-01`, `MCQ-01`, `FLASH-01`) | ✅ |
+
+---
+
 ## Checkpoint 7 — Phase 4 Pass 5 topbar mobile search
 
 | | |

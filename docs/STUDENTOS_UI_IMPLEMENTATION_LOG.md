@@ -16,6 +16,35 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 14 — AI-01 tool-card icon differentiation
+
+| | |
+|---|---|
+| **Commit** | `3b62578` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-17 |
+| **Scope** | AI Study (AI-01) tool-card glyphs |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- The four AI-01 tool cards previously used only three distinct glyphs:
+  "Prepare Me for Exam" and "Create Flashcards" both carried the `layers`
+  glyph. The `layers` stack metaphor was re-assigned to "Create Flashcards"
+  (a deck of cards) and "Prepare Me for Exam" now uses the `brain` glyph —
+  the exact glyph that surface uses everywhere else (PREP-01 chip, quick
+  action, sidebar, mobile dock, command palette).
+- Resulting card language: Prepare → `brain`, Summarize → `doc`,
+  Generate MCQs → `cards`, Create Flashcards → `layers`. No two cards share
+  a glyph, and each glyph matches its action's semantic on every other
+  surface in the product.
+
+### Product-contract preservation
+- Pure glyph-level change inside four static card nodes; no navigation,
+  logic, or content altered. Card targets (`go('PREP-01')`,
+  `go('SUM-01')`, `go('MCQ-01')`, `go('FLASH-01')`) unchanged.
+
+---
+
 ## Phase 4 Pass 5 — Topbar mobile search accessibility
 
 | | |
