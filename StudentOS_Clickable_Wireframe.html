@@ -139,33 +139,33 @@ b{font-weight:600}
   display:flex;flex-direction:column;gap:2px;
   scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.14) transparent;
 }
-.brand{display:flex;align-items:center;gap:11px;padding:6px 10px 22px;font-family:var(--font-display);font-weight:700;font-size:18.5px;letter-spacing:-.02em;color:#fff}
+.brand{display:flex;align-items:center;gap:11px;padding:6px 10px 22px;font-family:var(--font-display);font-weight:700;font-size:18.5px;letter-spacing:-.02em;color:var(--surface)}
 .logo-mark{
   width:34px;height:34px;border-radius:11px;flex:0 0 auto;display:grid;place-items:center;
-  background:var(--indigo);color:#fff;font-size:17px;font-weight:800;
+  background:var(--indigo);color:var(--surface);font-size:17px;font-weight:800;
 }
-.brand-text span{color:#fff}
+.brand-text span{color:var(--surface)}
 .nav-section{font-size:11px;text-transform:uppercase;color:var(--ink-3);margin:18px 10px 8px;letter-spacing:.1em;font-weight:600}
 .navbtn{
   position:relative;width:100%;text-align:left;margin:1px 0;min-height:46px;border:1px solid transparent;background:transparent;
   border-radius:11px;color:#AEB6CF;display:flex;align-items:center;gap:12px;padding:0 12px;font-weight:500;font-size:14px;
   transition:background var(--t-fast2) var(--ease-out),color var(--t-fast2) var(--ease-out),border-color var(--t-fast2),transform var(--t-fast2) var(--ease-out);
 }
-.navbtn:hover{background:rgba(255,255,255,.06);color:#fff}
+.navbtn:hover{background:rgba(255,255,255,.06);color:var(--surface)}
 .navbtn.active{
   background:rgba(91,91,214,.14);
-  color:#fff;font-weight:600;border-color:transparent;
+  color:var(--surface);font-weight:600;border-color:transparent;
 }
 .navbtn .nav-ic{color:#8E97B5;transition:color var(--t-fast2)}
-.navbtn:hover .nav-ic{color:#fff}
+.navbtn:hover .nav-ic{color:var(--surface)}
 .navbtn.active .nav-ic{color:#A5B4FC}
 .nav-label{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nav-active-dot{position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:20px;border-radius:999px;background:var(--indigo)}
+.nav-active-dot{position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:20px;border-radius:var(--radius-pill);background:var(--indigo)}
 
 /* ---------- Main / top bar ---------- */
 .main{min-width:0;display:flex;flex-direction:column}
 .topbar{
-  height:var(--topbar);background:#fff;
+  height:var(--topbar);background:var(--surface);
   border-bottom:1px solid var(--border);
   display:flex;align-items:center;gap:14px;padding:0 var(--content-pad);
   position:sticky;top:0;z-index:5;
@@ -182,13 +182,13 @@ b{font-weight:600}
 .topbar .search .search-label{flex:1;text-align:left;color:var(--ink-2)}
 .k-chip{background:var(--surface-soft);border:1px solid var(--border);border-radius:8px;padding:3px 8px;font-size:11.5px;color:var(--ink-2);font-weight:600;letter-spacing:.02em;font-family:var(--font-body)}
 .avatar{
-  width:42px;height:42px;border-radius:14px;padding:0;min-height:42px;
-  background:var(--indigo);color:#fff;font-weight:700;font-size:14px;border:none;
+  width:42px;height:42px;border-radius:var(--radius-sm);padding:0;min-height:42px;
+  background:var(--indigo);color:var(--surface);font-weight:700;font-size:14px;border:none;
 }
 .avatar:hover{transform:translateY(-1px)}
 .avatar:active{transform:scale(.97)}
 .notif-btn{position:relative}
-.notif-dot{position:absolute;top:9px;right:9px;width:6px;height:6px;border-radius:999px;background:var(--coral);border:2px solid #fff}
+.notif-dot{position:absolute;top:9px;right:9px;width:6px;height:6px;border-radius:var(--radius-pill);background:var(--coral);border:2px solid var(--surface)}
 
 /* ---------- Content ---------- */
 .content{padding:28px var(--content-pad) 56px;max-width:1440px;margin:auto;width:100%;flex:1}
@@ -209,7 +209,7 @@ button:hover:not(:disabled){background:var(--surface-soft);border-color:var(--bo
 button:active:not(:disabled){transform:scale(.98)}
 button:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
 button.primary{
-  background:var(--indigo);color:#fff;border-color:var(--indigo);
+  background:var(--indigo);color:var(--surface);border-color:var(--indigo);
 }
 button.primary:hover:not(:disabled){background:var(--indigo-hover);border-color:var(--indigo-hover)}
 button.primary:active:not(:disabled){background:var(--indigo-press);transform:scale(.98)}
@@ -269,7 +269,7 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
   border-radius:var(--radius-pill);padding:4px 10px;font-size:12px;line-height:1.2;
   white-space:nowrap;background:var(--surface);font-weight:600;color:var(--ink-2);
 }
-.badge .b-dot{width:6px;height:6px;border-radius:999px;background:currentColor;flex:none;opacity:.85}
+.badge .b-dot{width:6px;height:6px;border-radius:var(--radius-pill);background:currentColor;flex:none;opacity:.85}
 .badge.success{color:var(--emerald);border-color:rgba(23,135,93,.28);background:var(--emerald-soft)}
 .badge.warning{color:var(--amber);border-color:rgba(185,111,19,.3);background:var(--amber-soft)}
 .badge.danger{color:var(--coral);border-color:rgba(201,74,87,.28);background:var(--coral-soft)}
@@ -317,7 +317,7 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 /* ---------- Stepper ---------- */
 .stepper{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 22px}
 .step{border:1px solid var(--border);padding:8px 14px;border-radius:var(--radius-pill);font-size:12.5px;background:var(--surface);color:var(--ink-2);font-weight:600}
-.step.active{background:var(--indigo);color:#fff;border-color:transparent}
+.step.active{background:var(--indigo);color:var(--surface);border-color:transparent}
 .step.complete{background:var(--emerald-soft);border-color:rgba(23,135,93,.35);color:var(--emerald)}
 
 /* ---------- Pills ---------- */
@@ -327,8 +327,8 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 .pill.selected{background:var(--indigo-soft);color:var(--indigo);border-color:var(--indigo);box-shadow:var(--shadow-focus)}
 
 /* ---------- Progress ---------- */
-.progress{height:8px;background:var(--border);border-radius:999px;overflow:hidden}
-.progress>span{display:block;height:100%;background:var(--indigo);border-radius:999px;transition:width var(--t-exp) var(--ease-out);min-width:0}
+.progress{height:8px;background:var(--border);border-radius:var(--radius-pill);overflow:hidden}
+.progress>span{display:block;height:100%;background:var(--indigo);border-radius:var(--radius-pill);transition:width var(--t-exp) var(--ease-out);min-width:0}
 .progress.lg{height:12px}
 .progress.emerald>span{background:var(--emerald)}
 .progress.coral>span{background:var(--coral)}
@@ -347,9 +347,9 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 /* ---------- Toggles / checkboxes ---------- */
 .checkbox-row,.radio-row,.toggle-row{display:flex;align-items:center;gap:11px;min-height:44px;padding:6px 0}
 .checkbox-row input,.radio-row input,.toggle-row input{width:18px;height:18px;accent-color:var(--indigo);cursor:pointer}
-.toggle-row input{width:42px;height:24px;appearance:none;-webkit-appearance:none;background:var(--border-strong);border-radius:999px;position:relative;cursor:pointer;transition:background var(--t-fast2);flex:0 0 auto}
+.toggle-row input{width:42px;height:24px;appearance:none;-webkit-appearance:none;background:var(--border-strong);border-radius:var(--radius-pill);position:relative;cursor:pointer;transition:background var(--t-fast2);flex:0 0 auto}
 .toggle-row input:checked{background:var(--indigo)}
-.toggle-row input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform var(--t-fast2) var(--ease-spring)}
+.toggle-row input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:var(--radius-pill);background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform var(--t-fast2) var(--ease-spring)}
 .toggle-row input:checked::after{transform:translateX(18px)}
 
 /* ---------- Toolbar ---------- */
@@ -370,7 +370,7 @@ tbody tr:hover{background:var(--surface-soft)}
 .mobile-cards{display:none}
 .mobile-card{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);padding:16px;box-shadow:var(--shadow-xs)}
 .mobile-card .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
-.mobile-card .metric{background:var(--surface-soft);border-radius:10px;padding:10px}
+.mobile-card .metric{background:var(--surface-soft);border-radius:var(--radius-xs);padding:10px}
 .mobile-card .metric .k{font-size:10.5px;color:var(--ink-2);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
 .mobile-card .metric .v{font-weight:700;font-size:15px;margin-top:2px}
 
@@ -381,7 +381,7 @@ tbody tr:hover{background:var(--surface-soft)}
 
 /* ---------- Toast ---------- */
 .toast{
-  position:fixed;right:20px;bottom:20px;background:var(--dark);color:#fff;padding:13px 18px;border-radius:var(--radius-sm);
+  position:fixed;right:20px;bottom:20px;background:var(--dark);color:var(--surface);padding:13px 18px;border-radius:var(--radius-sm);
   opacity:0;transform:translateY(10px);transition:opacity var(--t-std) var(--ease-out),transform var(--t-std) var(--ease-out);
   z-index:30;max-width:360px;pointer-events:none;font-size:14px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;
 }
@@ -392,7 +392,7 @@ tbody tr:hover{background:var(--surface-soft)}
 .modalback{position:fixed;inset:0;background:rgba(19,23,34,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:20;padding:16px}
 .modalback.show{display:flex}
 .modal{
-  background:#fff;border-radius:var(--radius-lg);padding:24px;max-width:560px;width:100%;
+  background:var(--surface);border-radius:var(--radius-lg);padding:24px;max-width:560px;width:100%;
   border:1px solid var(--border);max-height:88vh;overflow:auto;box-shadow:var(--shadow-lg);
   animation:modalIn var(--t-exp) var(--ease-out) both;
 }
@@ -405,7 +405,7 @@ tbody tr:hover{background:var(--surface-soft)}
 .drawerback{position:fixed;inset:0;background:rgba(19,23,34,.32);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);display:none;z-index:18}
 .drawerback.show{display:block}
 .drawer{
-  position:absolute;top:0;right:0;height:100%;width:min(480px,100%);background:#fff;
+  position:absolute;top:0;right:0;height:100%;width:min(480px,100%);background:var(--surface);
   border-left:1px solid var(--border);padding:24px;overflow:auto;box-shadow:var(--shadow-lg);
   animation:drawerIn var(--t-panel) var(--ease-out) both;
 }
@@ -419,7 +419,7 @@ tbody tr:hover{background:var(--surface-soft)}
 .cmd-results .group-label{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-2);font-weight:700;margin:14px 6px 6px}
 .cmd-results .menu button{display:flex;gap:12px;align-items:center;padding:11px 12px}
 .cmd-results .menu button .m-ic{width:38px;height:38px;border-radius:11px;background:var(--indigo-soft);color:var(--indigo);display:grid;place-items:center;flex:0 0 auto}
-.cmd-results .menu button:hover .m-ic{background:var(--indigo);color:#fff}
+.cmd-results .menu button:hover .m-ic{background:var(--indigo);color:var(--surface)}
 .cmd-foot{display:flex;gap:14px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:12px;color:var(--ink-2)}
 
 /* ---------- Empty state / skeleton / spinner ---------- */
@@ -441,7 +441,7 @@ tbody tr:hover{background:var(--surface-soft)}
 .bar-chart .bar:hover{opacity:.85}
 .bar-chart .bar span{position:absolute;left:50%;transform:translateX(-50%);bottom:-22px;font-size:11px;color:var(--ink-2);font-weight:600}
 .donut{width:130px;height:130px;border-radius:50%;background:conic-gradient(var(--indigo) 0 72%,var(--border) 72% 100%);display:grid;place-items:center;margin:16px auto}
-.donut:after{content:"72%";width:84px;height:84px;border-radius:50%;background:#fff;display:grid;place-items:center;font-weight:700;font-family:var(--font-display)}
+.donut:after{content:"72%";width:84px;height:84px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-weight:700;font-family:var(--font-display)}
 .line-chart svg{width:100%;height:160px}
 
 /* ---------- Rings ---------- */
@@ -457,7 +457,7 @@ tbody tr:hover{background:var(--surface-soft)}
 
 /* ---------- Status line ---------- */
 .status-line{display:flex;align-items:center;gap:9px}
-.status-dot{width:8px;height:8px;border-radius:999px;background:var(--ink-3)}
+.status-dot{width:8px;height:8px;border-radius:var(--radius-pill);background:var(--ink-3)}
 .status-dot.success{background:var(--emerald)}
 .status-dot.warning{background:var(--amber)}
 .status-dot.danger{background:var(--coral)}
@@ -501,9 +501,9 @@ tbody tr:hover{background:var(--surface-soft)}
 /* ---------- Stages ---------- */
 .stage-list{display:grid;gap:10px}
 .stage{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);font-weight:600;font-size:14.5px}
-.stage .mark{width:26px;height:26px;border-radius:999px;border:1.5px solid var(--border-strong);display:grid;place-items:center;flex:0 0 auto;font-size:12px;color:var(--ink-2)}
+.stage .mark{width:26px;height:26px;border-radius:var(--radius-pill);border:1.5px solid var(--border-strong);display:grid;place-items:center;flex:0 0 auto;font-size:12px;color:var(--ink-2)}
 .stage.done{border-color:rgba(23,135,93,.4);background:var(--emerald-soft)}
-.stage.done .mark{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+.stage.done .mark{background:var(--emerald);color:var(--surface);border-color:var(--emerald)}
 .stage.current{border-color:var(--indigo);background:var(--indigo-soft);box-shadow:var(--shadow-focus)}
 
 /* ---------- Question cards ---------- */
@@ -573,32 +573,32 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 
 /* ---------- Signature: Focus dark ---------- */
 .focus-dark{background:var(--surface-focus);border:1px solid var(--dark-line);color:#E6E9F5;border-radius:var(--radius-xl);padding:26px 28px}
-.focus-dark .timer{color:#fff}
+.focus-dark .timer{color:var(--surface)}
 .focus-dark .timer-status{color:#9AA3C2}
-.focus-dark h2,.focus-dark h3{color:#fff}
+.focus-dark h2,.focus-dark h3{color:var(--surface)}
 .focus-dark .meta-item{border-color:rgba(255,255,255,.08)}
 .focus-dark .meta-item .label{color:#8A93B4}
 .focus-dark .meta-item .value{color:#E6E9F5}
 .focus-dark .pill{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#C7D2FE}
-.focus-dark .pill:hover{background:rgba(255,255,255,.14);color:#fff}
-.focus-dark .pill.selected{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.focus-dark .pill:hover{background:rgba(255,255,255,.14);color:var(--surface)}
+.focus-dark .pill.selected{background:var(--indigo);border-color:var(--indigo);color:var(--surface)}
 
 /* ---------- Signature: Dashboard hero ---------- */
 .hero{
-  border-radius:var(--radius-xl);padding:26px 28px;color:#fff;
-  background:#141833;
+  border-radius:var(--radius-xl);padding:26px 28px;color:var(--surface);
+  background:var(--surface-focus);
   position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);
   box-shadow:var(--shadow-sm);
 }
 .hero>*{position:relative}
-.hero h2{color:#fff;margin-bottom:4px;font-size:clamp(26px,2.4vw,34px);font-weight:700;letter-spacing:-.025em}
+.hero h2{color:var(--surface);margin-bottom:4px;font-size:clamp(26px,2.4vw,34px);font-weight:700;letter-spacing:-.025em}
 .hero .sub{color:#B9C2E4}
-.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:600;color:#E7EBFB}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-pill);padding:7px 14px;font-size:12.5px;font-weight:600;color:#E7EBFB}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-.hero .hero-cta button{background:#fff;color:var(--dark);border:none;box-shadow:0 8px 20px -8px rgba(0,0,0,.4)}
+.hero .hero-cta button{background:var(--surface);color:var(--dark);border:none;box-shadow:0 8px 20px -8px rgba(0,0,0,.4)}
 .hero .hero-cta button:hover{background:var(--indigo-soft)}
 .hero .hero-cta button.ghost{background:rgba(255,255,255,.1);color:#E7EBFB;box-shadow:none}
-.hero .hero-cta button.ghost:hover{background:rgba(255,255,255,.18);color:#fff}
+.hero .hero-cta button.ghost:hover{background:rgba(255,255,255,.18);color:var(--surface)}
 .hero-ring{display:inline-grid;place-items:center;flex:0 0 auto}
 .hero-grid{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}
 .hero-grid .hero-cta{margin-top:18px}
@@ -613,7 +613,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 .ai-hero>*{position:relative}
 .ai-hero .hero-side-label{color:var(--ink)}
 .ai-hero .hero-side-sub{color:var(--ink-2)}
-.ai-chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;color:var(--ink)}
+.ai-chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-pill);padding:7px 14px;font-size:12.5px;font-weight:700;color:var(--ink)}
 
 /* ---------- Signature: Exam pack ---------- */
 .pack-header{border-radius:var(--radius-xl);padding:26px 28px;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
@@ -621,7 +621,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 .tabrail{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding:6px;background:var(--surface-soft);border:1px solid var(--border);border-radius:var(--radius-sm);margin:0 0 20px;position:sticky;top:88px;z-index:4}
 .tabrail button{border:0;background:transparent;border-radius:11px;min-height:40px;padding:0 16px;font-weight:600;color:var(--ink-2);white-space:nowrap;font-size:13.5px}
 .tabrail button:hover{background:rgba(255,255,255,.7);color:var(--ink)}
-.tabrail button.active{background:var(--indigo);color:#fff}
+.tabrail button.active{background:var(--indigo);color:var(--surface)}
 .tabs.tabrail{border-bottom:none;margin-bottom:0}
 .exam-pack-tabs{position:sticky;top:88px;background:var(--canvas);z-index:4;padding-top:4px}
 
@@ -689,7 +689,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
     color:#B9C2E4;border-radius:15px;flex:1;display:flex;flex-direction:column;gap:4px;align-items:center;font-weight:600;
   }
   .mobilebar button .mbtn-ic{color:#8E97B5;transition:color var(--t-fast2)}
-  .mobilebar button.active{background:rgba(91,91,214,.2);color:#fff}
+  .mobilebar button.active{background:rgba(91,91,214,.2);color:var(--surface)}
   .mobilebar button.active .mbtn-ic{color:#A5B4FC}
   .modalback{align-items:flex-end;padding:0}
   .modal{border-radius:var(--radius-lg) var(--radius-lg) 0 0;max-width:none;max-height:90vh;animation:sheetIn var(--t-exp) var(--ease-out) both}
@@ -1052,7 +1052,7 @@ const sg=semesterGpa(),gpc=sg/state.academic.gpaScale*100;return `<div class="he
 }
 function renderGpa02(){const existing=state.grades.find(g=>g.courseId===ui.gradeCourse),c=course(ui.gradeCourse);return `${pageHead(existing?'Edit Grade':'Add Grade','Grade Point is a direct numeric value.','GPA / CGPA')}<div class="card" style="max-width:680px">${selectInput('gradeCourse','Course',state.courses.map(x=>({value:x.id,label:`${x.code} · ${x.name}`})),c.id)}${textInput('gradeCredits','Credit Hours',c.credits,{type:'number',min:1,max:10,helper:'Prefilled from the selected course.'})}${textInput('gradePoint','Grade Point',existing?existing.gradePoint:'',{type:'number',min:0,max:state.academic.gpaScale,step:'0.01',helper:`Allowed range: 0.0 — ${state.academic.gpaScale.toFixed(1)}`})}<div id="gradeErr"></div><div class="actions end"><button onclick="go('GPA-01')">Cancel</button><button class="primary" onclick="saveGrade()">Save Grade</button></div></div>`}
 function saveGrade(){if(navigator.onLine===false){showSystemState('network');return}const cid=document.getElementById('gradeCourse').value,gp=Number(document.getElementById('gradePoint').value);if(Number.isNaN(gp)){document.getElementById('gradeErr').innerHTML=alertBox('Grade Point must be numeric.','danger');return}if(gp<0){document.getElementById('gradeErr').innerHTML=alertBox('Grade Point cannot be below zero.','danger');return}if(gp>state.academic.gpaScale){document.getElementById('gradeErr').innerHTML=alertBox(`Grade Point cannot exceed the configured ${state.academic.gpaScale.toFixed(1)} scale.`,'danger');return}let g=state.grades.find(x=>x.courseId===cid);if(g)g.gradePoint=gp;else state.grades.push({id:'g'+Date.now(),courseId:cid,gradePoint:gp});course(cid).gradePoint=gp;ui.gradeCourse=cid;showToast('Grade updated');go('GPA-01')}
-function renderGpa03(){return `${pageHead('GPA History','Track semester GPA over time.','GPA / CGPA / History')}<div class="grid"><div class="card span-8"><h3>GPA Trend</h3><div class="chart line-chart"><svg viewBox="0 0 600 160" role="img" aria-label="GPA trend rising across four semesters"><polyline points="20,120 205,90 390,70 575,45" fill="none" stroke="#5B5BD6" stroke-width="4"/><line x1="20" y1="140" x2="580" y2="140" stroke="#d9dde3"/><circle cx="20" cy="120" r="5" fill="#5B5BD6"/><circle cx="205" cy="90" r="5" fill="#5B5BD6"/><circle cx="390" cy="70" r="5" fill="#5B5BD6"/><circle cx="575" cy="45" r="5" fill="#5B5BD6"/></svg></div></div><div class="card span-4"><h3>Current Semester</h3><div class="stat"><div class="v">${semesterGpa().toFixed(2)}</div><div class="delta">Target ${state.academic.targetGpa.toFixed(2)}</div></div></div><div class="card span-12"><div class="table-wrap"><table><thead><tr><th>Semester</th><th>Credits</th><th>GPA</th></tr></thead><tbody>${state.gpaHistory.map(r=>`<tr><td>${esc(r.semester)}</td><td>${r.credits}</td><td>${r.gpa.toFixed(2)}</td></tr>`).join('')}</tbody></table></div></div></div><div class="actions"><button onclick="go('GPA-01')">Back to GPA / CGPA</button></div>`}
+function renderGpa03(){return `${pageHead('GPA History','Track semester GPA over time.','GPA / CGPA / History')}<div class="grid"><div class="card span-8"><h3>GPA Trend</h3><div class="chart line-chart"><svg viewBox="0 0 600 160" role="img" aria-label="GPA trend rising across four semesters"><polyline points="20,120 205,90 390,70 575,45" fill="none" style="stroke:var(--indigo);stroke-width:4"/><line x1="20" y1="140" x2="580" y2="140" stroke="#d9dde3"/><circle cx="20" cy="120" r="5" style="fill:var(--indigo)"/><circle cx="205" cy="90" r="5" style="fill:var(--indigo)"/><circle cx="390" cy="70" r="5" style="fill:var(--indigo)"/><circle cx="575" cy="45" r="5" style="fill:var(--indigo)"/></svg></div></div><div class="card span-4"><h3>Current Semester</h3><div class="stat"><div class="v">${semesterGpa().toFixed(2)}</div><div class="delta">Target ${state.academic.targetGpa.toFixed(2)}</div></div></div><div class="card span-12"><div class="table-wrap"><table><thead><tr><th>Semester</th><th>Credits</th><th>GPA</th></tr></thead><tbody>${state.gpaHistory.map(r=>`<tr><td>${esc(r.semester)}</td><td>${r.credits}</td><td>${r.gpa.toFixed(2)}</td></tr>`).join('')}</tbody></table></div></div></div><div class="actions"><button onclick="go('GPA-01')">Back to GPA / CGPA</button></div>`}
 
 // ---------------- Planner ----------------
 function plannerEvents(){return [...state.assignments.map(a=>({id:a.id,type:'Assignment',title:a.title,date:a.dueAt.slice(0,10),time:fmtTime(a.dueAt),completed:a.completed,overdue:assignmentStatus(a)==='Overdue',target:'ASSIGN-03'})),...state.exams.map(e=>({id:e.id,type:'Exam',title:e.title,date:e.date,time:e.time,completed:false,overdue:false,target:'EXAM-03'}))].sort((a,b)=>new Date(a.date)-new Date(b.date))}
@@ -1247,7 +1247,7 @@ const e=exam(state.prep.selectedExam),p=examPackProgress(),tabsList=['Overview',
 function regenerateExamPack(){state.prep.regenerate=true;go('PREP-04')}
 // ---------------- Analytics ----------------
 function setAnalyticsRange(v){ui.analyticsRange=v;render()}
-function renderAna01(){return `${pageHead('Analytics','Understand study time, completion, attendance and GPA trends.','Analytics')}<div class="toolbar"><div>${segmented(['This Week','This Month','Semester','Custom'],ui.analyticsRange,'setAnalyticsRange')}</div><div class="toolbar-group"><div class="field"><label for="anaCourseFilter">Course</label><select id="anaCourseFilter"><option>All Courses</option>${state.courses.map(c=>`<option>${esc(c.name)}</option>`).join('')}</select></div><button onclick="go('ANA-02')">View Study Detail</button></div></div><div class="kpi-row">${stat('Study Hours','7.5')}${stat('Assignments Completed',state.assignments.filter(a=>a.completed).length)}${stat('Attendance Average',Math.round(state.courses.reduce((s,c)=>s+attendanceSummary(c.id).pct,0)/state.courses.length)+'%')}${stat('Current GPA',semesterGpa().toFixed(2))}</div><div style="height:16px"></div><div class="grid"><div class="card span-6"><h3>Study Time by Day</h3><div class="chart"><div class="bar-chart">${[['Mon',45],['Tue',80],['Wed',55],['Thu',95],['Fri',70],['Sat',120],['Sun',60]].map(([l,h])=>`<div class="bar" style="height:${Math.max(15,h)}px"><span>${l}</span></div>`).join('')}</div></div></div><div class="card span-6"><h3>Study Time by Course</h3><div class="chart"><div class="bar-chart">${[['ALG',110],['DB',80],['NET',65],['OS',90],['SE',55]].map(([l,h])=>`<div class="bar" style="height:${h}px"><span>${l}</span></div>`).join('')}</div></div></div><div class="card span-4"><h3>Assignment Completion</h3><div class="donut"></div><p class="muted" style="text-align:center">Completed vs active assignments</p></div><div class="card span-4"><h3>Attendance by Course</h3>${state.courses.slice(0,4).map(c=>{const s=attendanceSummary(c.id);return `<div class="topic"><div class="row"><span>${esc(c.code)}</span><b>${s.pct}%</b></div><div class="progress"><span style="width:${s.pct}%"></span></div></div>`}).join('')}</div><div class="card span-4"><h3>GPA Trend</h3><div class="chart line-chart"><svg viewBox="0 0 600 160" role="img" aria-label="GPA trend"><polyline points="20,120 205,95 390,72 575,48" fill="none" stroke="#5B5BD6" stroke-width="4"/><line x1="20" y1="140" x2="580" y2="140" stroke="#d9dde3"/></svg></div></div></div>`}
+function renderAna01(){return `${pageHead('Analytics','Understand study time, completion, attendance and GPA trends.','Analytics')}<div class="toolbar"><div>${segmented(['This Week','This Month','Semester','Custom'],ui.analyticsRange,'setAnalyticsRange')}</div><div class="toolbar-group"><div class="field"><label for="anaCourseFilter">Course</label><select id="anaCourseFilter"><option>All Courses</option>${state.courses.map(c=>`<option>${esc(c.name)}</option>`).join('')}</select></div><button onclick="go('ANA-02')">View Study Detail</button></div></div><div class="kpi-row">${stat('Study Hours','7.5')}${stat('Assignments Completed',state.assignments.filter(a=>a.completed).length)}${stat('Attendance Average',Math.round(state.courses.reduce((s,c)=>s+attendanceSummary(c.id).pct,0)/state.courses.length)+'%')}${stat('Current GPA',semesterGpa().toFixed(2))}</div><div style="height:16px"></div><div class="grid"><div class="card span-6"><h3>Study Time by Day</h3><div class="chart"><div class="bar-chart">${[['Mon',45],['Tue',80],['Wed',55],['Thu',95],['Fri',70],['Sat',120],['Sun',60]].map(([l,h])=>`<div class="bar" style="height:${Math.max(15,h)}px"><span>${l}</span></div>`).join('')}</div></div></div><div class="card span-6"><h3>Study Time by Course</h3><div class="chart"><div class="bar-chart">${[['ALG',110],['DB',80],['NET',65],['OS',90],['SE',55]].map(([l,h])=>`<div class="bar" style="height:${h}px"><span>${l}</span></div>`).join('')}</div></div></div><div class="card span-4"><h3>Assignment Completion</h3><div class="donut"></div><p class="muted" style="text-align:center">Completed vs active assignments</p></div><div class="card span-4"><h3>Attendance by Course</h3>${state.courses.slice(0,4).map(c=>{const s=attendanceSummary(c.id);return `<div class="topic"><div class="row"><span>${esc(c.code)}</span><b>${s.pct}%</b></div><div class="progress"><span style="width:${s.pct}%"></span></div></div>`}).join('')}</div><div class="card span-4"><h3>GPA Trend</h3><div class="chart line-chart"><svg viewBox="0 0 600 160" role="img" aria-label="GPA trend"><polyline points="20,120 205,95 390,72 575,48" fill="none" style="stroke:var(--indigo);stroke-width:4"/><line x1="20" y1="140" x2="580" y2="140" stroke="#d9dde3"/></svg></div></div></div>`}
 function renderAna02(){const sessions=state.focusHistory,total=sessions.reduce((a,s)=>a+s.duration,0),avg=sessions.length?Math.round(total/sessions.length):0;return `${pageHead('Study Detail','Session-level study analytics.','Analytics / Study Detail')}<div class="toolbar"><div class="field"><label for="anaDetailCourse">Course</label><select id="anaDetailCourse"><option>All Courses</option>${state.courses.map(c=>`<option>${esc(c.name)}</option>`).join('')}</select></div><button onclick="go('ANA-01')">Back to Analytics</button></div><div class="kpi-row">${stat('Sessions',sessions.length)}${stat('Total Time',total+' min')}${stat('Average Session',avg+' min')}</div><div style="height:16px"></div><div class="grid"><div class="card span-5"><h3>Study Trend</h3><div class="chart"><div class="bar-chart">${sessions.concat(sessions).slice(0,5).map((s,i)=>`<div class="bar" style="height:${Math.max(20,s.duration*2)}px"><span>S${i+1}</span></div>`).join('')}</div></div></div><div class="card span-7"><h3>Sessions</h3><div class="table-wrap"><table><thead><tr><th>Date</th><th>Course</th><th>Duration</th><th>Goal</th></tr></thead><tbody>${sessions.map(s=>`<tr><td>${fmtDate(s.date)}</td><td>${esc(course(s.courseId).code)}</td><td>${s.duration} min</td><td>${esc(s.goal)}</td></tr>`).join('')}</tbody></table></div></div></div>`}
 
 // ---------------- Notifications ----------------
