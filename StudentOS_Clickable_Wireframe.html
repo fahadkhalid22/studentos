@@ -51,11 +51,9 @@
   --dark-raised:#171B2E;
   --dark-line:#262B40;
 
-  /* ---- Gradients ---- */
-  --grad-ai:linear-gradient(135deg,#6366F1 0%,#8B5CF6 52%,#22C7E8 100%);
-  --grad-ai-soft:linear-gradient(135deg,rgba(99,102,241,.10),rgba(139,92,246,.08) 48%,rgba(34,199,232,.10));
-  --grad-focus:linear-gradient(145deg,#101322 0%,#171B2E 55%,#1D2440 100%);
-  --grad-emerald:linear-gradient(135deg,#16B57A 0%,#22C7E8 100%);
+  /* ---- Surface tints ---- */
+  --surface-ai:rgba(99,102,241,.06);
+  --surface-focus:#141833;
 
   /* ---- Typography ---- */
   --font-display:"Sora",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -84,7 +82,6 @@
   --shadow-md:0 4px 16px -6px rgba(19,23,34,.14),0 2px 6px -2px rgba(19,23,34,.06);
   --shadow-lg:0 20px 48px -16px rgba(19,23,34,.24),0 6px 16px -8px rgba(19,23,34,.10);
   --shadow-focus:0 0 0 4px rgba(99,102,241,.18);
-  --shadow-indigo:0 8px 22px -8px rgba(99,102,241,.55);
 
   /* ---- Motion ---- */
   --t-fast:140ms;
@@ -139,8 +136,7 @@ b{font-weight:600}
 
 /* ---------- Sidebar (premium dark) ---------- */
 .sidebar{
-  background:var(--dark);
-  background-image:radial-gradient(120% 80% at 0% 0%,rgba(99,102,241,.18),transparent 55%),radial-gradient(90% 60% at 100% 100%,rgba(34,199,232,.08),transparent 55%);
+  background:#111827;
   border-right:1px solid rgba(255,255,255,.06);
   padding:20px 14px;
   position:sticky;top:0;height:100vh;overflow:auto;z-index:6;color:#CDD3E6;
@@ -150,9 +146,9 @@ b{font-weight:600}
 .brand{display:flex;align-items:center;gap:11px;padding:6px 10px 22px;font-family:var(--font-display);font-weight:700;font-size:18.5px;letter-spacing:-.02em;color:#fff}
 .logo-mark{
   width:34px;height:34px;border-radius:11px;flex:0 0 auto;display:grid;place-items:center;
-  background:var(--grad-ai);color:#fff;box-shadow:0 6px 16px -6px rgba(99,102,241,.7);font-size:17px;font-weight:800;
+  background:var(--indigo);color:#fff;font-size:17px;font-weight:800;
 }
-.brand-text span{background:linear-gradient(90deg,#fff,#C7D2FE);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand-text span{color:#fff}
 .nav-section{font-size:11px;text-transform:uppercase;color:#76809B;margin:18px 10px 8px;letter-spacing:.1em;font-weight:600}
 .navbtn{
   width:100%;text-align:left;margin:1px 0;min-height:46px;border:1px solid transparent;background:transparent;
@@ -161,21 +157,20 @@ b{font-weight:600}
 }
 .navbtn:hover{background:rgba(255,255,255,.06);color:#fff}
 .navbtn.active{
-  background:linear-gradient(90deg,rgba(99,102,241,.28),rgba(139,92,246,.16) 70%,transparent);
-  color:#fff;font-weight:600;border-color:rgba(99,102,241,.4);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+  background:rgba(99,102,241,.14);
+  color:#fff;font-weight:600;border-color:transparent;
 }
 .navbtn .nav-ic{color:#8E97B5;transition:color var(--t-fast2)}
 .navbtn:hover .nav-ic{color:#fff}
 .navbtn.active .nav-ic{color:#A5B4FC}
 .nav-label{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nav-active-dot{width:6px;height:6px;border-radius:999px;background:var(--grad-ai)}
+.nav-active-dot{width:6px;height:6px;border-radius:999px;background:var(--indigo)}
 
 /* ---------- Main / top bar ---------- */
 .main{min-width:0;display:flex;flex-direction:column}
 .topbar{
-  height:var(--topbar);background:rgba(255,255,255,.82);backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);
+  height:var(--topbar);background:#fff;
+  border-bottom:1px solid var(--border);
   display:flex;align-items:center;gap:14px;padding:0 var(--content-pad);
   position:sticky;top:0;z-index:5;
 }
@@ -192,13 +187,12 @@ b{font-weight:600}
 .k-chip{background:var(--surface-soft);border:1px solid var(--border);border-radius:8px;padding:3px 8px;font-size:11.5px;color:var(--ink-2);font-weight:600;letter-spacing:.02em;font-family:var(--font-body)}
 .avatar{
   width:42px;height:42px;border-radius:14px;padding:0;min-height:42px;
-  background:var(--grad-ai);color:#fff;font-weight:700;font-size:14px;border:none;
-  box-shadow:0 6px 16px -6px rgba(99,102,241,.7);
+  background:var(--indigo);color:#fff;font-weight:700;font-size:14px;border:none;
 }
 .avatar:hover{transform:translateY(-1px)}
 .avatar:active{transform:scale(.97)}
 .notif-btn{position:relative}
-.notif-dot{position:absolute;top:9px;right:9px;width:8px;height:8px;border-radius:999px;background:var(--coral);border:2px solid #fff}
+.notif-dot{position:absolute;top:9px;right:9px;width:6px;height:6px;border-radius:999px;background:var(--coral);border:2px solid #fff}
 
 /* ---------- Content ---------- */
 .content{padding:28px var(--content-pad) 56px;max-width:1440px;margin:auto;width:100%;flex:1}
@@ -219,12 +213,11 @@ button:hover:not(:disabled){background:var(--surface-soft);border-color:var(--bo
 button:active:not(:disabled){transform:scale(.98)}
 button:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
 button.primary{
-  background:var(--indigo);color:#fff;border-color:var(--indigo);
-  box-shadow:var(--shadow-indigo);
+  background:#5B5BD6;color:#fff;border-color:#5B5BD6;
 }
-button.primary:hover:not(:disabled){background:var(--indigo-hover);border-color:var(--indigo-hover);transform:translateY(-1px)}
-button.primary:active:not(:disabled){background:var(--indigo-press);transform:scale(.98)}
-button.danger{border-color:rgba(240,93,107,.5);color:var(--coral);background:var(--coral-soft);font-weight:600}
+button.primary:hover:not(:disabled){background:#4F4FC4;border-color:#4F4FC4}
+button.primary:active:not(:disabled){background:#4343B2;transform:scale(.98)}
+button.danger{border-color:rgba(240,93,107,.3);color:var(--coral);background:var(--coral-soft);font-weight:600}
 button.danger:hover:not(:disabled){background:#FFE4E8;border-color:var(--coral)}
 button.ghost{border-color:transparent;background:transparent;color:var(--ink-2)}
 button.ghost:hover:not(:disabled){background:var(--surface-soft);color:var(--ink)}
@@ -232,9 +225,9 @@ button.small{min-height:38px;padding:7px 13px;font-size:13px;border-radius:12px;
 button.icon{width:44px;padding:0;display:inline-grid;place-items:center;border-radius:13px;border-color:transparent;color:var(--ink-2);background:transparent;min-height:44px}
 button.icon:hover{background:var(--surface-soft);color:var(--ink)}
 button.ai{
-  background:var(--grad-ai);color:#fff;border:none;box-shadow:var(--shadow-indigo);
+  background:var(--indigo);color:#fff;border:none;
 }
-button.ai:hover:not(:disabled){filter:brightness(1.06);transform:translateY(-1px)}
+button.ai:hover:not(:disabled){background:var(--indigo-hover)}
 button.block{width:100%}
 
 /* ---------- Forms ---------- */
@@ -259,15 +252,14 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
   padding:22px;min-width:0;box-shadow:var(--shadow-sm);
 }
 .card.compact{padding:16px}
-.card.selected{border:2px solid var(--indigo);box-shadow:var(--shadow-indigo);background:linear-gradient(160deg,#fff,var(--indigo-soft))}
+.card.selected{border:2px solid var(--indigo);background:var(--indigo-soft)}
 .card.clickable{cursor:pointer;transition:transform var(--t-fast2) var(--ease-out),box-shadow var(--t-fast2) var(--ease-out),border-color var(--t-fast2)}
 .card.clickable:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
 .card.stat{padding:20px 22px}
 .ai-card{
-  background:var(--grad-ai-soft);border:1px solid rgba(139,92,246,.28);border-radius:var(--radius-lg);
+  background:var(--surface-ai);border:1px solid rgba(99,102,241,.15);border-radius:var(--radius-lg);
   position:relative;overflow:hidden;
 }
-.ai-card::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 85% 0%,rgba(34,199,232,.14),transparent 60%);pointer-events:none}
 
 /* ---------- Stats / KPI ---------- */
 .stat .k{font-size:12.5px;color:var(--ink-2);font-weight:600;letter-spacing:.02em}
@@ -321,7 +313,7 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 }
 .tabs button:hover{color:var(--ink);background:transparent}
 .tabs button.active{color:var(--indigo);font-weight:700;background:transparent}
-.tabs button.active::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--grad-ai)}
+.tabs button.active::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--indigo)}
 
 /* ---------- Segmented ---------- */
 .segmented{display:inline-flex;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-soft);overflow:hidden;max-width:100%;flex-wrap:wrap;padding:4px;gap:2px}
@@ -332,7 +324,7 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 /* ---------- Stepper ---------- */
 .stepper{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 22px}
 .step{border:1px solid var(--border);padding:8px 14px;border-radius:var(--radius-pill);font-size:12.5px;background:var(--surface);color:var(--ink-2);font-weight:600}
-.step.active{background:var(--grad-ai);color:#fff;border-color:transparent;box-shadow:var(--shadow-indigo)}
+.step.active{background:var(--indigo);color:#fff;border-color:transparent}
 .step.complete{background:var(--emerald-soft);border-color:rgba(22,181,122,.35);color:var(--emerald)}
 
 /* ---------- Pills ---------- */
@@ -343,10 +335,10 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 
 /* ---------- Progress ---------- */
 .progress{height:8px;background:#EBEDF3;border-radius:999px;overflow:hidden}
-.progress>span{display:block;height:100%;background:var(--grad-ai);border-radius:999px;transition:width var(--t-exp) var(--ease-out);min-width:0}
+.progress>span{display:block;height:100%;background:var(--indigo);border-radius:999px;transition:width var(--t-exp) var(--ease-out);min-width:0}
 .progress.lg{height:12px}
-.progress.emerald>span{background:var(--grad-emerald)}
-.progress.coral>span{background:linear-gradient(90deg,var(--coral),#F87171)}
+.progress.emerald>span{background:var(--emerald)}
+.progress.coral>span{background:var(--coral)}
 
 /* ---------- Meta list ---------- */
 .meta-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px}
@@ -452,7 +444,7 @@ tbody tr:hover{background:var(--surface-soft)}
 /* ---------- Charts ---------- */
 .chart{height:210px;border:1px solid var(--border);border-radius:var(--radius);padding:16px;background:var(--surface);position:relative;overflow:hidden;box-shadow:var(--shadow-xs)}
 .bar-chart{height:150px;display:flex;align-items:flex-end;gap:10px;padding-top:16px}
-.bar-chart .bar{flex:1;min-width:18px;background:linear-gradient(180deg,var(--violet),var(--indigo));border-radius:7px 7px 0 0;position:relative;transition:opacity var(--t-fast)}
+.bar-chart .bar{flex:1;min-width:18px;background:var(--indigo);border-radius:7px 7px 0 0;position:relative;transition:opacity var(--t-fast)}
 .bar-chart .bar:hover{opacity:.85}
 .bar-chart .bar span{position:absolute;left:50%;transform:translateX(-50%);bottom:-22px;font-size:11px;color:var(--ink-2);font-weight:600}
 .donut{width:130px;height:130px;border-radius:50%;background:conic-gradient(var(--indigo) 0 72%,#EDEFF6 72% 100%);display:grid;place-items:center;margin:16px auto}
@@ -481,7 +473,6 @@ tbody tr:hover{background:var(--surface-soft)}
 .flashcard{
   min-height:330px;border:1px solid var(--border);border-radius:var(--radius-xl);background:var(--surface);
   display:grid;place-items:center;text-align:center;padding:32px;cursor:pointer;box-shadow:var(--shadow-md);
-  background-image:radial-gradient(80% 60% at 50% 0%,rgba(99,102,241,.07),transparent 60%);
 }
 .flashcard:hover{box-shadow:var(--shadow-lg)}
 .flashcard .face{max-width:640px;animation:cardIn var(--t-flip) var(--ease-spring) both}
@@ -508,7 +499,7 @@ tbody tr:hover{background:var(--surface-soft)}
 .doc-row:first-child{border-top:0}
 .dropzone{
   border:2px dashed var(--border-strong);border-radius:var(--radius-lg);padding:42px 28px;text-align:center;
-  background:radial-gradient(70% 90% at 50% 0%,var(--indigo-soft),var(--surface) 70%);transition:all var(--t-std) var(--ease-out);
+  background:var(--surface-soft);transition:all var(--t-std) var(--ease-out);
 }
 .dropzone:hover{border-color:var(--indigo);background:var(--indigo-soft)}
 .dropzone.drag{background:var(--indigo-soft);border-color:var(--indigo);box-shadow:var(--shadow-focus)}
@@ -547,10 +538,7 @@ tbody tr:hover{background:var(--surface-soft)}
 .timer-status{text-align:center;color:var(--ink-2);margin-top:-8px}
 
 /* ---------- Auth shell ---------- */
-.auth-shell,.onboarding-shell{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);background:
-  radial-gradient(90% 60% at 15% 0%,rgba(99,102,241,.10),transparent 55%),
-  radial-gradient(70% 50% at 100% 100%,rgba(34,199,232,.10),transparent 60%),
-  var(--canvas)}
+.auth-shell,.onboarding-shell{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);background:var(--canvas)}
 .auth-wrap{width:min(1060px,100%);margin:auto;padding:32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(380px,520px);gap:44px;align-items:center}
 .auth-aside{padding:24px 8px}
 .auth-panel{background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-lg)}
@@ -580,7 +568,7 @@ tbody tr:hover{background:var(--surface-soft)}
 /* ---------- Shared icon container ---------- */
 .ic-box{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:0 0 auto}
 .ic-box.indigo{background:var(--indigo-soft);color:var(--indigo);border:1px solid rgba(99,102,241,.18)}
-.ic-box.violet{background:var(--violet-soft);color:var(--violet);border:1px solid rgba(139,92,246,.18)}
+.ic-box.violet{background:var(--indigo-soft);color:var(--indigo);border:1px solid rgba(99,102,241,.18)}
 .ic-box.cyan{background:var(--cyan-soft);color:var(--cyan);border:1px solid rgba(34,199,232,.2)}
 .ic-box.emerald{background:var(--emerald-soft);color:var(--emerald);border:1px solid rgba(22,181,122,.18)}
 .ic-box.coral{background:var(--coral-soft);color:var(--coral);border:1px solid rgba(240,93,107,.18)}
@@ -593,8 +581,8 @@ body.shell-auth .content,body.shell-onboarding .content{padding:0;max-width:none
 body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 
 /* ---------- Signature: Focus dark ---------- */
-.focus-dark{background:var(--grad-focus);border:1px solid var(--dark-line);color:#E6E9F5;border-radius:var(--radius-xl);padding:26px 28px}
-.focus-dark .timer{color:#fff;text-shadow:0 0 40px rgba(99,102,241,.55)}
+.focus-dark{background:var(--surface-focus);border:1px solid var(--dark-line);color:#E6E9F5;border-radius:var(--radius-xl);padding:26px 28px}
+.focus-dark .timer{color:#fff}
 .focus-dark .timer-status{color:#9AA3C2}
 .focus-dark h2,.focus-dark h3{color:#fff}
 .focus-dark .meta-item{border-color:rgba(255,255,255,.08)}
@@ -602,18 +590,15 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 .focus-dark .meta-item .value{color:#E6E9F5}
 .focus-dark .pill{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#C7D2FE}
 .focus-dark .pill:hover{background:rgba(255,255,255,.14);color:#fff}
-.focus-dark .pill.selected{background:rgba(99,102,241,.55);border-color:var(--indigo);color:#fff}
+.focus-dark .pill.selected{background:var(--indigo);border-color:var(--indigo);color:#fff}
 
 /* ---------- Signature: Dashboard hero ---------- */
 .hero{
   border-radius:var(--radius-xl);padding:26px 28px;color:#fff;
-  background:linear-gradient(120deg,#141833 0%,#1B2140 52%,#272B5A 100%);
+  background:#141833;
   position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);
-  box-shadow:var(--shadow-md);
+  box-shadow:var(--shadow-sm);
 }
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(70% 100% at 100% 0%,rgba(99,102,241,.5),transparent 55%),
-  radial-gradient(60% 100% at 0% 100%,rgba(34,199,232,.28),transparent 55%)}
 .hero>*{position:relative}
 .hero h2{color:#fff;margin-bottom:4px}
 .hero .sub{color:#B9C2E4}
@@ -633,22 +618,19 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 .readiness-card{display:flex;align-items:center;gap:20px}
 
 /* ---------- Signature: AI study ---------- */
-.ai-hero{background:var(--grad-ai-soft);border:1px solid rgba(139,92,246,.3);border-radius:var(--radius-xl);padding:26px 28px;position:relative;overflow:hidden}
-.ai-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 90% at 90% 0%,rgba(34,199,232,.16),transparent 55%)}
+.ai-hero{background:var(--surface-ai);border:1px solid rgba(99,102,241,.15);border-radius:var(--radius-xl);padding:26px 28px;position:relative;overflow:hidden}
 .ai-hero>*{position:relative}
 .ai-hero .hero-side-label{color:var(--ink)}
 .ai-hero .hero-side-sub{color:var(--ink-2)}
-.ai-chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(139,92,246,.3);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;color:var(--violet);box-shadow:0 4px 14px -8px rgba(99,102,241,.5)}
-.ai-glow{filter:drop-shadow(0 6px 18px rgba(99,102,241,.45))}
+.ai-chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;color:var(--ink)}
 
 /* ---------- Signature: Exam pack ---------- */
-.pack-header{border-radius:var(--radius-xl);padding:26px 28px;border:1px solid var(--border);background:linear-gradient(150deg,#fff,var(--indigo-soft) 120%);box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
-.pack-header::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 100% at 100% 0%,rgba(139,92,246,.12),transparent 55%)}
+.pack-header{border-radius:var(--radius-xl);padding:26px 28px;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
 .pack-header>*{position:relative}
 .tabrail{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding:6px;background:var(--surface-soft);border:1px solid var(--border);border-radius:var(--radius-sm);margin:0 0 20px;position:sticky;top:88px;z-index:4}
 .tabrail button{border:0;background:transparent;border-radius:11px;min-height:40px;padding:0 16px;font-weight:600;color:var(--ink-2);white-space:nowrap;font-size:13.5px}
 .tabrail button:hover{background:rgba(255,255,255,.7);color:var(--ink)}
-.tabrail button.active{background:var(--grad-ai);color:#fff;box-shadow:var(--shadow-indigo)}
+.tabrail button.active{background:var(--indigo);color:#fff}
 .tabs.tabrail{border-bottom:none;margin-bottom:0}
 
 /* ---------- Signature: Search pill topbar (mobile) ---------- */
@@ -712,7 +694,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
     color:#B9C2E4;border-radius:15px;flex:1;display:flex;flex-direction:column;gap:4px;align-items:center;font-weight:600;
   }
   .mobilebar button .mbtn-ic{color:#8E97B5;transition:color var(--t-fast2)}
-  .mobilebar button.active{background:linear-gradient(180deg,rgba(99,102,241,.35),rgba(99,102,241,.12));color:#fff}
+  .mobilebar button.active{background:rgba(99,102,241,.2);color:#fff}
   .mobilebar button.active .mbtn-ic{color:#A5B4FC}
   .modalback{align-items:flex-end;padding:0}
   .modal{border-radius:22px 22px 0 0;max-width:none;max-height:90vh;animation:sheetIn var(--t-exp) var(--ease-out) both}
@@ -917,7 +899,8 @@ const ICON_PATHS={
  circleCheck:'M9 12l2 2 4-5M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16z',
  circleX:'M8 8l8 8M16 8l-8 8M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16z',
  download:'M12 4v12M6 10l6 6 6-6M4 20h16',
- scan:'M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2M8 12h8M8 16h5'
+ scan:'M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2M8 12h8M8 16h5',
+ brain:'M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7zM9 21h6'
 };
 const ICON_ATTRS='fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
 const ICON_SPRITE=`<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs>${Object.entries(ICON_PATHS).map(([k,d])=>`<symbol id="i-${k}" viewBox="0 0 24 24"><path ${ICON_ATTRS} d="${d}"/></symbol>`).join('')}</defs></svg>`;
@@ -1017,7 +1000,7 @@ function enableBrowserNotifications(){state.prefs.browser=state.prefs.browser===
 function renderOnb07(){const sem=state.semesters.find(s=>s.id===state.academic.activeSemester);return onboardingShell('You’re ready','Review your setup before going to the Dashboard.',5,`<div class="grid"><div class="card span-6"><h3>Semester</h3><p>${esc(sem?.name||'Not set')}</p></div><div class="card span-6"><h3>Courses</h3><p>${state.onboarding.courses.length||state.courses.length} configured</p></div><div class="card span-6"><h3>GPA Scale</h3><p>${state.academic.gpaScale.toFixed(1)} maximum · target ${state.academic.targetGpa.toFixed(2)}</p></div><div class="card span-6"><h3>Reminder Preferences</h3><p>${['assignment','exam','attendance','study'].filter(k=>state.prefs[k]).length} reminder types enabled</p></div></div><div class="actions between"><button onclick="go('ONB-06')">Back</button><button class="primary" onclick="go('DASH-01')">Go to Dashboard</button></div>`)}
 // ---------------- Dashboard ----------------
 function renderDash01(){
-const courses=state.courses.filter(x=>!x.archived),up=state.assignments.filter(x=>!x.completed),due=up.filter(x=>x.dueAt<=isoDay(0)).length,g=semesterGpa(),h=state.focusHistory.filter(x=>x.date===isoDay()).reduce((s,x)=>s+x.duration,0);return `<div class="hero"><div class="hero-grid"><div><span class="hero-chip">${icon('cal','ic-sm')}&nbsp;${esc(state.semesters.find(s=>s.id===state.academic.activeSemester)?.name||'Active Semester')}</span><h2 style="margin-top:14px">Good ${new Date().getHours()<12?'morning':new Date().getHours()<17?'afternoon':'evening'}, ${esc(state.user.name.split(' ')[0])}</h2><p class="sub">${new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'})} · ${due>0?'You have '+due+' item'+ (due===1?'':'s')+' due — let’s clear them today.':'You’re all caught up. Stay ahead of the week.'}</p><div class="hero-cta"><button onclick="showQuickAdd()">${icon('plus','ic-sm')}&nbsp;Quick Add</button><button class="ghost" onclick="go('DOC-01')">${icon('upload','ic-sm')}&nbsp;Upload Study Material</button></div></div><div class="hero-side"><div class="hero-ring">${ringHtml(0,g.toFixed(2),'GPA',132,'rgba(255,255,255,.25)')}</div><div><div class="hero-side-label">Cumulative GPA</div><div class="hero-side-sub">target ${state.academic.targetGpa.toFixed(2)} · scale ${state.academic.gpaScale.toFixed(1)}</div></div></div></div></div><div class="kpi-row">${stat('Active Courses',courses.length)}${stat('Semester GPA',g.toFixed(2))}${stat('Assignments Due',up.length)}${stat('Study Today',h+'m')}</div><div class="grid" style="margin-top:0"><section class="card span-8"><div class="section-title"><h2>Upcoming Deadlines</h2><button class="small" onclick="go('PLAN-01')">View Planner</button></div>${up.slice(0,4).map(a=>`<div class="topic"><div class="row start"><div><b>${esc(a.title)}</b><div class="helper">${esc(course(a.courseId).code)} · ${fmtDate(a.dueAt)} · ${Math.max(0,daysUntil(a.dueAt))} day(s)</div></div>${priorityBadge(a.priority)}</div><div class="actions flush" style="margin-top:8px"><button class="small" onclick="ui.assignmentId='${a.id}';go('ASSIGN-03')">View</button><button class="small" onclick="toggleAssignment('${a.id}')">Mark Complete</button></div></div>`).join('')||'<p class="muted">No assignments due right now.</p>'}</section><section class="card span-4 ai-card"><span class="ic-box violet glow">${icon('spark','ic-md')}</span><h2>AI Study</h2><p class="muted">Transform your documents into summaries, MCQs, flashcards, or a full exam pack.</p><div class="actions mobile-stack"><button class="primary" onclick="go('PREP-01')">Prepare Me for Exam</button><button onclick="go('SUM-01')">Summarize</button><button onclick="go('MCQ-01')">Create MCQs</button><button onclick="go('FLASH-01')">Flashcards</button></div></section><section class="card span-6"><div class="section-title"><h3>Attendance Risk</h3><button class="small" onclick="go('ATT-01')">View All</button></div>${state.courses.map(c=>({c,s:attendanceSummary(c.id)})).filter(x=>x.s.status!=='Safe').slice(0,3).map(({c,s})=>`<div class="topic"><div class="row"><div><b>${esc(c.code)} ${esc(c.name)}</b><div class="helper">Current ${s.pct}% · target ${s.target}%</div></div>${statusBadge(s.status)}</div></div>`).join('')||'<p class="muted">All courses are at or above target.</p>'}<button class="small" onclick="go('ATT-03')">Add Attendance</button></section><section class="card span-6"><div class="section-title"><h3>Focus / Study</h3><button class="small" onclick="go('FOCUS-01')">Start Session</button></div><div class="kpi-row" style="grid-template-columns:1fr 1fr">${stat('Study Today',h+'m')}${stat('Sessions',state.focusHistory.length)}</div><div class="row"><span>Current streak</span><b>4 days</b></div><div class="row"><span>Hours this week</span><b>7.5</b></div><div class="actions"><button onclick="go('FOCUS-04')">View Study History</button></div></section></div>`;
+const courses=state.courses.filter(x=>!x.archived),up=state.assignments.filter(x=>!x.completed),due=up.filter(x=>x.dueAt<=isoDay(0)).length,g=semesterGpa(),h=state.focusHistory.filter(x=>x.date===isoDay()).reduce((s,x)=>s+x.duration,0);return `<div class="hero"><div class="hero-grid"><div><span class="hero-chip">${icon('cal','ic-sm')}&nbsp;${esc(state.semesters.find(s=>s.id===state.academic.activeSemester)?.name||'Active Semester')}</span><h2 style="margin-top:14px">Good ${new Date().getHours()<12?'morning':new Date().getHours()<17?'afternoon':'evening'}, ${esc(state.user.name.split(' ')[0])}</h2><p class="sub">${new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'})} · ${due>0?'You have '+due+' item'+ (due===1?'':'s')+' due — let’s clear them today.':'You’re all caught up. Stay ahead of the week.'}</p><div class="hero-cta"><button onclick="showQuickAdd()">${icon('plus','ic-sm')}&nbsp;Quick Add</button><button class="ghost" onclick="go('DOC-01')">${icon('upload','ic-sm')}&nbsp;Upload Study Material</button></div></div><div class="hero-side"><div class="hero-ring">${ringHtml(0,g.toFixed(2),'GPA',132,'rgba(255,255,255,.25)')}</div><div><div class="hero-side-label">Cumulative GPA</div><div class="hero-side-sub">target ${state.academic.targetGpa.toFixed(2)} · scale ${state.academic.gpaScale.toFixed(1)}</div></div></div></div></div><div class="kpi-row">${stat('Active Courses',courses.length)}${stat('Semester GPA',g.toFixed(2))}${stat('Assignments Due',up.length)}${stat('Study Today',h+'m')}</div><div class="grid" style="margin-top:0"><section class="card span-8"><div class="section-title"><h2>Upcoming Deadlines</h2><button class="small" onclick="go('PLAN-01')">View Planner</button></div>${up.slice(0,4).map(a=>`<div class="topic"><div class="row start"><div><b>${esc(a.title)}</b><div class="helper">${esc(course(a.courseId).code)} · ${fmtDate(a.dueAt)} · ${Math.max(0,daysUntil(a.dueAt))} day(s)</div></div>${priorityBadge(a.priority)}</div><div class="actions flush" style="margin-top:8px"><button class="small" onclick="ui.assignmentId='${a.id}';go('ASSIGN-03')">View</button><button class="small" onclick="toggleAssignment('${a.id}')">Mark Complete</button></div></div>`).join('')||'<p class="muted">No assignments due right now.</p>'}</section><section class="card span-4 ai-card"><span class="ic-box indigo">${icon('brain','ic-md')}</span><h2>AI Study</h2><p class="muted">Transform your documents into summaries, MCQs, flashcards, or a full exam pack.</p><div class="actions mobile-stack"><button class="primary" onclick="go('PREP-01')">Prepare Me for Exam</button><button onclick="go('SUM-01')">Summarize</button><button onclick="go('MCQ-01')">Create MCQs</button><button onclick="go('FLASH-01')">Flashcards</button></div></section><section class="card span-6"><div class="section-title"><h3>Attendance Risk</h3><button class="small" onclick="go('ATT-01')">View All</button></div>${state.courses.map(c=>({c,s:attendanceSummary(c.id)})).filter(x=>x.s.status!=='Safe').slice(0,3).map(({c,s})=>`<div class="topic"><div class="row"><div><b>${esc(c.code)} ${esc(c.name)}</b><div class="helper">Current ${s.pct}% · target ${s.target}%</div></div>${statusBadge(s.status)}</div></div>`).join('')||'<p class="muted">All courses are at or above target.</p>'}<button class="small" onclick="go('ATT-03')">Add Attendance</button></section><section class="card span-6"><div class="section-title"><h3>Focus / Study</h3><button class="small" onclick="go('FOCUS-01')">Start Session</button></div><div class="kpi-row" style="grid-template-columns:1fr 1fr">${stat('Study Today',h+'m')}${stat('Sessions',state.focusHistory.length)}</div><div class="row"><span>Current streak</span><b>4 days</b></div><div class="row"><span>Hours this week</span><b>7.5</b></div><div class="actions"><button onclick="go('FOCUS-04')">View Study History</button></div></section></div>`;
 }
 function showQuickAdd(){openModal(`<div class="modal-head"><div><h2>Quick Add</h2><p class="muted">Create academic items without leaving your workflow.</p></div><button class="icon ghost" aria-label="Close" onclick="closeModal()">×</button></div><div class="menu"><button onclick="closeModal();go('ASSIGN-02')">Add Assignment</button><button onclick="closeModal();go('EXAM-02')">Add Exam</button><button onclick="closeModal();go('ATT-03')">Add Attendance</button><button onclick="closeModal();go('COURSE-02')">Add Course</button><button onclick="closeModal();go('FOCUS-01')">Start Focus Session</button></div>`)}
 
@@ -1136,7 +1119,7 @@ function showFocusSession(id){const f=state.focusHistory.find(x=>x.id===id);if(!
 // ---------------- AI Study + Documents ----------------
 function documentCard(d){const c=course(d.courseId);return `<div class="card span-6"><div class="row start"><div><h3>${esc(d.name)}</h3><div class="helper">${esc(c.code)} · uploaded ${fmtDate(d.uploaded)} · ${d.pages} pages</div></div>${statusBadge(d.status)}</div><div class="actions">${d.status==='Ready'?`<button class="primary small" onclick="ui.documentId='${d.id}';go('DOC-06')">Open</button><button class="small" onclick="ui.documentId='${d.id}';go('SUM-01')">Generate Summary</button><button class="small" onclick="ui.documentId='${d.id}';go('MCQ-01')">Create MCQs</button><button class="small" onclick="ui.documentId='${d.id}';go('FLASH-01')">Create Flashcards</button>`:d.status==='Failed'?`<button class="small" onclick="ui.documentId='${d.id}';go('DOC-04')">View Failure</button>`:d.status==='Unsupported'?`<button class="small" onclick="ui.documentId='${d.id}';go('DOC-05')">View Issue</button>`:`<button class="small" onclick="ui.documentId='${d.id}';go('DOC-03')">View Processing</button>`}<button class="small" onclick="renameDocument('${d.id}')">Rename</button><button class="small danger" onclick="confirmDeleteDocument('${d.id}')">Delete</button></div></div>`}
 function renderAi01(){
-return `<div class="ai-hero"><div class="hero-grid"><div><span class="ai-chip">${icon('spark','ic-sm')}&nbsp;AI Study</span><h2 style="margin-top:14px">Use private course documents to create structured study material</h2><p class="muted">StudentOS extracts content from your own PDFs to build summaries, question banks, flashcards, and full exam packs.</p><div class="actions" style="margin-top:18px"><button class="ai" onclick="go('DOC-01')">${icon('upload','ic-md')}&nbsp;Upload Study Material</button></div></div><div class="hero-side"><div class="hero-ring"><span class="ic-box violet glow" style="width:88px;height:88px;border-radius:22px">${icon('doc','ic-lg')}</span></div><div><div class="hero-side-label">${state.aiCredits}</div><div class="hero-side-sub">AI credits remaining</div></div></div></div></div><div class="grid"><div class="card span-3"><span class="ic-box violet">${icon('layers','ic-md')}</span><h3>Prepare Me for Exam</h3><p class="muted">Build a complete revision pack.</p><div class="actions flush"><button class="primary small" onclick="go('PREP-01')">Start</button></div></div><div class="card span-3"><span class="ic-box cyan">${icon('doc','ic-md')}</span><h3>Summarize</h3><p class="muted">Condense a document into notes.</p><div class="actions flush"><button class="primary small" onclick="go('SUM-01')">Start</button></div></div><div class="card span-3"><span class="ic-box emerald">${icon('cards','ic-md')}</span><h3>Generate MCQs</h3><p class="muted">Auto-built practice questions.</p><div class="actions flush"><button class="primary small" onclick="go('MCQ-01')">Start</button></div></div><div class="card span-3"><span class="ic-box amber">${icon('layers','ic-md')}</span><h3>Create Flashcards</h3><p class="muted">Flip-ready study cards.</p><div class="actions flush"><button class="primary small" onclick="go('FLASH-01')">Start</button></div></div><div class="span-12"><div class="section-title"><h2>Document Library</h2></div><div class="grid">${state.documents.length?state.documents.map(documentCard).join(''):emptyState('No Documents','Upload a PDF to create summaries, MCQs, flashcards or an Exam Pack.','Upload Study Material',"go('DOC-01')")}</div></div></div>`
+return `<div class="ai-hero"><div class="hero-grid"><div><span class="ai-chip">${icon('brain','ic-sm')}&nbsp;AI Study</span><h2 style="margin-top:14px">Use private course documents to create structured study material</h2><p class="muted">StudentOS extracts content from your own PDFs to build summaries, question banks, flashcards, and full exam packs.</p><div class="actions" style="margin-top:18px"><button class="primary" onclick="go('DOC-01')">${icon('upload','ic-md')}&nbsp;Upload Study Material</button></div></div><div class="hero-side"><div class="hero-ring"><span class="ic-box indigo" style="width:88px;height:88px;border-radius:22px">${icon('brain','ic-lg')}</span></div><div><div class="hero-side-label">${state.aiCredits}</div><div class="hero-side-sub">AI credits remaining</div></div></div></div></div><div class="grid"><div class="card span-3"><span class="ic-box indigo">${icon('layers','ic-md')}</span><h3>Prepare Me for Exam</h3><p class="muted">Build a complete revision pack.</p><div class="actions flush"><button class="primary small" onclick="go('PREP-01')">Start</button></div></div><div class="card span-3"><span class="ic-box indigo">${icon('doc','ic-md')}</span><h3>Summarize</h3><p class="muted">Condense a document into notes.</p><div class="actions flush"><button class="primary small" onclick="go('SUM-01')">Start</button></div></div><div class="card span-3"><span class="ic-box indigo">${icon('cards','ic-md')}</span><h3>Generate MCQs</h3><p class="muted">Auto-built practice questions.</p><div class="actions flush"><button class="primary small" onclick="go('MCQ-01')">Start</button></div></div><div class="card span-3"><span class="ic-box indigo">${icon('layers','ic-md')}</span><h3>Create Flashcards</h3><p class="muted">Flip-ready study cards.</p><div class="actions flush"><button class="primary small" onclick="go('FLASH-01')">Start</button></div></div><div class="span-12"><div class="section-title"><h2>Document Library</h2></div><div class="grid">${state.documents.length?state.documents.map(documentCard).join(''):emptyState('No Documents','Upload a PDF to create summaries, MCQs, flashcards or an Exam Pack.','Upload Study Material',"go('DOC-01')")}</div></div></div>`
 }
 function renameDocument(id){const d=doc(id);openModal(`<h2>Rename Document</h2>${textInput('renameDoc','Document Name',d.name)}<div class="actions end"><button onclick="closeModal()">Cancel</button><button class="primary" onclick="const v=document.getElementById('renameDoc').value.trim();if(v){doc('${id}').name=v;closeModal();showToast('Document renamed');render()}">Save Name</button></div>`)}
 function confirmDeleteDocument(id){const d=doc(id);confirmAction('Delete Document',`Delete ${esc(d.name)} from private document storage? Generated content linked only to this document may become unavailable.`,()=>{state.documents=state.documents.filter(x=>x.id!==id);showToast('Document deleted');if(current==='DOC-06'||current==='DOC-05'||current==='DOC-04')go('AI-01');else render()},'Delete Document')}
