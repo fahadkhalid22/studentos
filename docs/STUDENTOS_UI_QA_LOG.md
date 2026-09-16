@@ -6,6 +6,37 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 17 — Phase 4 Pass 15 summary/MCQ/quiz/flash tracks
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-17 |
+| **Status** | ✅ Pass — all 82 routes render clean; token-clean study tracks |
+| **Commit** | `482fe9c` |
+
+### Method
+- Re-ran the jsdom smoke harness after the track-tokenization commit.
+- Source audit of `.progress` and `.skeleton` rules to confirm no stray hex
+  remains (both now `var(--border)`), plus a grep of the file for
+  `#EBEDF3`/`#E9EBF2` returning zero matches.
+- Visual-consistency review of SUM-01/02, MCQ-01/02, QUIZ-01–04, FLASH-01–04
+  markup (card grid, meta-list, segmented, answer-choice, stat/KPI, flashcard
+  face) — all token-driven.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | `.progress` track uses `var(--border)`, not `#EBEDF3` | ✅ |
+| 4 | `.skeleton` base uses `var(--border)`, not `#E9EBF2` | ✅ |
+| 5 | Zero `#EBEDF3` / `#E9EBF2` occurrences file-wide | ✅ |
+| 6 | Quiz scoring remains deterministic in `submitQuiz()` | ✅ |
+
+---
+
 ## Checkpoint 16 — Phase 4 Pass 14 AI-01 tool-card icons
 
 | | |

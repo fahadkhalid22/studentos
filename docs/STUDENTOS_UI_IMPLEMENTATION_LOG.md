@@ -16,6 +16,38 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 15 — Summary / MCQ / Quiz / Flashcards neutral tracks
+
+| | |
+|---|---|
+| **Commit** | `482fe9c` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-17 |
+| **Scope** | AI Study generation + practice surfaces (SUM-01/02, MCQ-01/02, QUIZ-01–04, FLASH-01–04) |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- `.progress` track — used by QUIZ-01 (quiz progress), QUIZ-03 (percentage),
+  and FLASH-03 (deck progress) — replaced its stray hex `#EBEDF3` with
+  `var(--border)` (#E4E7EC). The track now uses the same quiet neutral as
+  the token system's border/divider family, keeping indigo/emerald/coral
+  fills legible on white cards without a foreign near-blue tone.
+- `.skeleton` loading base — used by SUM-02 generating state, the MCQ/Flash
+  generation modals, and the `skeletonCards()` helper — replaced `#E9EBF2`
+  with `var(--border)`. The sanctioned shimmer `linear-gradient` animation
+  is unchanged; only its base fill tokenized.
+- Full-surface audit of the four generation/study groups found every other
+  surface already token-clean: cards, meta-lists, segmented controls,
+  `alertBox` fills, `.topic` rows, `.answer-choice` states, `.stat`/`.kpi-row`
+  cards, and the flashcard face all use spec tokens.
+
+### Product-contract preservation
+- Track/base-color-only changes to shared primitives; no markup, navigation,
+  or logic touched. Quiz scoring stays deterministic in `submitQuiz()`;
+  progress-bar widths reflect question/deck position, not AI output.
+
+---
+
 ## Phase 4 Pass 14 — AI-01 tool-card icon differentiation
 
 | | |
