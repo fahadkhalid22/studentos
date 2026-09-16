@@ -218,7 +218,7 @@ button.danger:hover:not(:disabled){background:#F9E3E5;border-color:var(--coral)}
 button.ghost{border-color:transparent;background:transparent;color:var(--ink-2)}
 button.ghost:hover:not(:disabled){background:var(--surface-soft);color:var(--ink)}
 button.small{min-height:38px;padding:7px 13px;font-size:13px;border-radius:12px;font-weight:600}
-button.icon{width:44px;padding:0;display:inline-grid;place-items:center;border-radius:13px;border-color:transparent;color:var(--ink-2);background:transparent;min-height:44px}
+button.icon{width:44px;padding:0;display:inline-grid;place-items:center;border-radius:var(--radius-sm);border-color:transparent;color:var(--ink-2);background:transparent;min-height:44px}
 button.icon:hover{background:var(--surface-soft);color:var(--ink)}
 button.block{width:100%}
 
@@ -538,7 +538,7 @@ tbody tr:hover{background:var(--surface-soft)}
 .auth-mark{font-weight:800;font-size:20px;margin-bottom:36px;font-family:var(--font-display);color:var(--ink);display:flex;align-items:center;gap:10px}
 .auth-features{display:grid;gap:14px;margin-top:28px}
 .auth-feature{display:flex;gap:12px;align-items:flex-start}
-.auth-feature .dot{width:40px;height:40px;border-radius:13px;background:var(--indigo-soft);color:var(--indigo);display:grid;place-items:center;flex:0 0 auto;font-size:16px;border:1px solid rgba(91,91,214,.2)}
+.auth-feature .dot{width:40px;height:40px;border-radius:var(--radius-sm);background:var(--indigo-soft);color:var(--indigo);display:grid;place-items:center;flex:0 0 auto;font-size:16px;border:1px solid rgba(91,91,214,.2)}
 .auth-heading{font-size:clamp(28px,3vw,42px);line-height:1.1;margin:22px 0 12px;letter-spacing:-.025em;font-family:var(--font-display)}
 
 /* ---------- Onboarding shell ---------- */
@@ -641,7 +641,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   :root{--sidebar:84px}
   .brand{justify-content:center;padding-left:0;padding-right:0;gap:0}
   .brand .brand-text{display:none}
-  .logo-mark{width:38px;height:38px;border-radius:13px}
+  .logo-mark{width:38px;height:38px;border-radius:var(--radius-sm)}
   .navbtn{padding:0;justify-content:center}
   .navbtn .nav-label{display:none}
   .navbtn .nav-ic{width:22px;height:22px}
