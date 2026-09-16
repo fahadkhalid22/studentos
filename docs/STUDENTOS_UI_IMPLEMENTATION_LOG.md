@@ -239,6 +239,38 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 13 — Focus dark band: CTA scoping + calm audit
+
+| | |
+|---|---|
+| **Commit** | `86953ac` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Focus / dark-surface CTAs |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- **Found a real specificity bug**: `.hero-cta button` (a global white-CTA
+  rule, specificity 0,1,1, defined at line 598) sits *after* `button.primary`
+  (0,1,1, line 211), so it silently overrode the primary on FOCUS-01's dark
+  band — its "Start Focus Session" button rendered **white** while FOCUS-02's
+  "Pause" and the setup card's "Start Focus" rendered **indigo**. Scoped the
+  four white/ghost hero-CTA rules to `.hero .hero-cta`, so the `.focus-dark`
+  band now uses the same indigo primary as every other Focus screen.
+- Re-audited the full Focus surface set for the master prompt's "calm
+  progress" requirement: `.focus-dark` band is a flat `--surface-focus`
+  `#141833` with a `--dark-line` border; the timer is flat white tabular
+  text with zero `text-shadow`/glow; preset pills are translucent
+  white-alpha (`rgba(255,255,255,.08–.16)`) with a solid indigo `.selected`;
+  surfaces use only spec rgba channels. Zero `grad-*` tokens, zero violet/cyan.
+
+### Product-contract preservation
+- Pure CSS scoping; the Focus timer logic
+  (`startFocus`/`runFocusTimer`/`togglePause`/`finishFocus`) is byte-
+  preserved. Setup/active/complete/history flows unchanged.
+
+---
+
 ## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
 
 | | |

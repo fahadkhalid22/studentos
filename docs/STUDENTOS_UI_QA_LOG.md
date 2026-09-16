@@ -230,6 +230,36 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 15 — Phase 4 Pass 13 focus CTA scoping
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean |
+| **Commit** | `86953ac` |
+
+### Method
+- Re-ran the jsdom smoke harness after the focus-CTA commit.
+- Source audit confirmed the white `hero-cta` rules are now scoped to `.hero`
+  and the `.focus-dark` band falls through to `button.primary` indigo.
+- Calm audit: no timer text-glow, no gradient tokens, no violet/cyan.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | `.hero .hero-cta` white CTA retains DASH/COURSE/ATT/GPA heroes | ✅ |
+| 4 | `.focus-dark .hero-cta` button uses indigo `.primary` | ✅ |
+| 5 | FOCUS-01 / FOCUS-02 primary CTAs match (both indigo) | ✅ |
+| 6 | Zero `text-shadow` / glow on `#focusClock` timer | ✅ |
+| 7 | Zero `grad-*`, `--violet`, `--cyan` residue in the file | ✅ |
+| 8 | Focus timer logic functions untouched | ✅ |
+
+---
+
 ## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
 
 | | |
