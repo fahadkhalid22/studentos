@@ -6,6 +6,40 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 21 — Phase 4 Pass 19 responsive dock + mobile tab-rail offset
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes; source-level CSS audit of every media-query block |
+| **Date** | 2026-09-17 |
+| **Status** | ✅ Pass — dock/sheet/drawer tokenized; Course tab rail now pins flush under the 60px mobile topbar |
+| **Commit** | `7273b76` |
+
+### Method
+- Re-ran the jsdom smoke harness after the Pass 19 commit
+  (`Routes to test: 82` / `Route failures: 0` / `Console errors: 0` → SMOKE PASS).
+- Resolved every sticky element against each breakpoint: `.tabrail` (Course) and
+  `.exam-pack-tabs` (Exam Pack) are independent wrappers; only Course's `.tabrail`
+  kept an 88px desktop offset that no longer matched the 60px mobile topbar —
+  reproduced from the source and fixed with `.tabrail{top:60px}` at ≤700.
+- Verified the dock's `rgba` now equals `--dark-raised` at its designed alpha and
+  that all `border-radius:22px` literals are gone from the responsive blocks.
+- Confirmed no nested-sticky and no fixed-width overflow by inspecting the 390-px
+  path (`overflow-x` on tables/tabs/rows, `mobile-cards` swap, 100px dock padding).
+  Open item: exact pixel rendering could not be captured (no headless renderer);
+  deferred to the screenshot stage.
+
+### Checklist
+| Check | Result |
+|---|---|
+| Navigate all 82 routes (jsdom) after commit | ✅ 0 failures |
+| Dock bg expresses `--dark-raised`; 22px literals removed | ✅ |
+| `.tabrail` pins at 60px on mobile (Course tab rail flush) | ✅ |
+| 1440/1280/768/390 stacking/overflow coherent by source audit | ✅ |
+| No product-logic, copy, or computed-value change | ✅ |
+
+---
+
 ## Checkpoint 20 — Phase 4 Pass 18 auth/settings surfaces + sidebar dark band
 
 | | |

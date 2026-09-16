@@ -16,6 +16,44 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 19 — Responsive: dock tokenization, mobile tab-rail offset, viewport audit
+
+| | |
+|---|---|
+| **Commit** | `7273b76` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-17 |
+| **Scope** | Mobile floating dock, bottom-sheet/drawer corners, Course-detail tab rail sticky offset; 1440/1280/768/390 audit by source inspection |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- **Floating dock frosted surface tokenized.** `rgba(20,24,51,.92) →
+  rgba(23,27,46,.92)` — the latter is `--dark-raised` (`#171B2E`) at its
+  designed alpha, so the `backdrop-filter:blur(16px)` glass reads against the
+  canonical raised-chrome tone instead of a hand-picked slate.
+- **Dock / sheet / drawer radii tokenized.** Floating dock `22px →
+  var(--radius-xl)` (24); mobile bottom-sheet top corners `22px 22px 0 0 →
+  var(--radius-lg)` to match the desktop modal's `radius-lg`; mobile drawer
+  `22px → var(--radius-lg)`. Removes all three non-token `22px` literals.
+- **Fixed a stacking defect.** The Course-detail `.tabrail` sticky `top:88px`
+  never collapsed when the topbar shrank to 60px at ≤700, leaving the tab rail
+  floating 28px below the topbar. Added `.tabrail{top:60px}` in the mobile block
+  so it pins flush, matching `.exam-pack-tabs{top:60px}`.
+
+### Responsive audit (by source inspection; no headless renderer this pass)
+- Breakpoints 1180 / 900 / 700 / 430 verified coherent: sidebar 252→236→84px→
+  hidden, grid spans collapse, `kpi-row` 4→2→1, tables/tabs/rows get
+  `overflow-x` or swap to `mobile-cards`, `.content` gains 100px dock clearance.
+- `.tabrail` (Course) and `.exam-pack-tabs` (Exam Pack) confirmed as separate
+  sticky wrappers — both legitimate, no nested-sticky duplication.
+- No fixed-width element overflows at 390: `auth-wrap`, `course-row`, `doc-row`,
+  `agenda-item`, `calendar` all collapse or scroll.
+
+### Product-contract preservation
+- No screen count, route, product behavior, label, state, or computed-value change.
+
+---
+
 ## Phase 4 Pass 18 — Auth / Onboarding / Settings / Notifications: sidebar band + form/switch tokenization
 
 | | |
