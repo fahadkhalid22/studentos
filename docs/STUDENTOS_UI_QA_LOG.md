@@ -60,6 +60,34 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 9 — Phase 4 Pass 7 badge refinement
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean; badge dots render on every semantic state |
+| **Commit** | `da847c6` |
+
+### Method
+- Re-ran the jsdom smoke harness after the badge-dot commit.
+- Source scan: confirmed the only remaining hardcoded hex colors are the
+  dark-sidebar ink ramp; every status tone routes through `var(--*)`.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | `.b-dot` present on every `.badge` render (dot+label) | ✅ |
+| 4 | Dot uses `currentColor` (follows semantic badge tone) | ✅ |
+| 5 | `.badge.warning` consumes `var(--amber)` — no bare hex | ✅ |
+| 6 | Priorities High/Medium/Low still map to danger/warning/info | ✅ |
+| 7 | No hardcoded status hex remains outside sidebar ink ramp | ✅ |
+
+---
+
 ## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
 
 | | |

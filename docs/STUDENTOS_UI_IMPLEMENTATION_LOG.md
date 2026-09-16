@@ -67,6 +67,36 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 7 — Badge & status refinement (dot + label)
+
+| | |
+|---|---|
+| **Commit** | `da847c6` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Badges / status pills / alerts |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- Status badges are now **dot + label**: every `badge()` instance renders a
+  small 6px `currentColor` dot ahead of the text, so success / warning /
+  danger / info states read at a glance from the accent dot even before the
+  pill shell registers.
+- Reduced pill weight: padding tightened `5px 11px` → `4px 10px`, semantic
+  border alphas softened (`.28–.30`), line-height tightened to `1.2`.
+- `.badge.warning` now consumes the `--amber` token instead of a bare hex
+  (#B96F13 is the same value — single token source for the amber family).
+- Source scan confirms the only remaining hardcoded hex tones are the
+  dark-sidebar ink ramp (`#CDD3E6`, `#76809B`, …) — intentional dark-surface
+  text, not status tones.
+
+### Product-contract preservation
+- `badge()` / `statusBadge()` / `priorityBadge()` signatures unchanged — every
+  call site renders identically apart from the added dot element. No renderer
+  or logic altered; alerts untouched this pass.
+
+---
+
 ## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
 
 | | |
