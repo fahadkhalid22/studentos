@@ -680,8 +680,8 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   .mobilebar{
     display:flex;gap:4px;align-items:center;justify-content:space-around;
     position:fixed;bottom:14px;left:12px;right:12px;z-index:12;
-    background:rgba(20,24,51,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-    border:1px solid rgba(255,255,255,.12);border-radius:22px;
+    background:rgba(23,27,46,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-xl);
     padding:8px 10px calc(8px + env(safe-area-inset-bottom));box-shadow:var(--shadow-lg);
   }
   .mobilebar button{
@@ -692,9 +692,9 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   .mobilebar button.active{background:rgba(91,91,214,.2);color:#fff}
   .mobilebar button.active .mbtn-ic{color:#A5B4FC}
   .modalback{align-items:flex-end;padding:0}
-  .modal{border-radius:22px 22px 0 0;max-width:none;max-height:90vh;animation:sheetIn var(--t-exp) var(--ease-out) both}
+  .modal{border-radius:var(--radius-lg) var(--radius-lg) 0 0;max-width:none;max-height:90vh;animation:sheetIn var(--t-exp) var(--ease-out) both}
   @keyframes sheetIn{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
-  .drawer{width:100%;border-radius:22px 0 0 0}
+  .drawer{width:100%;border-radius:var(--radius-lg) 0 0 0}
   .toolbar{align-items:stretch}
   .toolbar .field{width:100%}
   .toolbar-group{width:100%}
@@ -722,6 +722,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   .mobile-cards{display:grid;gap:12px}
   .tabs{margin-left:-14px;margin-right:-14px;padding-left:14px;padding-right:14px}
   .exam-pack-tabs{position:sticky;top:60px;background:var(--canvas);z-index:3;padding-top:4px}
+  .tabrail{top:60px}
   .topbar .search-label{display:none}
   .readiness-ring{width:150px;height:150px}
   .readiness-ring:after{width:104px;height:104px;font-size:26px}
