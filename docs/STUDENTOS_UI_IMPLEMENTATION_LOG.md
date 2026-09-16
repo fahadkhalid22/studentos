@@ -16,6 +16,32 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 5 — Topbar mobile search accessibility
+
+| | |
+|---|---|
+| **Commit** | `1ea662b` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Topbar ≤430px responsive behavior |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- The `@media(max-width:430px)` rule for `.topbar .search` previously set
+  `display:none`, removing command-search access for phone users entirely.
+  Replaced with an icon-only compact mode: the search pill shrinks to a
+  44×44 icon button (`.search-label` and `.k-chip` hidden, pill centered)
+  so the search affordance remains reachable as a tap target.
+- The rest of the topbar was already spec-conformant: solid `#fff`
+  background, 44px min-height, `--radius-sm`, 42px avatar at `border-radius:14px`,
+  `notif-dot` 6px, all interactive buttons carrying `cursor:pointer`.
+
+### Product-contract preservation
+- The search modal/command palette is unchanged; only the topbar trigger's
+  mobile sizing changed. No screen or navigation logic altered.
+
+---
+
 ## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
 
 | | |

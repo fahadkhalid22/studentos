@@ -6,6 +6,34 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 7 — Phase 4 Pass 5 topbar mobile search
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean; ≤430px search accessible |
+| **Commit** | `1ea662b` |
+
+### Method
+- Re-ran the jsdom smoke harness after the topbar mobile-search commit.
+- Source-level audit of the `@media(max-width:430px)` block to confirm
+  `.topbar .search` no longer sets `display:none`; instead the pill renders
+  as a 44×44 icon-only button.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | ≤430px `.topbar .search` is not `display:none` | ✅ |
+| 4 | ≤430px `.topbar .search` has a 44px hit target | ✅ |
+| 5 | `.search-label` and `.k-chip` hidden on ≤430px (icon-only mode) | ✅ |
+| 6 | Search modal still opens via the compact search button | ✅ |
+
+---
+
 ## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
 
 | | |
