@@ -266,13 +266,14 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 /* ---------- Badges / status ---------- */
 .badge{
   display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);
-  border-radius:var(--radius-pill);padding:5px 11px;font-size:12px;line-height:1.15;
+  border-radius:var(--radius-pill);padding:4px 10px;font-size:12px;line-height:1.2;
   white-space:nowrap;background:var(--surface);font-weight:600;color:var(--ink-2);
 }
-.badge.success{color:var(--emerald);border-color:rgba(23,135,93,.35);background:var(--emerald-soft)}
-.badge.warning{color:#B96F13;border-color:rgba(185,111,19,.4);background:var(--amber-soft)}
-.badge.danger{color:var(--coral);border-color:rgba(201,74,87,.35);background:var(--coral-soft)}
-.badge.info{color:var(--indigo);border-color:rgba(91,91,214,.3);background:var(--indigo-soft)}
+.badge .b-dot{width:6px;height:6px;border-radius:999px;background:currentColor;flex:none;opacity:.85}
+.badge.success{color:var(--emerald);border-color:rgba(23,135,93,.28);background:var(--emerald-soft)}
+.badge.warning{color:var(--amber);border-color:rgba(185,111,19,.3);background:var(--amber-soft)}
+.badge.danger{color:var(--coral);border-color:rgba(201,74,87,.28);background:var(--coral-soft)}
+.badge.info{color:var(--indigo);border-color:rgba(91,91,214,.24);background:var(--indigo-soft)}
 
 /* ---------- Alerts ---------- */
 .alert{border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;background:var(--surface);margin:14px 0;font-size:14.5px;display:flex;gap:10px;align-items:flex-start;line-height:1.5}
@@ -908,7 +909,7 @@ function exam(id){return state.exams.find(x=>x.id===id)||state.exams[0]}
 function assignment(id){return state.assignments.find(x=>x.id===id)||state.assignments[0]}
 function doc(id){return state.documents.find(x=>x.id===id)||state.documents[0]}
 function screenTitle(id){return byId[id]?.title||id}
-function badge(text,type='info'){return `<span class="badge ${type}">${esc(text)}</span>`}
+function badge(text,type='info'){return `<span class="badge ${type}"><i class="b-dot"></i>${esc(text)}</span>`}
 function statusBadge(text){const t=String(text).toLowerCase();return badge(text,t.includes('safe')||t.includes('ready')||t.includes('complete')||t.includes('present')||t==='active'?'success':t.includes('warning')||t.includes('processing')||t.includes('future')?'warning':t.includes('risk')||t.includes('overdue')||t.includes('failed')||t.includes('absent')||t.includes('unsupported')?'danger':'info')}
 function stat(label,value,delta=''){return `<div class="card stat"><div class="k">${esc(label)}</div><div class="v">${esc(value)}</div>${delta?`<div class="delta">${esc(delta)}</div>`:''}</div>`}
 function pageHead(title,subtitle='',crumb=''){return `${crumb?`<div class="crumb">${esc(crumb)}</div>`:''}<h1>${esc(title)}</h1>${subtitle?`<div class="subtitle">${subtitle}</div>`:''}`}
