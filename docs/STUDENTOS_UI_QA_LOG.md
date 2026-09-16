@@ -6,6 +6,39 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 19 — Phase 4 Pass 17 Exam Pack sticky nav + surface tokens
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes; source-level CSS/DOM audit; pre-redesign backup comparison |
+| **Date** | 2026-09-17 |
+| **Status** | ✅ Pass — sticky section nav restored, dead rule removed, pack surfaces tokenized |
+| **Commit** | `f861c13` |
+
+### Method
+- Re-ran the jsdom smoke harness after the Exam Pack commit
+  (`Routes to test: 82` / `Route failures: 0` / `Console errors: 0` → SMOKE PASS).
+- Compared `.exam-pack-tabs` across the redesign baseline, the pre-redesign backup
+  (`StudentOS_Clickable_Wireframe_backup_pre-redesign.html` — which pins at `top:60px`
+  behind the old 60px topbar), and the current build; confirmed the desktop sticky
+  rule had drifted into the `max-width:700px` media block, making the nav static on wide
+  viewports.
+- Confirmed `.pack-header .tabrail` is dead CSS by resolving `.pack-header` usages
+  (Planner, PREP-06) and finding no `.tabrail` descendant in either.
+- `grep` for stray Exam-Pack-surface hexes (`#fff` in `.ai-chip`/`.readiness-ring:after`)
+  returns zero matches after the commit.
+
+### Checklist
+| Check | Result |
+|---|---|
+| Navigate all 82 routes (jsdom) after commit | ✅ 0 failures |
+| `.exam-pack-tabs` applies at desktop (`top:88px`) and tablet (`top:72px`) | ✅ |
+| Dead `.pack-header .tabrail` rule removed | ✅ |
+| Exam Pack chip / readiness-ring surfaces honor `--surface` token | ✅ |
+| No product-logic, copy, or computed-value change | ✅ |
+
+---
+
 ## Checkpoint 18 — Phase 4 Pass 16 exam prep + ring primitive fix
 
 | | |

@@ -16,6 +16,38 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 17 — Exam Pack information design: sticky section nav restored + surface tokenization
+
+| | |
+|---|---|
+| **Commit** | `f861c13` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-17 |
+| **Scope** | Exam Pack full section (tab navigation, readiness ring, pack header chips) |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- **Restored desktop stickiness of the Exam Pack section nav.** `--topbar` is 72px
+  and `.tabrail` pins at 88px, but `.exam-pack-tabs` had lost its own rule during
+  the redesign — the sticky declaration was relocated into the
+  `@media(max-width:700px)` block, so the nav no longer pinned on desktop.
+  Reintroduced `.exam-pack-tabs{position:sticky;top:88px;background:var(--canvas);
+  z-index:4}` so it pins just below the topbar/tabrail band on desktop, and
+  repointed the 960px tablet rule to `.exam-pack-tabs{top:72px}`.
+- **Removed dead CSS.** `.pack-header .tabrail{top:72px}` could never match —
+  `.pack-header` appears only in the Planner and PREP-06, and neither contains a
+  `.tabrail` element (the Exam Pack tab nav is the standalone `.exam-pack-tabs`).
+- **Tokenization (Exam Pack scope):** `.readiness-ring:after` background `#fff →
+  var(--surface)`;
+- `.ai-chip` background `#fff` → `var(--surface)`.
+
+### Product-contract preservation
+- No screen count, route, product behavior, label, state, or computed-value change.
+- Pure information design / token normalization inside the Exam Pack family;
+  remaining `color:#fff` values are text-on-dark and stay white by design.
+
+---
+
 ## Phase 4 Pass 16 — Prepare Me for Exam / Exam Pack + ring primitive fix
 
 | | |
