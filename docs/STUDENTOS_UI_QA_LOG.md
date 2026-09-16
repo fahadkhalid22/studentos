@@ -6,6 +6,46 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 22 — Phase 4 Pass 20 accessibility (§23): segmented active-state semantics
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes; full-file §23 audit by source inspection |
+| **Date** | 2026-09-17 |
+| **Status** | ✅ Pass — segmented controls now announce selection via `role=radio`/`aria-checked`; tabs/toggles/focus lifecycle verified compliant |
+| **Commit** | `820f900` |
+
+### Method
+- Re-ran the jsdom smoke harness after the Pass 20 commit
+  (`Routes to test: 82` / `Route failures: 0` / `Console errors: 0` → SMOKE PASS).
+- Grep-verified every §23-in-scope structure: `tabs()` emits
+  `role="tablist"`/`role="tab"`/`aria-selected`; toggle rows are native
+  `<input type="checkbox">` under `<label>`; `openModal`/`openDrawer` set
+  `lastOverlayFocus` and `closeModal`/`closeDrawer` restore it; the global
+  `trapOverlayFocus` wraps Tab only while an overlay is open; Esc (line 1310)
+  closes modal + drawer; toast/alert/error carry `role="status"`/`role="alert"`;
+  icon-only buttons have `aria-label`; `prefers-reduced-motion` present.
+- The single genuine color-only-status gap was `segmented()` (line 926) — no
+  non-visual selected state. Fixed by adding `role="radiogroup"` on the wrapper
+  and `role="radio"` + `aria-checked` on each option.
+- Confirmed `aria-selected`/`aria-checked` re-derive on every click because each
+  render re-invokes the helper with the new active value (no stale static
+  attribute).
+  Open item: exact pixel rendering / focus order in a real browser could not be
+  captured (no headless renderer); deferred to the screenshot stage.
+
+### Checklist
+| Check | Result |
+|---|---|
+| Navigate all 82 routes (jsdom) after commit | ✅ 0 failures |
+| Segmented selected state announced (non-color) | ✅ `role=radio` + `aria-checked` |
+| Tabs rails expose tablist/tab/aria-selected | ✅ pre-existing, verified |
+| Toggle rows decode as native checkboxes | ✅ pre-existing, verified |
+| Modal/drawer focus trap + restore + Esc | ✅ pre-existing, verified |
+| No product-logic, copy, or computed-value change | ✅ |
+
+---
+
 ## Checkpoint 21 — Phase 4 Pass 19 responsive dock + mobile tab-rail offset
 
 | | |

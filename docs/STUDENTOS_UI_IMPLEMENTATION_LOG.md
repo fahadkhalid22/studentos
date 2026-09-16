@@ -16,6 +16,49 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 20 — Accessibility (§23): non-color active-state semantics for segmented controls
+
+| | |
+|---|---|
+| **Commit** | `820f900` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-17 |
+| **Scope** | Bible §23 audit of the whole file by source inspection; the one genuine status-by-color gap (segmented selects) fixed |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### §23 audit outcome (verified by source inspection, no visual change)
+- **Segmented controls — fixed.** `segmented()` (helper at line 926) conveyed the
+  active option only via the `.active` class and fill color. The bible forbids
+  conveying status through color alone. Now emits `role="radiogroup"` on the
+  wrapper and `role="radio"` + `aria-checked` per option; the selection is
+  announced regardless of paint, and the attribute re-derives on every re-render
+  (the helper is re-invoked with the new `active` on each click).
+- **Tabs rails — already compliant.** `tabs()` already emits `role="tablist"` /
+  `role="tab"` / `aria-selected`, with `.active` as a visual reinforcement only.
+  Exam-pack and Course rails both route through this helper.
+- **Toggle / checkbox rows — already compliant.** Switches are native
+  `<input type="checkbox">` inside `<label>` (styled only via `::after` knob),
+  so on/off is a native checkbox state, not color. No `role="switch"` wrapper
+  needed.
+- **Focus lifecycle — already compliant.** `openModal`/`openDrawer` move focus in
+  and record `lastOverlayFocus`; `closeModal`/`closeDrawer` restore it; the
+  global `trapOverlayFocus` wraps Tab at both ends of the open overlay (and only
+  while an overlay is open); Esc closes both (line 1310); the command palette
+  rides `openModal`, so it inherits the trap.
+- **Status messages — already compliant.** Toast `role="status" aria-live="polite"`,
+  form `alertBox` `role="status"`, field error `role="alert"`, `labels` carry
+  `for`; icon-only buttons have `aria-label`; onboarding stepper has
+  `aria-label`. `prefers-reduced-motion` remains present.
+
+### What changed
+- `segmented()` buttons gained `role="radio"` + `aria-checked`; wrapper gained
+  `role="radiogroup"`. One helper line; no markup, CSS, route, or product change.
+
+### Product-contract preservation
+- No screen count, route, product behavior, label, state, or computed-value change.
+
+---
+
 ## Phase 4 Pass 19 — Responsive: dock tokenization, mobile tab-rail offset, viewport audit
 
 | | |
