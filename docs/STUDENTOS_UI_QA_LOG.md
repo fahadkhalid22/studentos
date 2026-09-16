@@ -203,6 +203,33 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 14 — Phase 4 Pass 12 planner/exam surface polish
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean |
+| **Commit** | `74dfb49` |
+
+### Method
+- Re-ran the jsdom smoke harness after the exam-meta chip commit.
+- Source audit of planner/assignment/exam renderers for non-token color or
+  surface residue — none found.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | EXAM-01 meta values render as surface-soft pill chips | ✅ |
+| 4 | All four meta values (date/time/location/days) preserved visually | ✅ |
+| 5 | Planner month/week/list surfaces remain flat token-based | ✅ |
+| 6 | Assignment + exam forms use the shared 12px form system | ✅ |
+
+---
+
 ## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
 
 | | |

@@ -212,6 +212,33 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 12 — Planner / Assignments / Exams surface polish
+
+| | |
+|---|---|
+| **Commit** | `74dfb49` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Planner, Assignments, Exams |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- Audited the Planner (month/week/list), assignment list/detail/forms, and
+  exam list/detail/forms renderers — all logic surfaces already consume the
+  spec tokens (flat `.pack-header`, `.calendar` cells, `.agenda-item`,
+  `.segmented`, tables, forms).
+- Refined the one unfinished surface: **EXAM-01 card meta rows** (date, time,
+  location, days-remaining) were four bare ink-2 text spans. They now render
+  as quiet `--surface-soft` pill chips with a hairline `--border`, consistent
+  with the badge / `.cal-event` chip language — the exam card scans at a
+  glance instead of reading as a plain text dump.
+
+### Product-contract preservation
+- Pure CSS; the four meta values and their order are unchanged, no logic
+  touched. Planner filters, view switching, and event drawers untouched.
+
+---
+
 ## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
 
 | | |
