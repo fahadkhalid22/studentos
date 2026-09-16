@@ -628,7 +628,10 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 .tabs.tabrail{border-bottom:none;margin-bottom:0}
 
 /* ---------- Signature: Search pill topbar (mobile) ---------- */
-@media(max-width:430px){.topbar .search{display:none}}
+@media(max-width:430px){
+  .topbar .search{width:44px;min-width:44px;padding:0 0 0 1px;justify-content:center;flex:none}
+  .topbar .search .search-label,.topbar .search .k-chip{display:none}
+}
 
 /* ---------- Responsive: desktop → tablet ---------- */
 @media(max-width:1180px){
