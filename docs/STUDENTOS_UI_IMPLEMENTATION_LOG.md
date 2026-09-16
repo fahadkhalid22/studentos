@@ -125,6 +125,37 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 9 — Chart & data-viz palette normalization
+
+| | |
+|---|---|
+| **Commit** | `c2a5a85` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Charts / progress / rings / donut |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors; zero Tailwind hex residues |
+
+### What changed
+- Removed the last non-app color fingerprints from data visualization:
+  - GPA trend line charts (GPA-03 and ANA-01) stroked their series and
+    data points with `#475569` (Tailwind slate-600) → spec indigo `#5B5BD6`.
+    SVG presentation attributes can't resolve `var()`, so the series uses the
+    concrete indigo hex; gridlines keep the neutral `#d9dde3`.
+  - Exam-pack **overview** readiness ring used `#475569`/`#e5e7eb`
+    (Tailwind gray-200) → now `var(--indigo)` with the `#E9EBF5` track,
+    byte-consistent with the PREP-06 pack-header ring.
+- Re-scanned every gradient in the file: the only remaining `linear-gradient`
+  is the `.skeleton` shimmer (a functional loading animation); every
+  `conic-gradient` is sanctioned data-viz (GPA/attendance rings, readiness
+  rings, donut) using `var(--indigo)` plus the `#EDEFF6` / `#E9EBF5` neutral
+  tracks. Progress bars and bar charts are flat fills.
+
+### Product-contract preservation
+- Zero logic change — purely stroke/fill colors inside existing SVG and
+  conic-gradient markup. Chart coordinates, labels, and semantics untouched.
+
+---
+
 ## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
 
 | | |

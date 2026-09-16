@@ -117,6 +117,37 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 11 — Phase 4 Pass 9 data-viz palette normalization
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean; chart series on the app palette |
+| **Commit** | `c2a5a85` |
+
+### Method
+- Re-ran the jsdom smoke harness after the chart-palette commit.
+- Grep scan for Tailwind hex residues (`#475569`, `#e5e7eb`) — zero matches.
+- Re-verified every `conic-gradient`/`linear-gradient` use against the
+  sanctioned list (data-viz rings/donut + skeleton shimmer).
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | GPA-03 line chart series uses indigo new `#5B5BD6` | ✅ |
+| 4 | ANA-01 line chart series uses indigo `#5B5BD6` | ✅ |
+| 5 | Exam-pack overview readiness ring = `var(--indigo)` + `#E9EBF5` | ✅ |
+| 6 | Zero `#475569` / `#e5e7eb` (Tailwind) in the file | ✅ |
+| 7 | Every `conic-gradient` uses app tokens/tracks only | ✅ |
+| 8 | Only `linear-gradient` is the skeleton shimmer (functional) | ✅ |
+| 9 | Progress bars & bar charts remain flat fills | ✅ |
+
+---
+
 ## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
 
 | | |
