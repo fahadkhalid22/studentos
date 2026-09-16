@@ -453,7 +453,7 @@ tbody tr:hover{background:var(--surface-soft)}
 /* ---------- Readiness ---------- */
 .readiness{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;align-items:center}
 .readiness-ring{width:168px;height:168px;border-radius:50%;display:grid;place-items:center;position:relative}
-.readiness-ring:after{content:attr(data-pct);width:118px;height:118px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:30px;font-weight:700;font-family:var(--font-display)}
+.readiness-ring:after{content:attr(data-pct);width:118px;height:118px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-size:30px;font-weight:700;font-family:var(--font-display)}
 
 /* ---------- Status line ---------- */
 .status-line{display:flex;align-items:center;gap:9px}
@@ -613,7 +613,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 .ai-hero>*{position:relative}
 .ai-hero .hero-side-label{color:var(--ink)}
 .ai-hero .hero-side-sub{color:var(--ink-2)}
-.ai-chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;color:var(--ink)}
+.ai-chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;color:var(--ink)}
 
 /* ---------- Signature: Exam pack ---------- */
 .pack-header{border-radius:var(--radius-xl);padding:26px 28px;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
@@ -623,6 +623,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 .tabrail button:hover{background:rgba(255,255,255,.7);color:var(--ink)}
 .tabrail button.active{background:var(--indigo);color:#fff}
 .tabs.tabrail{border-bottom:none;margin-bottom:0}
+.exam-pack-tabs{position:sticky;top:88px;background:var(--canvas);z-index:4;padding-top:4px}
 
 /* ---------- Signature: Search pill topbar (mobile) ---------- */
 @media(max-width:430px){
@@ -655,7 +656,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   .auth-aside{display:none}
   .readiness{grid-template-columns:1fr}
   .readiness-ring{margin:auto}
-  .pack-header .tabrail{top:72px}
+  .exam-pack-tabs{top:72px}
 }
 
 /* ---------- Responsive: tablet → mobile ---------- */
