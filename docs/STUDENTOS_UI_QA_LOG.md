@@ -6,6 +6,48 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 18 — Phase 4 Pass 16 exam prep + ring primitive fix
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes; source-level CSS/DOM audit; pre-redesign backup comparison |
+| **Date** | 2026-09-17 |
+| **Status** | ✅ Pass — all 82 routes render clean; ring-arc occlusion defect fixed |
+| **Commit** | `009609c` |
+
+### Method
+- Re-ran the jsdom smoke harness after the ring and radius commits.
+- Reported the defect by comparing current `.ring` markup with the
+  pre-redesign backup (`StudentOS_Clickable_Wireframe_backup_pre-redesign.html`),
+  which contains no `.ring` / `.ring-inner` system — confirming the primitive
+  and its `inset:0` rule were introduced during this redesign.
+- Cross-checked intent against `StudentOS_Visual_Design_Bible_v1.md`
+  ("premium radial ring", "readiness ring", "Rings + comparison bars"), which
+  requires visible progress arcs.
+- Confirmed no stray track hex remains: `grep` for `#EDEFF6`, `#E9EBF5`,
+  `#EBEDF3`, `#E9EBF2` returns zero matches.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | `.ring-inner` no longer covers the parent conic-gradient (`inset:15%`) | ✅ |
+| 4 | `ringHtml()` trackColor defaults to `var(--border)`; callers unaffected | ✅ |
+| 5 | Dark-hero rings (ATT-01, GPA-01) pass a dimmer track than their arc | ✅ |
+| 6 | Exam Pack readiness rings use `var(--border)`, not `#E9EBF5` | ✅ |
+| 7 | Zero ring/donut track hexes file-wide | ✅ |
+| 8 | Exam-prep credit logic, toggles and readiness math unchanged | ✅ |
+
+### Open item
+- The ring-arc fix is CSS-correct by construction, but no headless browser
+  (puppeteer/playwright) is installed in this environment, so it could not be
+  confirmed by pixel render — only by CSS reasoning, backup diff, and spec
+  cross-check. Confirm visually at the screenshot stage.
+
+---
+
 ## Checkpoint 17 — Phase 4 Pass 15 summary/MCQ/quiz/flash tracks
 
 | | |

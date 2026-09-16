@@ -16,6 +16,59 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 16 — Prepare Me for Exam / Exam Pack + ring primitive fix
+
+| | |
+|---|---|
+| **Commit** | `009609c` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-17 |
+| **Scope** | Exam Prep signature flow (PREP-01–06) and the shared radial-ring primitive |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+
+**Defect found and fixed — ring arcs were invisible.**
+Auditing the Exam Pack's readiness visualization surfaced a real bug in the
+shared `.ring` primitive introduced with the Phase 0–2 design foundation.
+`.ring-inner` was positioned `inset:0`, so its opaque `var(--surface)`
+circle covered the entire `.ring` box and fully occluded the
+`conic-gradient` arc that `ringHtml()` paints on the parent. Every ring
+(DASH-01, ATT-01, GPA-01, analytics) therefore rendered as a plain white
+disc with no visible progress arc — contradicting the Visual Design Bible's
+"premium radial ring" / "readiness ring" direction and rendering the
+earlier hero-arc contrast work moot (an arc that is never painted cannot
+have contrast).
+
+- `.ring-inner` now uses `inset:15%`, reproducing the `.readiness-ring:after`
+  proportion (25px inset on 168px ≈ 15%) so rings render as intended donuts.
+- `ringHtml()` gained an optional `trackColor` (default `var(--border)`).
+  The two dark-hero call sites (ATT-01, GPA-01) pass
+  `rgba(255,255,255,.12)`, keeping the arc `rgba(255,255,255,.25)` the
+  brightest element on the deep `--surface-focus` band.
+- `.donut` and both Exam Pack readiness rings dropped their stray
+  `#EDEFF6` / `#E9EBF5` tracks for `var(--border)`, unifying the ring/donut
+  track family with the `.progress` track tokenized in Pass 15.
+
+**Exam Pack surface audit (PREP-01–06).**
+The stepper, `.ai-hero`, `.pack-header`, `.topic`/`status-line` checklist,
+`.question-card` / `.answer-panel` (short, long and viva questions), the
+credit-confirmation table, and the stage-list all sit on spec tokens. Two
+hardcoded radii were tokenized:
+- `.ic-box` 14px → `var(--radius-sm)`
+- `.answer-panel` 10px → `var(--radius-xs)`
+- the 88px AI-01 / PREP-01 hero medallion 22px → `var(--radius-xl)`
+  (matching the `.ai-hero` container radius)
+
+### Product-contract preservation
+- Presentation-only. No data, calculation, scoring, or navigation logic
+  changed. Exam-prep credit logic (`consumePrepCredits`, 3-credit cost),
+  section toggles, revision/task state, and the deterministic readiness
+  progress (`examPackProgress`) are untouched. Stage progression still
+  shows stages without inventing a backend percentage.
+
+---
+
 ## Phase 4 Pass 15 — Summary / MCQ / Quiz / Flashcards neutral tracks
 
 | | |
