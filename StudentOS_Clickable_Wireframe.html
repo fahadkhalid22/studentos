@@ -327,7 +327,7 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 .pill.selected{background:var(--indigo-soft);color:var(--indigo);border-color:var(--indigo);box-shadow:var(--shadow-focus)}
 
 /* ---------- Progress ---------- */
-.progress{height:8px;background:#EBEDF3;border-radius:999px;overflow:hidden}
+.progress{height:8px;background:var(--border);border-radius:999px;overflow:hidden}
 .progress>span{display:block;height:100%;background:var(--indigo);border-radius:999px;transition:width var(--t-exp) var(--ease-out);min-width:0}
 .progress.lg{height:12px}
 .progress.emerald>span{background:var(--emerald)}
@@ -427,7 +427,7 @@ tbody tr:hover{background:var(--surface-soft)}
 .empty .icon{font-size:30px;margin-bottom:10px;color:var(--indigo)}
 .empty p{max-width:520px;color:var(--ink-2)}
 .empty h2{font-size:20px}
-.skeleton{position:relative;overflow:hidden;background:#E9EBF2;border-radius:12px;min-height:16px}
+.skeleton{position:relative;overflow:hidden;background:var(--border);border-radius:12px;min-height:16px}
 .skeleton:after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);animation:shimmer 1.3s infinite}
 @keyframes shimmer{to{transform:translateX(100%)}}
 .skeleton.line{height:14px;margin:10px 0}.skeleton.block{height:96px}
