@@ -184,6 +184,34 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 11 — COURSE / ATT / GPA hero-ring arc unification
+
+| | |
+|---|---|
+| **Commit** | `3083f54` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Courses / Attendance / GPA hero bands |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- Audited COURSE-04, ATT-01, GPA-01, ATT-02/03, GPA-02/03 for token and
+  surface consistency. All tables, forms, badges, rings, and KPI rows were
+  already spec-clean (share `--radius`, `--border`, spec rgba channels).
+- Found one conflicting hero treatment: DASH-01's GPA medallion arc uses
+  `rgba(255,255,255,.25)` for legibility on the dark `#141833` band, but
+  ATT-01 and GPA-01 passed `var(--indigo)` to the same dark surface —
+  producing a barely-visible indigo arc (≈3.2:1) that also broke the arc
+  vocabulary. Both now use the identical white-alpha arc as DASH-01
+  (≈5.2:1) so the three dark-hero rings render as one family.
+
+### Product-contract preservation
+- Series values, ring labels, and layout unchanged; only the ring arc's
+  stroke color passed to the existing `ringHtml` helper changed. Attendance
+  %, GPA, and CGPA remain computed by the deterministic product helpers.
+
+---
+
 ## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
 
 | | |

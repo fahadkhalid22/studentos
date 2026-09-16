@@ -176,6 +176,33 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 13 — Phase 4 Pass 11 hero-ring arc unification
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean |
+| **Commit** | `3083f54` |
+
+### Method
+- Re-ran the jsdom smoke harness after the ring-arc commit.
+- Source audit of the three dark-hero ring call sites (DASH-01, ATT-01,
+  GPA-01) to confirm a single arc stroke vocabulary.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | DASH-01 / ATT-01 / GPA-01 hero rings share the same arc stroke | ✅ |
+| 4 | Attendance value still rendered via `attendanceSummary` helper | ✅ |
+| 5 | Semester GPA still rendered via `semesterGpa` helper | ✅ |
+| 6 | COURSE-04 tabrail + tables unchanged | ✅ |
+
+---
+
 ## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
 
 | | |
