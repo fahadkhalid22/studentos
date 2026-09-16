@@ -112,6 +112,29 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 4 — Sidebar active treatment refinement
+
+| | |
+|---|---|
+| **Commit** | `6165bca` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Sidebar nav interactions |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- Nav-item radius `13px` → `11px` (spec §24 range 10–12px).
+- Active indicator: the 6px round indigo dot is replaced with a subtle
+  3px indigo accent rail running the height of the active pill at its
+  left edge; pill baseline already carries the soft indigo fill.
+- Collapsed 84px rail still hides the indicator (`display:none`) while
+  preserving the active capsule.
+
+### Product-contract preservation
+- No navigation or label change; purely the active-state visual.
+
+---
+
 ## Phase 3 — Premium signature experiences (ten screens)
 
 | | |

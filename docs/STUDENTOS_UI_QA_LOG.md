@@ -117,6 +117,27 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 6 — Phase 4 Pass 4 sidebar refinement
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean |
+| **Commit** | `6165bca` |
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | `.navbtn` radius is 11px | ✅ |
+| 4 | Active indicator is a left accent rail (3px) — no round dot | ✅ |
+| 5 | Collapsed-rail media query still hides the indicator safely | ✅ |
+
+---
+
 ## Checkpoint 2 — Phase 3 signature screens
 
 | | |
