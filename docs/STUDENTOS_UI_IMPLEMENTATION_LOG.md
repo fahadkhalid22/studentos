@@ -84,6 +84,34 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 3 — Icon unification: AI Study on the brain glyph
+
+| | |
+|---|---|
+| **Commit** | `69d8d2e` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Iconography — every AI Study surface, sprite cleanup |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors; zero `spark` references remain in the file |
+
+### What changed
+- `brain` glyph now used for every AI Study entry point: mobile dock,
+  sidebar nav, command-palette footer ("Powered by AI Study"), Quick
+  Actions "Prepare Me for Exam", "Open AI Study" search suggestion, and
+  the PREP-01 hero chip. No `spark` glyph reaches a user-visible surface.
+- PREP-01 hero icon container normalized from `ic-box violet glow` to the
+  flat `ic-box indigo` used across AI-01/EXAM cards.
+- `spark` path removed from the icon sprite; `icon()` fallback re-pointed
+  at the neutral `plus` glyph (no caller renders an unnamed icon today).
+- QUICK_ACTIONS color slots aligned to non-retired token names
+  (`cyan`→`blue`, `violet`→`indigo`).
+
+### Product-contract preservation
+- Pure presentation; navigation targets, labels and handlers unchanged.
+- `button.ai` class still exercised only at PREP-01 — consolidated away in Pass 6.
+
+---
+
 ## Phase 3 — Premium signature experiences (ten screens)
 
 | | |

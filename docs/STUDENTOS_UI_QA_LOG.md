@@ -82,6 +82,41 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 5 — Phase 4 Pass 3 icon unification
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean; zero `spark` glyphs remain |
+| **Commit** | `69d8d2e` |
+
+### Method
+- Re-ran the jsdom smoke harness after the icon-unification commit.
+- Full-file source search for the AI spark fingerprint (`spark`, `#i-spark`,
+  `icon('spark')`) — expected zero matches, and zero found.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | Zero `spark` references in the file (incl. sprite path + `icon()` fallback) | ✅ |
+| 4 | Mobile dock AI Study button uses `#i-brain` | ✅ |
+| 5 | Sidebar nav AI Study uses `brain` | ✅ |
+| 6 | Command palette footer uses `brain` | ✅ |
+| 7 | Quick Actions "Prepare Me for Exam" uses `brain` | ✅ |
+| 8 | "Open AI Study" search suggestion uses `brain` | ✅ |
+| 9 | PREP-01 hero chip uses `brain`; icon box is flat `indigo` (no glow) | ✅ |
+| 10 | `icon()` fallback points at neutral `plus` (never rendered) | ✅ |
+
+### Open items (scheduled)
+- **Pass 6**: retire the `.ai` button class (`button.ai` remains only in the
+  PREP-01 upload CTA); form-radius refinements.
+
+---
+
 ## Checkpoint 2 — Phase 3 signature screens
 
 | | |
