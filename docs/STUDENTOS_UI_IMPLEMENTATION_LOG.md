@@ -42,6 +42,31 @@ or quiz scores.
 
 ---
 
+## Phase 4 Pass 6 — Button consolidation: `.ai` retired
+
+| | |
+|---|---|
+| **Commit** | `2acd7d2` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-16 |
+| **Scope** | Buttons / forms |
+| **Verified** | jsdom smoke test navigates all 82 routes with 0 thrown errors, 0 console/jsdom errors |
+
+### What changed
+- Removed the `.ai` button CSS class, which was a byte-for-byte duplicate of
+  `.primary` (indigo fill, white text, `:hover` indigo-hover).
+- Re-pointed the last consumer — PREP-01 "Upload Study Material" CTA — at
+  `class="primary"`. Zero `button.ai` / `class="ai"` references remain.
+- Form radii audited for alignment: `.field` inputs, `select`, `textarea`,
+  and base buttons all consume `--radius-sm` (12px), so no radius change was
+  needed.
+
+### Product-contract preservation
+- The PREP-01 upload CTA keeps its exact navigation target (`go('DOC-01')`)
+  and label; only its class changed. No renderer or logic altered.
+
+---
+
 ## Phase 4 Pass 1 — Remove AI visual fingerprints (neon glow / gradients)
 
 | | |

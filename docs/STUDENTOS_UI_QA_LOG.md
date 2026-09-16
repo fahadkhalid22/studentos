@@ -34,6 +34,32 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 8 — Phase 4 Pass 6 button consolidation
+
+| | |
+|---|---|
+| **Evidence** | Headless DOM smoke test (`node` + jsdom) against the live prototype bytes |
+| **Date** | 2026-09-16 |
+| **Status** | ✅ Pass — all 82 routes render clean; single primary-button implementation |
+| **Commit** | `2acd7d2` |
+
+### Method
+- Re-ran the jsdom smoke harness after the `.ai` retirement commit.
+- Full-file search for `button.ai` and `class="ai"` — zero matches.
+
+### Checklist
+
+| # | Check | Result |
+|---|---|---|
+| 1 | All 82 registered routes navigate without throwing | ✅ |
+| 2 | Zero console / zero jsdom runtime errors | ✅ |
+| 3 | Zero `button.ai` CSS rules | ✅ |
+| 4 | Zero `class="ai"` usages (PREP-01 upload CTA → `.primary`) | ✅ |
+| 5 | PREP-01 upload CTA still navigates `go('DOC-01')` | ✅ |
+| 6 | Form inputs / buttons share `--radius-sm` (12px) | ✅ |
+
+---
+
 ## Checkpoint 3 — Phase 4 Pass 1 fingerprint removal
 
 | | |
