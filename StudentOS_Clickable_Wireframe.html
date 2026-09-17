@@ -190,6 +190,9 @@ b{font-weight:600}
 .notif-btn{position:relative}
 .notif-dot{position:absolute;top:9px;right:9px;width:6px;height:6px;border-radius:var(--radius-pill);background:var(--coral);border:2px solid var(--surface)}
 
+/* Floating dock — phones only; hidden above the ≤700 layout so it never leaks on desktop/tablet */
+.mobilebar{display:none}
+
 /* ---------- Content ---------- */
 .content{padding:28px var(--content-pad) 56px;max-width:1440px;margin:auto;width:100%;flex:1}
 .content>*{animation:enter var(--t-std) var(--ease-out) both}
@@ -260,6 +263,7 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 
 /* ---------- Actions ---------- */
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.actions button{max-width:100%}
 .actions.end{justify-content:flex-end}.actions.between{justify-content:space-between}.actions.flush{margin:0}.actions.center{justify-content:center}
 .inline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.inline.nowrap{flex-wrap:nowrap}
 
@@ -298,10 +302,10 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 /* ---------- Tabs ---------- */
 .tabs{
   display:flex;gap:4px;border-bottom:1px solid var(--border);margin:0 0 20px;
-  overflow-x:auto;scrollbar-width:thin;padding-bottom:0;
+  overflow-x:auto;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;padding-bottom:0;
 }
 .tabs button{
-  border:0;border-radius:12px 12px 0 0;background:transparent;white-space:nowrap;
+  border:0;border-radius:12px 12px 0 0;background:transparent;white-space:nowrap;flex:0 0 auto;
   min-height:46px;font-weight:600;color:var(--ink-2);padding:0 16px;position:relative;
 }
 .tabs button:hover{color:var(--ink);background:transparent}
@@ -316,7 +320,7 @@ select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:u
 
 /* ---------- Stepper ---------- */
 .stepper{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 22px}
-.step{border:1px solid var(--border);padding:8px 14px;border-radius:var(--radius-pill);font-size:12.5px;background:var(--surface);color:var(--ink-2);font-weight:600}
+.step{border:1px solid var(--border);padding:8px 14px;border-radius:var(--radius-pill);font-size:12.5px;background:var(--surface);color:var(--ink-2);font-weight:600;white-space:nowrap;flex:0 0 auto}
 .step.active{background:var(--indigo);color:var(--surface);border-color:transparent}
 .step.complete{background:var(--emerald-soft);border-color:rgba(23,135,93,.35);color:var(--emerald)}
 
@@ -382,10 +386,10 @@ tbody tr:hover{background:var(--surface-soft)}
 /* ---------- Toast ---------- */
 .toast{
   position:fixed;right:20px;bottom:20px;background:var(--dark);color:var(--surface);padding:13px 18px;border-radius:var(--radius-sm);
-  opacity:0;transform:translateY(10px);transition:opacity var(--t-std) var(--ease-out),transform var(--t-std) var(--ease-out);
+  opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity var(--t-std) var(--ease-out),transform var(--t-std) var(--ease-out),visibility 0s linear var(--t-std);
   z-index:30;max-width:360px;pointer-events:none;font-size:14px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;
 }
-.toast.show{opacity:1;transform:none}
+.toast.show{opacity:1;visibility:visible;transform:none;transition-delay:0s}
 .toast::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--emerald)}
 
 /* ---------- Modal ---------- */
@@ -607,6 +611,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 .hero-side-sub{color:#9AA3C2;font-size:12.5px;margin-top:2px}
 .hero,.ai-hero,.pack-header,.focus-dark{margin:0 0 22px}
 .readiness-card{display:flex;align-items:center;gap:20px}
+.hero-grid>*{min-width:0}
 
 /* ---------- Signature: AI study ---------- */
 .ai-hero{background:var(--surface-ai);border:1px solid rgba(91,91,214,.15);border-radius:var(--radius-xl);padding:26px 28px;position:relative;overflow:hidden}
@@ -623,13 +628,7 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
 .tabrail button:hover{background:rgba(255,255,255,.7);color:var(--ink)}
 .tabrail button.active{background:var(--indigo);color:var(--surface)}
 .tabs.tabrail{border-bottom:none;margin-bottom:0}
-.exam-pack-tabs{position:sticky;top:88px;background:var(--canvas);z-index:4;padding-top:4px}
-
-/* ---------- Signature: Search pill topbar (mobile) ---------- */
-@media(max-width:430px){
-  .topbar .search{width:44px;min-width:44px;padding:0 0 0 1px;justify-content:center;flex:none}
-  .topbar .search .search-label,.topbar .search .k-chip{display:none}
-}
+.exam-pack-tabs{position:sticky;top:88px;background:var(--canvas);z-index:4;padding-top:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
 
 /* ---------- Responsive: desktop → tablet ---------- */
 @media(max-width:1180px){
@@ -637,9 +636,14 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   .span-3{grid-column:span 6}
   .kpi-row{grid-template-columns:repeat(2,minmax(0,1fr))}
   .course-row{grid-template-columns:1fr 1fr 1fr}.course-row .row-actions{grid-column:1/-1}
+  /* Cap the search pill so long page titles still fit (e.g. "Attendance Overview") */
+  .topbar .search{width:min(300px,34vw)}
 }
 @media(max-width:900px){
   :root{--sidebar:84px}
+  .topbar .search{width:44px;min-width:44px;padding:0 0 0 1px;justify-content:center;flex:none}
+  .topbar .search .search-label,.topbar .search .k-chip{display:none}
+  .topbar .avatar{display:none}
   .brand{justify-content:center;padding-left:0;padding-right:0;gap:0}
   .brand .brand-text{display:none}
   .logo-mark{width:38px;height:38px;border-radius:var(--radius-sm)}
@@ -657,6 +661,10 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   .readiness{grid-template-columns:1fr}
   .readiness-ring{margin:auto}
   .exam-pack-tabs{top:72px}
+  /* G-5: tables with card variants switch to mobile-cards from tablet down, so
+     full table information is never lost to a horizontal-scroll table on 768 */
+  .table-wrap.desktop-only{display:none!important}
+  .mobile-cards{display:grid;gap:12px}
 }
 
 /* ---------- Responsive: tablet → mobile ---------- */
@@ -665,9 +673,13 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   .hero-side{justify-content:flex-start}
   .app{display:block}
   .sidebar{display:none}
-  .topbar{height:60px;padding:0 12px}
-  .topbar .title{font-size:16px}
-  .content{padding:16px 14px 100px}
+  .topbar{height:60px;padding:0 10px;gap:10px}
+  .topbar .title{font-size:15.5px}
+  .content{padding:16px 14px calc(130px + env(safe-area-inset-bottom))}
+  /* Meaningful mobile copy grows naturally; vertical space is preferable to lost words. */
+  .hero h2,.hero p,.ai-hero h2,.ai-hero p,.focus-dark h2,.focus-dark p,.pack-header h2,.pack-header p{
+    max-width:100%;height:auto;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:break-word;
+  }
   h1{font-size:24px;line-height:1.22}
   h2{font-size:20px}
   .grid{display:block}
@@ -718,8 +730,6 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   .planner-mobile-agenda{display:block!important}
   .desktop-only{display:none!important}
   .mobile-only{display:block!important}
-  .table-wrap.desktop-only{display:none!important}
-  .mobile-cards{display:grid;gap:12px}
   .tabs{margin-left:-14px;margin-right:-14px;padding-left:14px;padding-right:14px}
   .exam-pack-tabs{position:sticky;top:60px;background:var(--canvas);z-index:3;padding-top:4px}
   .tabrail{top:60px}
@@ -731,11 +741,29 @@ body.shell-auth .main,body.shell-onboarding .main{min-height:100vh}
   .actions.mobile-stack button{width:100%}
   .hero{padding:22px 20px;border-radius:var(--radius-lg)}
   .readiness-card{flex-direction:column;align-items:flex-start}
-  .toast{animation:toastIn var(--t-std) var(--ease-out) both;transition:none}
+  .toast{transition:none}
   @keyframes toastIn{from{transform:translateY(12px);opacity:0}to{transform:none;opacity:1}}
   .toast.show{animation:toastIn var(--t-std) var(--ease-out) both}
 }
-@media(max-width:430px){.kpi-row{grid-template-columns:1fr}.mobile-card .metrics{grid-template-columns:1fr 1fr}.auth-mark{margin-bottom:20px}}
+@media(max-width:430px){
+  .kpi-row{grid-template-columns:1fr}
+  .mobile-card .metrics{grid-template-columns:1fr 1fr}
+  .auth-mark{margin-bottom:20px}
+  .topbar{gap:8px}
+  .topbar .title{font-size:15.5px;line-height:1.2;white-space:normal;overflow:visible;text-overflow:clip}
+  .topbar .search{width:40px;min-width:40px}
+  .actions button,.hero-cta button{white-space:normal}
+  .planner-nav{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .planner-nav .planner-period{grid-column:1/-1;grid-row:1;text-align:center}
+  .planner-nav button{width:100%;padding-left:10px;padding-right:10px}
+  .planner-view-controls{display:grid;grid-template-columns:1fr;width:100%}
+  .planner-view-controls>.segmented,.planner-view-controls>button{width:100%}
+  .planner-view-controls>.segmented{flex-wrap:nowrap}
+  .planner-view-controls>.segmented button{min-width:0;padding-left:10px;padding-right:10px}
+  .planner-filter-row .toolbar-group,.planner-filter-row .segmented{width:100%}
+  .planner-filter-row .segmented{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-inline:contain}
+  .planner-filter-row .segmented button{flex:0 0 auto}
+}
 
 /* ---------- Reduced motion ---------- */
 @media(prefers-reduced-motion:reduce){
@@ -1032,7 +1060,7 @@ function renderCourseAttendancePanel(c){const s=attendanceSummary(c.id);return `
 function renderCourseGradesPanel(c){const g=state.grades.find(x=>x.courseId===c.id);return `<div class="card"><div class="row"><div><h3>Current Grade Point</h3><p class="muted">Direct numeric grade point</p></div><div class="stat"><div class="v">${g?g.gradePoint.toFixed(2):'—'}</div></div></div><button onclick="ui.gradeCourse='${c.id}';go('GPA-02')">${g?'Edit Grade':'Add Grade'}</button></div>`}
 // ---------------- Attendance ----------------
 function attendanceTableRows(){return state.courses.filter(c=>!c.archived).map(c=>{const s=attendanceSummary(c.id);return `<tr><td>${esc(c.code)} · ${esc(c.name)}</td><td>${s.held}</td><td>${s.attended}</td><td>${s.missed}</td><td>${s.cancelled}</td><td>${s.pct}%</td><td>${s.target}%</td><td>${statusBadge(s.status)}</td><td><button class="small" onclick="ui.attendanceCourse='${c.id}';go('ATT-02')">View Details</button> <button class="small" onclick="ui.attendanceCourse='${c.id}';go('ATT-03')">Add Record</button></td></tr>`}).join('')}
-function attendanceMobileCards(){return state.courses.filter(c=>!c.archived).map(c=>{const s=attendanceSummary(c.id);return `<div class="mobile-card"><div class="row start"><div><b>${esc(c.code)} ${esc(c.name)}</b><div class="helper">Target ${s.target}%</div></div>${statusBadge(s.status)}</div><div class="metrics"><div class="metric"><div class="k">Current</div><div class="v">${s.pct}%</div></div><div class="metric"><div class="k">Held</div><div class="v">${s.held}</div></div><div class="metric"><div class="k">Attended</div><div class="v">${s.attended}</div></div><div class="metric"><div class="k">Missed</div><div class="v">${s.missed}</div></div></div><div class="actions"><button class="small" onclick="ui.attendanceCourse='${c.id}';go('ATT-02')">View Details</button><button class="small" onclick="ui.attendanceCourse='${c.id}';go('ATT-03')">Add Record</button></div></div>`}).join('')}
+function attendanceMobileCards(){return state.courses.filter(c=>!c.archived).map(c=>{const s=attendanceSummary(c.id);return `<div class="mobile-card"><div class="row start"><div><b>${esc(c.code)} ${esc(c.name)}</b><div class="helper">Target ${s.target}%</div></div>${statusBadge(s.status)}</div><div class="metrics"><div class="metric"><div class="k">Current</div><div class="v">${s.pct}%</div></div><div class="metric"><div class="k">Held</div><div class="v">${s.held}</div></div><div class="metric"><div class="k">Attended</div><div class="v">${s.attended}</div></div><div class="metric"><div class="k">Missed</div><div class="v">${s.missed}</div></div><div class="metric"><div class="k">Cancelled</div><div class="v">${s.cancelled}</div></div></div><div class="actions"><button class="small" onclick="ui.attendanceCourse='${c.id}';go('ATT-02')">View Details</button><button class="small" onclick="ui.attendanceCourse='${c.id}';go('ATT-03')">Add Record</button></div></div>`}).join('')}
 function renderAtt01(){
 const summaries=state.courses.filter(c=>!c.archived).map(c=>attendanceSummary(c.id)),overallHeld=summaries.reduce((a,s)=>a+s.held,0),overallAtt=summaries.reduce((a,s)=>a+s.attended,0),overall=overallHeld?Math.round(overallAtt/overallHeld*100):0;return `<div class="hero"><div class="hero-grid"><div><span class="hero-chip">${icon('shield','ic-sm')}&nbsp;Attendance</span><h2 style="margin-top:14px">Academic attendance</h2><p class="sub">Track attendance against course targets. Cancelled classes do not count as held classes.</p><div class="hero-cta"><button onclick="go('ATT-03')">${icon('plus','ic-sm')}&nbsp;Add Attendance</button></div></div><div class="hero-side"><div class="hero-ring">${ringHtml(overall,overall+'%','overall',132,'rgba(255,255,255,.25)','rgba(255,255,255,.12)')}</div><div><div class="hero-side-label">Overall Attendance</div><div class="hero-side-sub">across ${summaries.length} course${summaries.length===1?'':'s'}</div></div></div></div></div><div class="toolbar"><div class="field"><label for="attSemesterFilter">Semester</label><select id="attSemesterFilter"><option>${esc(state.semesters.find(s=>s.id===state.academic.activeSemester)?.name||'Active Semester')}</option></select></div><div></div></div><div class="kpi-row">${stat('Overall Attendance',overall+'%')}${stat('Safe Courses',summaries.filter(s=>s.status==='Safe').length)}${stat('Warning Courses',summaries.filter(s=>s.status==='Warning').length)}${stat('At Risk Courses',summaries.filter(s=>s.status==='At Risk').length)}</div><div style="height:16px"></div><div class="table-wrap desktop-only"><table><thead><tr><th>Course</th><th>Held</th><th>Attended</th><th>Missed</th><th>Cancelled</th><th>Current %</th><th>Target %</th><th>Status</th><th>Actions</th></tr></thead><tbody>${attendanceTableRows()}</tbody></table></div><div class="mobile-cards">${attendanceMobileCards()}</div>`
 }
@@ -1062,7 +1090,7 @@ function plannerListHtml(events){return `<div class="agenda">${events.map(ev=>`<
 function plannerMonthHtml(events){const base=new Date();base.setDate(1);base.setMonth(base.getMonth()+ui.plannerOffset);const year=base.getFullYear(),month=base.getMonth(),firstDay=(new Date(year,month,1).getDay()+6)%7,days=new Date(year,month+1,0).getDate();let cells=[];for(let i=0;i<firstDay;i++)cells.push(`<div class="cal-day"></div>`);for(let d=1;d<=days;d++){const date=`${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,dayEvents=events.filter(e=>e.date===date);cells.push(`<div class="cal-day"><div class="cal-date">${d}</div>${dayEvents.map(ev=>`<div class="cal-event ${ev.completed?'completed':''} ${ev.overdue?'overdue':''}" onclick="openPlannerEvent('${ev.type}','${ev.id}')">${esc(ev.title)}</div>`).join('')}</div>`)}return `<div class="calendar"><div class="cal-head">Mon</div><div class="cal-head">Tue</div><div class="cal-head">Wed</div><div class="cal-head">Thu</div><div class="cal-head">Fri</div><div class="cal-head">Sat</div><div class="cal-head">Sun</div>${cells.join('')}</div><div class="planner-mobile-agenda" style="display:none">${plannerListHtml(events)}</div>`}
 function plannerWeekHtml(events){return `<div class="grid">${[0,1,2,3,4,5,6].map(i=>{const d=new Date();d.setDate(d.getDate()+i);const key=d.toISOString().slice(0,10),es=events.filter(e=>e.date===key);return `<div class="card span-4"><h3>${fmtDate(key,{weekday:'short',month:'short',day:'numeric'})}</h3>${es.map(e=>`<div class="topic"><b>${esc(e.title)}</b><div class="helper">${esc(e.time)} · ${esc(e.type)}</div><button class="small" onclick="openPlannerEvent('${e.type}','${e.id}')">View</button></div>`).join('')||'<p class="muted">No events</p>'}</div>`}).join('')}</div>`}
 function renderPlan01(){
-let events=plannerEvents();const filtered=ui.plannerFilter&&ui.plannerFilter!=='All'?events.filter(e=>ui.plannerFilter==='Completed'?e.completed:e.type===ui.plannerFilter.slice(0,-1)):events;const base=new Date();base.setMonth(base.getMonth()+ui.plannerOffset);const label=ui.plannerView==='Month'?new Intl.DateTimeFormat(undefined,{month:'long',year:'numeric'}).format(base):ui.plannerView==='Week'?'This Week':'Upcoming';const content=ui.plannerView==='Month'?plannerMonthHtml(filtered):ui.plannerView==='Week'?plannerWeekHtml(filtered):plannerListHtml(filtered);return `<div class="pack-header"><div class="row start"><span class="ic-box indigo">${icon('cal','ic-lg')}</span><div><h2>Planner</h2><p class="muted">Assignments and exams in one academic schedule.</p></div></div><div class="row" style="margin-top:16px;justify-content:flex-start"><button onclick="plannerNavigate(-1)">${icon('arrowL','ic-sm')}&nbsp;Previous</button><button onclick="ui.plannerOffset=0;render()">Today</button><button onclick="plannerNavigate(1)">Next&nbsp;${icon('arrowR','ic-sm')}</button><b style="color:var(--ink)">${esc(label)}</b></div></div><div class="toolbar"><div></div><div class="toolbar-group">${segmented(['Month','Week','List'],ui.plannerView,'setPlannerView')}<button class="primary" onclick="showPlannerAdd()">${icon('plus','ic-sm')}&nbsp;Add</button></div></div><div class="toolbar"><div class="toolbar-group">${segmented(['All','Assignments','Exams','Completed'],ui.plannerFilter||'All','setPlannerFilter')}</div></div>${content}`
+let events=plannerEvents();const filtered=ui.plannerFilter&&ui.plannerFilter!=='All'?events.filter(e=>ui.plannerFilter==='Completed'?e.completed:e.type===ui.plannerFilter.slice(0,-1)):events;const base=new Date();base.setMonth(base.getMonth()+ui.plannerOffset);const label=ui.plannerView==='Month'?new Intl.DateTimeFormat(undefined,{month:'long',year:'numeric'}).format(base):ui.plannerView==='Week'?'This Week':'Upcoming';const content=ui.plannerView==='Month'?plannerMonthHtml(filtered):ui.plannerView==='Week'?plannerWeekHtml(filtered):plannerListHtml(filtered);return `<div class="pack-header"><div class="row start"><span class="ic-box indigo">${icon('cal','ic-lg')}</span><div><h2>Planner</h2><p class="muted">Assignments and exams in one academic schedule.</p></div></div><div class="row planner-nav" style="margin-top:16px;justify-content:flex-start"><button onclick="plannerNavigate(-1)">${icon('arrowL','ic-sm')}&nbsp;Previous</button><button onclick="ui.plannerOffset=0;render()">Today</button><button onclick="plannerNavigate(1)">Next&nbsp;${icon('arrowR','ic-sm')}</button><b class="planner-period" style="color:var(--ink)">${esc(label)}</b></div></div><div class="toolbar"><div></div><div class="toolbar-group planner-view-controls">${segmented(['Month','Week','List'],ui.plannerView,'setPlannerView')}<button class="primary" onclick="showPlannerAdd()">${icon('plus','ic-sm')}&nbsp;Add</button></div></div><div class="toolbar planner-filter-row"><div class="toolbar-group">${segmented(['All','Assignments','Exams','Completed'],ui.plannerFilter||'All','setPlannerFilter')}</div></div>${content}`
 }
 function setPlannerFilter(v){ui.plannerFilter=v;render()}
 function showPlannerAdd(){openModal(`<h2>Add to Planner</h2><p class="muted">Planner items are created through their full forms.</p><div class="menu"><button onclick="closeModal();go('ASSIGN-02')">Add Assignment</button><button onclick="closeModal();go('EXAM-02')">Add Exam</button></div>`)}
@@ -1093,7 +1121,7 @@ function renderExam05(){const e=exam(ui.examId);return `${pageHead('Delete Exam'
 function deleteExam(id){confirmAction('Delete Exam','Remove this exam from StudentOS?',()=>{state.exams=state.exams.filter(e=>e.id!==id);showToast('Exam deleted');go('EXAM-01')},'Delete Exam')}
 // ---------------- Focus ----------------
 function renderFocus01(){
-const f=state.focus,mins=f.preset==='Custom'?f.custom:f.preset;return `<div class="focus-dark"><div class="hero-grid"><div><span class="hero-chip">${icon('timer','ic-sm')}&nbsp;Focus</span><div class="timer" style="font-size:54px;margin-top:18px;text-align:center">${formatClock(mins*60)}</div><div class="timer-status">Choose a duration, then start your session.</div><div class="pill-list" style="margin-top:22px;justify-content:center">${[25,45,60,'Custom'].map(v=>`<button class="pill ${f.preset===v?'selected':''}" onclick="state.focus.preset=${typeof v==='number'?v:`'Custom'`};render()">${v==='Custom'?'Custom':v+' min'}</button>`).join('')}</div></div><div><h3 style="margin-bottom:12px">Study Summary</h3><div class="meta-list" style="grid-template-columns:1fr"><div class="meta-item"><div class="label">Study Minutes Today</div><div class="value">145</div></div><div class="meta-item"><div class="label">Hours This Week</div><div class="value">7.5</div></div><div class="meta-item"><div class="label">Current Streak</div><div class="value">4 days</div></div><div class="meta-item"><div class="label">Sessions Completed</div><div class="value">${state.focusHistory.length}</div></div></div></div></div><div class="hero-cta" style="margin-top:22px"><button class="primary" onclick="startFocus()">${icon('play','ic-md')}&nbsp;Start Focus Session</button></div></div><div class="grid"><div class="card span-8"><div class="section-title"><h3>Session Setup</h3></div>${selectInput('focusCourse','Course',state.courses.map(c=>({value:c.id,label:`${c.code} &middot; ${c.name}`})),f.courseId)}${selectInput('focusType','Session Type',['Deep Work','Revision','Practice Questions','Reading'],f.type)}${textInput('focusGoal','What are you studying?',f.goal)}${f.preset==='Custom'?textInput('focusCustom','Custom minutes',f.custom,{type:'number',min:5,max:240}):''}<div class="actions"><button class="primary" onclick="startFocus()">Start Focus</button></div></div><div class="card span-4"><h3>Study Summary</h3><div class="meta-list" style="grid-template-columns:1fr"><div class="meta-item"><div class="label">Study Minutes Today</div><div class="value">145</div></div><div class="meta-item"><div class="label">Hours This Week</div><div class="value">7.5</div></div><div class="meta-item"><div class="label">Current Streak</div><div class="value">4 days</div></div><div class="meta-item"><div class="label">Sessions Completed</div><div class="value">${state.focusHistory.length}</div></div></div><button onclick="go('FOCUS-04')">View Study History</button></div></div>`
+const f=state.focus,mins=f.preset==='Custom'?f.custom:f.preset;return `<div class="focus-dark"><div class="hero-grid"><div><span class="hero-chip">${icon('timer','ic-sm')}&nbsp;Focus</span><div class="timer" style="font-size:54px;margin-top:18px;text-align:center">${formatClock(mins*60)}</div><div class="timer-status">Choose a duration, then start your session.</div><div class="pill-list" style="margin-top:22px;justify-content:center">${[25,45,60,'Custom'].map(v=>`<button class="pill ${f.preset===v?'selected':''}" onclick="state.focus.preset=${typeof v==='number'?v:`'Custom'`};render()">${v==='Custom'?'Custom':v+' min'}</button>`).join('')}</div></div><div><h3 style="margin-bottom:12px">Study Summary</h3><div class="meta-list" style="grid-template-columns:1fr"><div class="meta-item"><div class="label">Study Minutes Today</div><div class="value">145</div></div><div class="meta-item"><div class="label">Hours This Week</div><div class="value">7.5</div></div><div class="meta-item"><div class="label">Current Streak</div><div class="value">4 days</div></div><div class="meta-item"><div class="label">Sessions Completed</div><div class="value">${state.focusHistory.length}</div></div></div></div></div><div class="hero-cta" style="margin-top:22px"><button class="primary" onclick="startFocus()">${icon('play','ic-md')}&nbsp;Start Focus Session</button></div></div><div class="grid"><div class="card span-8"><div class="section-title"><h3>Session Setup</h3></div>${selectInput('focusCourse','Course',state.courses.map(c=>({value:c.id,label:`${c.code} · ${c.name}`})),f.courseId)}${selectInput('focusType','Session Type',['Deep Work','Revision','Practice Questions','Reading'],f.type)}${textInput('focusGoal','What are you studying?',f.goal)}${f.preset==='Custom'?textInput('focusCustom','Custom minutes',f.custom,{type:'number',min:5,max:240}):''}<div class="actions"><button class="primary" onclick="startFocus()">Start Focus</button></div></div><div class="card span-4"><h3>Study Summary</h3><div class="meta-list" style="grid-template-columns:1fr"><div class="meta-item"><div class="label">Study Minutes Today</div><div class="value">145</div></div><div class="meta-item"><div class="label">Hours This Week</div><div class="value">7.5</div></div><div class="meta-item"><div class="label">Current Streak</div><div class="value">4 days</div></div><div class="meta-item"><div class="label">Sessions Completed</div><div class="value">${state.focusHistory.length}</div></div></div><button onclick="go('FOCUS-04')">View Study History</button></div></div>`
 }
 function startFocus(){const f=state.focus;f.courseId=document.getElementById('focusCourse').value;f.type=document.getElementById('focusType').value;f.goal=document.getElementById('focusGoal').value.trim();if(f.preset==='Custom'){const m=+document.getElementById('focusCustom').value;if(!(m>=5&&m<=240)){showToast('Choose a custom duration between 5 and 240 minutes.');return}f.custom=m}const mins=f.preset==='Custom'?f.custom:f.preset;f.remaining=mins*60;f.running=true;f.paused=false;f.startedAt=Date.now();f.lastDuration=mins;go('FOCUS-02');runFocusTimer()}
 function runFocusTimer(){stopFocusTimer(false);if(!state.focus.running||state.focus.paused)return;focusTimer=setInterval(()=>{if(state.focus.running&&!state.focus.paused){state.focus.remaining--;syncFocusClock();if(state.focus.remaining<=0)finishFocus()}},1000)}
