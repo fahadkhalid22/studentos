@@ -16,6 +16,80 @@ or quiz scores.
 
 ---
 
+## Final visual QA correction pass — responsive integrity and mobile information preservation
+
+| | |
+|---|---|
+| **Source commit** | `51ed617` |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-17 |
+| **Scope** | Verified blocker/high/medium/low mobile defects from the final vision review; shared responsive causes first, then screen-specific correction |
+| **Verified** | 82 routes / 84 navigations / 0 failures / 0 console-jsdom errors; all 82 routes measured at 390px with 0 title truncation, 0 page overflow, 0 bottom-dock occlusion, and 0 leaked hidden toasts |
+
+### Baseline and repository state
+- Started from the real branch head `6811928` on `ui/premium-redesign`; origin was
+  `https://github.com/fahadkhalid22/studentos.git` and the initial smoke run passed
+  82 routes / 84 navigations / 0 failures / 0 console-jsdom errors.
+- Preserved the already-started, uncommitted correction work in
+  `StudentOS_Clickable_Wireframe.html`; the 40 existing review PNGs were untracked
+  and were treated as replaceable review artifacts, never staged.
+
+### Defects, root causes, and corrections
+- **C-1 bottom-nav occlusion:** mobile content had only 100px bottom padding while
+  the floating dock, 14px offset, and safe area consumed more space. The shared
+  mobile content inset is now `130px + env(safe-area-inset-bottom)`, so final
+  content/actions scroll completely above the dock on every app route.
+- **G-2 compact topbar:** the desktop search pill, command chip, notification,
+  avatar, back button, and title competed for the same width. At ≤900px search is
+  an accessible 44px icon button, its desktop label/keycap are hidden, and the
+  redundant avatar is removed; at ≤430px titles use a readable wrapping/clip-free
+  composition and the search target remains 40×44px.
+- **G-4 clipped controls:** shared action buttons now respect their container,
+  mobile action labels wrap by words, duration/action groups retain flex wrapping,
+  and step labels are non-shrinking tokens that move intact to the next line.
+  This resolves FOCUS-01 `Custom`, FOCUS-02 `Cancel Session`, and PREP-01
+  `4 Generate` without removing or abbreviating actions.
+- **G-5 table information loss:** ATT-01 and GPA-01 switch their designated
+  desktop tables to purpose-built cards at ≤900px. Attendance cards preserve
+  course, target/current percentage, status, held, attended, missed, cancelled,
+  and both actions. GPA cards preserve course, credits, grade point, weighted
+  points, and edit action.
+- **G-1 green dot / PREP-06 dark band:** the hidden toast had a mobile entrance
+  animation applied unconditionally with `animation-fill-mode:both`, overriding
+  its hidden opacity and exposing its dark surface plus emerald `::before` dot.
+  The base toast now remains `visibility:hidden; opacity:0`; animation applies
+  only while `.show` is present. Semantic green indicators inside badges and
+  progress components remain intact.
+- **Hero copy:** mobile hero/pack/focus descriptions now grow naturally with
+  normal white-space, visible overflow, and word-boundary wrapping; hero-grid
+  children receive `min-width:0`.
+- **PLAN-01:** the month/year is an explicit full-width first row above the
+  Previous/Today/Next controls; view controls stack deliberately; All,
+  Assignments, Exams, and Completed remain visible/reachable in a non-wrapping
+  responsive filter rail. The approved mobile agenda conversion is unchanged.
+- **PREP-06:** tabs use non-shrinking labels inside a deliberate horizontal rail
+  with touch scrolling/inline overscroll containment. All eight tabs, including
+  Study Plan, are reachable at 768px and 390px without page-level overflow.
+- **FOCUS-01:** the escaped option label now uses the Unicode middle dot directly,
+  producing `CS301 · Algorithms` instead of rendering `&middot;` literally.
+
+### Validation and review artifacts
+- Repeated the smoke harness after each shared correction; final result remained
+  82 routes / 84 navigations / 0 failures / 0 console-jsdom errors.
+- Real-Chrome geometry checks at 390px and 768px covered DASH-01, COURSE-04,
+  ATT-01, GPA-01, PLAN-01, FOCUS-01, FOCUS-02, AI-01, PREP-01, and PREP-06.
+- A second real-Chrome sweep measured all 82 routes at 390px: document width
+  390/390 on every route, no app-title truncation, no bottom-dock intersections,
+  and hidden toast computed as `visibility:hidden; opacity:0` throughout.
+- Regenerated the full candidate set: 10 signature screens × 4 viewports = 40
+  PNGs. All have valid PNG signatures, non-zero bytes, correct filenames, and
+  exact target dimensions. Per review policy, the PNGs remain untracked pending
+  the second vision QA.
+- Remaining known issue: none in the verified correction scope. Final visual
+  approval remains intentionally pending.
+
+---
+
 ## Phase 4 Pass 21 — Full 82-screen audit + CSS-fingerprint sweep (stray-hex and radius normalization)
 
 | | |

@@ -6,6 +6,75 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 24 — final vision-QA correction and responsive revalidation
+
+| | |
+|---|---|
+| **Evidence** | Real Chrome CDP geometry at 390/768; full 82-route 390px sweep; jsdom smoke harness; manual inspection of regenerated signature screenshots; PNG signature/dimension inventory |
+| **Date** | 2026-09-17 |
+| **Status** | ✅ Pass — blocker/high/medium/low/polish defects corrected; ready for second vision QA |
+| **Source commit** | `51ed617` |
+
+### Baseline
+- Branch/head found before correction: `ui/premium-redesign` at `6811928`.
+- Existing working tree contained an in-progress 29-line HTML correction and 40
+  untracked review PNGs; both were preserved and audited before continuation.
+- Baseline smoke: 82 routes, 84 navigations, 0 route failures, 0 console/jsdom
+  errors.
+
+### Root-cause checks
+- **Content occlusion:** fixed dock clearance is now 130px plus safe-area inset;
+  bottom-scroll intersection checks report zero occluded controls on every route.
+- **Topbar crowding:** tablet/mobile search collapses to an icon, Ctrl+K chip and
+  search label are hidden, avatar is removed where sidebar/mobile More already
+  exposes profile, and mobile titles no longer use an ellipsis-dependent layout.
+- **Control clipping:** action groups wrap, action labels wrap at word boundaries,
+  and step tokens do not shrink mid-label.
+- **Responsive tables:** ATT-01 and GPA-01 mobile cards contain every required
+  field/action; only presentation changes, with all calculations untouched.
+- **Green-dot artifact:** traced to the base `.toast` receiving the mobile
+  `toastIn` animation even without `.show`. Hidden toasts now compute to
+  `visibility:hidden` and opacity `0`; the dark band and orphan emerald
+  pseudo-element are absent.
+- **Planner:** Completed filter and September 2026 heading are visible/reachable at
+  390px; mobile agenda presentation is retained.
+- **Exam Pack:** rail scroll width exceeds client width at 390/768 as intended,
+  while document scroll width equals viewport width; all eight non-shrinking tabs
+  are reachable without page-level overflow.
+- **Focus:** option text renders `CS301 · Algorithms`; Custom and Cancel Session
+  remain complete and readable.
+
+### Automated checklist
+
+| Check | Result |
+|---|---|
+| Final smoke harness | ✅ 82 routes / 84 navigations / 0 failures / 0 errors |
+| Route registry / renderer count | ✅ 82 required routes retained |
+| All 82 routes at 390px: page-level horizontal overflow | ✅ 0 (`clientWidth === scrollWidth === 390`) |
+| All 82 app routes at 390px: topbar title truncation | ✅ 0 |
+| All 82 routes at bottom scroll: mobile-dock occlusion | ✅ 0 |
+| Hidden toast leakage / stray green toast dot | ✅ 0 |
+| Signature routes at 390px and 768px | ✅ geometry + manual visual pass |
+| ATT-01 / GPA-01 required mobile data | ✅ preserved in cards |
+| PLAN-01 filters and month heading | ✅ visible/reachable |
+| PREP-06 eight-tab reachability | ✅ scroll rail, no page overflow |
+| Source diff whitespace / conflict markers | ✅ clean |
+
+### Screenshot inventory
+- Regenerated all 40 review candidates in
+  `docs/review-screenshots/human-crafted-pass/`:
+  DASH-01, COURSE-04, ATT-01, GPA-01, PLAN-01, FOCUS-01, FOCUS-02, AI-01,
+  PREP-01, and PREP-06 at 1440, 1280, 768, and 390 widths.
+- Validation: 40 files; zero zero-byte files; 40 valid PNG signatures; exact
+  dimensions 1440×900, 1280×800, 768×1024, and 390×844.
+- Screenshots remain untracked as required until second vision review approval.
+
+### Remaining
+- No known functional or responsive defect remains in the verified scope.
+- Required next step: second vision QA, then user approval. No merge to `main`.
+
+---
+
 ## Checkpoint 23 — Phase 4 Pass 21 full audit + CSS-fingerprint sweep
 
 | | |
