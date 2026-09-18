@@ -16,6 +16,53 @@ or quiz scores.
 
 ---
 
+## Final Focus micro-polish and green-certification evidence pass
+
+| | |
+|---|---|
+| **Commit** | This commit (`fix(ui): finish final Focus screen polish`) |
+| **Branch** | `ui/premium-redesign` |
+| **Date** | 2026-09-18 |
+| **Scope** | Resolve the two remaining Focus polish findings and capture only the targeted evidence needed to close the final visual-QA gaps |
+| **Verified** | 82 routes / 84 navigations / 0 failures / 0 console-jsdom errors; 10/10 evidence PNGs captured at exact target dimensions |
+
+### Focus polish
+- **FOCUS-01 duplicate Study Summary:** retained the stronger Study Summary in
+  the dark hero and removed the repeated lower-right metric card. Session Setup
+  is now a centered, width-constrained card, while the existing View Study
+  History action remains available in its header. No metrics, calculations, or
+  Focus behavior changed.
+- **FOCUS-02 mobile spacing:** added a small mobile-only bottom margin to the
+  existing Focus Mode row. At 390px the complete label/helper row now sits
+  comfortably above the fixed dock without changing navigation dimensions,
+  hiding copy, or adding excessive whitespace.
+
+### Final evidence
+- Created the ten requested files in
+  `docs/review-screenshots/final-green-evidence/` using the existing local Chrome
+  CDP workflow. The files cover COURSE-04 bottom reachability, complete ATT/GPA
+  mobile cards, PREP-06 rail start/end positions at 390px and 768px, the
+  FOCUS-01 course value and deduplicated desktop layout, and FOCUS-02 mobile
+  spacing.
+- COURSE-04 shows Grade Point `3.60` and Edit Grade fully above the dock at the
+  absolute bottom of the Grades state. ATT-01 preserves course, target/current,
+  status, held, attended, missed, cancelled, and both actions. GPA-01 preserves
+  course, credits, grade point, weighted points, and Edit.
+- PREP-06 rail metadata confirms all eight tabs, `scrollLeft=0` at each start
+  capture, and the exact maximum scroll position at each end capture. The page
+  itself remains `390/390` or `768/768` with no horizontal overflow.
+- FOCUS-01 renders `CS301 · Algorithms` and exactly one Study Summary.
+  FOCUS-02 shows the complete Focus Mode row with clear separation from the dock.
+- All evidence screenshots remain intentionally untracked pending final visual
+  approval.
+
+### Remaining
+- Remaining functional defects: none.
+- Remaining visual defects: none.
+- Remaining polish findings in this scope: none.
+
+---
+
 ## Final visual QA correction pass — responsive integrity and mobile information preservation
 
 | | |

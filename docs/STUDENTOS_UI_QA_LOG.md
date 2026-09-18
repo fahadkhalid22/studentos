@@ -6,6 +6,54 @@ Browser/behavioral tests are run on the current `ui/premium-redesign` build.
 
 ---
 
+## Checkpoint 25 — final Focus micro-polish and green-evidence closure
+
+| | |
+|---|---|
+| **Evidence** | Ten targeted real-Chrome screenshots; CDP scroll/geometry metadata; manual image inspection; PNG inventory; final jsdom smoke harness |
+| **Date** | 2026-09-18 |
+| **Status** | ✅ Pass — both polish findings resolved and all previously off-frame evidence states verified |
+| **Source commit** | This commit (`fix(ui): finish final Focus screen polish`) |
+
+### Corrections verified
+- FOCUS-01 now has one Study Summary, retained in the hero. The lower duplicate
+  is removed, the existing Study History action is preserved, and the centered
+  820px-max Session Setup card restores balanced desktop hierarchy.
+- FOCUS-02 retains the timer, controls, toggle, and helper copy unchanged while
+  its mobile Focus Mode row receives modest safe spacing above the fixed dock.
+
+### Evidence checklist
+
+| Check | Result |
+|---|---|
+| COURSE-04 Grade Point and final action above mobile dock | ✅ `3.60` and Edit Grade fully visible at absolute bottom |
+| ATT-01 complete 390px attendance card | ✅ all required values, status, and both actions visible |
+| GPA-01 complete 390px grade card | ✅ course, credits, grade point, weighted points, and Edit visible |
+| PREP-06 eight-tab reachability at 390px | ✅ start/end captures; rail `0 → 558`, page width `390/390` |
+| PREP-06 eight-tab reachability at 768px | ✅ start/end captures; rail `0 → 288`, page width `768/768` |
+| FOCUS-01 mobile course value | ✅ `CS301 · Algorithms`; no literal `&middot;` |
+| FOCUS-01 duplicate Study Summary | ✅ one heading in DOM and one visual presentation |
+| FOCUS-02 mobile bottom spacing | ✅ row bottom `651px`, dock top `758px`; no overlap or cramped appearance |
+| Evidence PNG validity | ✅ 10/10 non-empty PNGs at exact required dimensions |
+| Final smoke harness | ✅ 82 routes / 84 navigations / 0 failures / 0 console-jsdom errors |
+
+### Evidence inventory
+- `COURSE-04-390-bottom.png`
+- `ATT-01-390-cards.png`
+- `GPA-01-390-cards.png`
+- `PREP-06-390-tabs-start.png`
+- `PREP-06-390-tabs-end.png`
+- `PREP-06-768-tabs-start.png`
+- `PREP-06-768-tabs-end.png`
+- `FOCUS-01-390-course.png`
+- `FOCUS-01-1440-polish.png`
+- `FOCUS-02-390-spacing.png`
+
+Screenshots remain untracked review evidence. No merge to `main` was performed.
+Remaining functional defects: 0. Remaining visual defects: 0. Remaining polish: 0.
+
+---
+
 ## Checkpoint 24 — final vision-QA correction and responsive revalidation
 
 | | |
